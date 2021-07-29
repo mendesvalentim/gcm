@@ -8,11 +8,18 @@ import { Ocorrencia } from '../ocorrencias';
 })
 export class OcorrenciasformComponent implements OnInit {
 
- // ocorrencia: Ocorrencia
+  ocorrencia: Ocorrencia;
 
-  constructor() { }
+  constructor() { 
+    this.ocorrencia =new Ocorrencia();
+ 
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    console.log(this.ocorrencia);
   }
 
 }
