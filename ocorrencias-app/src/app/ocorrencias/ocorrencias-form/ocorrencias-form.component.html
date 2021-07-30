@@ -18,7 +18,21 @@
                     <input type="text" class="form-control" 
                     [(ngModel)]="ocorrencia.viatura" name="viatura"/>
                 </div>
-            </div>              
+            </div>       
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Encarregado Vtr:</label>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="ocorrencia.encarregadoVtr" name="encarregadoVtr"/>
+                </div>
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Auxiliar1:</label>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="ocorrencia.auxiliar1" name="auxiliar1"/>
+                </div>
+            </div>                              
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Talão:</label>
@@ -35,14 +49,15 @@
                     <input type="text" class="form-control"  
                     [(ngModel)]="ocorrencia.endereco" name="endereco"/>
                 </div>    
-            </div>                   
+            </div> 
+                               
         </div>
 
         <div class="row">
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Hora Inicial (Qtri):</label>
-                    <input type="text" class="form-control"  
+                    <input type="time" class="form-control"  
                     [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
                 </div>
             </div>   
@@ -59,7 +74,7 @@
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Hora Final (QtrF):</label>
-                    <input type="text" class="form-control"   
+                    <input type="time" class="form-control"   
                     [(ngModel)]="ocorrencia.horaFinal" name="horaFinal"/> 
                 </div>
             </div>      

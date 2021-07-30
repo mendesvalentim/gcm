@@ -12,14 +12,19 @@ export class OcorrenciasformComponent implements OnInit {
   ocorrencia: Ocorrencia;
 
   constructor( private service: OcorrenciasService) { 
-    this.ocorrencia = service.getOcorrencia();
+    this.ocorrencia = new Ocorrencia;
   }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log(this.ocorrencia);
+    this.service
+      .salvar(this.ocorrencia)
+      .subscribe( response => {
+        console.log(response);
+      } )
+    
   }
 
 }
