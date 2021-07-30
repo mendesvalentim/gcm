@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ocorrencia } from '../ocorrencias';
+import { OcorrenciasService } from '../../ocorrencias.service';
 
 @Component({
   selector: 'app-ocorrenciasform',
@@ -10,9 +11,8 @@ export class OcorrenciasformComponent implements OnInit {
 
   ocorrencia: Ocorrencia;
 
-  constructor() { 
-    this.ocorrencia =new Ocorrencia();
- 
+  constructor( private service: OcorrenciasService) { 
+    this.ocorrencia = service.getOcorrencia();
   }
 
   ngOnInit(): void {
