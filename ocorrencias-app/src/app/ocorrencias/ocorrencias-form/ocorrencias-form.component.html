@@ -4,6 +4,17 @@
 </ol>
 <div class="container">
     <form #ocorrenciaForm="ngForm" (ngSubmit)="onSubmit()" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                   Ocorrência salva com sucesso!
+                </div>  
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>                                               
+            </div>
+        </div>
+
         <div class="row">         
             <div class="col-md-2">
                 <div class="form-goup">
@@ -23,7 +34,7 @@
 
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>Cod. Ocorrência:</label>
+                    <label>Codigo:</label>
                     <input type="text" class="form-control" 
                     [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
                 </div>   

@@ -29,8 +29,8 @@ export class OcorrenciasService {
     ocorrencia.viatura = '94127';
     ocorrencia.numeroTalao = 123456;
     ocorrencia.boGcm = 11213;
-    //ocorrencia.equipe = 'A';
-   // ocorrencia.dataCadastro = '12563';
+    ocorrencia.equipe = 'A';
+    ocorrencia.dataCadastro = '12563';
     ocorrencia.codOcorrencia = '12563';
     ocorrencia.endereco = '12563';
     ocorrencia.motorista = '12563';

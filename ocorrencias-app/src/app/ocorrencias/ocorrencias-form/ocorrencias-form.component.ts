@@ -10,6 +10,9 @@ import { OcorrenciasService } from '../../ocorrencias.service';
 export class OcorrenciasformComponent implements OnInit {
 
   ocorrencia: Ocorrencia;
+  success: boolean = false;
+  errors!: String[];
+  
 
   constructor( private service: OcorrenciasService) { 
     this.ocorrencia = new Ocorrencia;
@@ -22,9 +25,11 @@ export class OcorrenciasformComponent implements OnInit {
     this.service
       .salvar(this.ocorrencia)
       .subscribe( response => {
-        console.log(response);
-      } )
-    
+        this.success = true;
+      } , errorResponse => {
+        this.errors = errorResponse.console.error.errors;  
+      }      
+      )  
   }
 
 }
