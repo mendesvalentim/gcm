@@ -11,11 +11,12 @@ export class OcorrenciasformComponent implements OnInit {
 
   ocorrencia: Ocorrencia;
   success: boolean = false;
-  errors!: String[];
+  errors: String[];
   
 
   constructor( private service: OcorrenciasService) { 
     this.ocorrencia = new Ocorrencia;
+    this.errors = [];
   }
 
   ngOnInit(): void {
@@ -26,8 +27,11 @@ export class OcorrenciasformComponent implements OnInit {
       .salvar(this.ocorrencia)
       .subscribe( response => {
         this.success = true;
+        this.errors = [];
+        this.ocorrencia = response;
       } , errorResponse => {
-        this.errors = errorResponse.console.error.errors;  
+        this.errors = errorResponse.error.errors;  
+        this.success = false;              
       }      
       )  
   }
