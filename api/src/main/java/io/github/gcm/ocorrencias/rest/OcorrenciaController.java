@@ -11,7 +11,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/ocorrencias")
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 public class OcorrenciaController {
 
     private final OcorrenciaRepository repository;

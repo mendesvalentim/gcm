@@ -106,4 +106,15 @@
     <MESSAGE value="Comunicação banco de dados h2" />
     <option name="LAST_COMMIT_MESSAGE" value="Comunicação banco de dados h2" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/OcorrenciaController.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
