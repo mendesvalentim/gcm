@@ -35,23 +35,23 @@ public class Ocorrencia {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
-    @Column(nullable = false)
     private Integer idUsuario;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataOcorrencia;
 
-    @Column(nullable = false, length = 10)
+    @Column(length = 10)
     private String codOcorrencia;
-    @Column(nullable = false)
     private Integer viatura;
-    @Column(nullable = false, length = 200)
+    @Column(length = 200)
     private String endereco;
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String motorista;
 
     private Integer kmInicial;
     private Integer kmFinal;
+    private String equipe;
+    private String encEquipe;
 
    /* @JsonFormat(pattern = "HH:mm")
     private Time horaInicial;
@@ -61,7 +61,7 @@ public class Ocorrencia {
     @Column(length = 500)
     private String obs;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String auxiliar1;
     private String auxiliar2;
     private String auxiliar3;

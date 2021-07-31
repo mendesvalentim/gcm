@@ -25,9 +25,11 @@ export class OcorrenciasService {
     //ocorrencia.id = 10;
     ocorrencia.idUsuario = 10;
     ocorrencia.dataOcorrencia = '12/03/2021';
+    ocorrencia.codOcorrencia = 'm-01';
     ocorrencia.viatura = '94127';
     ocorrencia.numeroTalao = 123456;
-    ocorrencia.boGcm = 11213
+    ocorrencia.boGcm = 11213;
+    //ocorrencia.equipe = 'A';
    // ocorrencia.dataCadastro = '12563';
     ocorrencia.codOcorrencia = '12563';
     ocorrencia.endereco = '12563';
