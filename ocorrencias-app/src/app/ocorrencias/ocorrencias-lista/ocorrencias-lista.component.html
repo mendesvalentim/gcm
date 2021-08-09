@@ -1,4 +1,3 @@
-<p>ocorrencias-lista works!</p>
 <h1 class="mt-4">Ocorrências</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Consulta</li>
@@ -6,11 +5,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            <button class="btn btn-success">
+            <button class="btn btn-success" (click)="novoCadastro()" >
                 <i class="fa fa-plus"></i> Novo
             </button>
         </div>
     </div>
+    <br  >
     <div class="row">
         <div class="col-md-12">
             <table class="table table-condensed table-hover">
@@ -44,9 +44,7 @@
                         <td>{{ ocorrencia.auxiliar1 }}</td>
                     </tr>
                 </tbody>
-            </table>
-
-            
+            </table>           
         </div>
     </div>    
 </div>

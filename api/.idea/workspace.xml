@@ -26,7 +26,6 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/OcorrenciaController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/config/InternacionalizacaoConfig.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/target/classes/io/github/gcm/ocorrencias/rest/OcorrenciaController.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/model/entity/Ocorrencia.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/ApplicatioControllerAdvice.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/exception/ApiErrors.java" root0="FORCE_HIGHLIGHTING" />
@@ -105,16 +104,5 @@
     </ignored-roots>
     <MESSAGE value="Comunicação banco de dados h2" />
     <option name="LAST_COMMIT_MESSAGE" value="Comunicação banco de dados h2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/OcorrenciaController.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

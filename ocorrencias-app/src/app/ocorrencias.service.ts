@@ -17,12 +17,13 @@ export class OcorrenciasService {
    salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
      return this.http.post<Ocorrencia>('http://localhost:8080/api/ocorrencias', ocorrencia);
    }
-/*
+
   getOcorrencias() : Observable<Ocorrencia[]> {
-    return EMPTY;
+    return this.http.get<Ocorrencia[]>('http://localhost:8080/api/ocorrencias');
  
-  }*/
-  getOcorrencias(): Ocorrencia[]{
+  }
+
+  /*getOcorrencias(): Ocorrencia[]{
     let ocorrencia: Ocorrencia = new Ocorrencia;
     
     //ocorrencia.id = 10;
@@ -44,5 +45,5 @@ export class OcorrenciasService {
     ocorrencia.encarregadoVtr = 'valentim';
     ocorrencia.obs = 'asdçljlkdaslkjdsalkjlkdjlkjdlkajsdla';    
     return [ocorrencia];
-  }
+  }*/
 }
