@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-condensed">
+            <table class="table table-condensed table-hover">
                 <thead>
                     <tr>
                         <th>Talão</th>
@@ -30,7 +30,19 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr *ngFor="let ocorrencia of ocorrencias">
+                        <td>{{ ocorrencia.numeroTalao }}</td>
+                        <td>{{ ocorrencia.codOcorrencia }}</td>
+                        <td>{{ ocorrencia.viatura }}</td>
+                        <td>{{ ocorrencia.endereco }}</td>
+                        <td>{{ ocorrencia.horaInicial }}</td>
+                        <td>{{ ocorrencia.kmInicial }}</td>
+                        <td>{{ ocorrencia.endereco }}</td>
+                        <td>{{ ocorrencia.horaFinal }}</td>
+                        <td>{{ ocorrencia.kmFinal }}</td>
+                        <td>{{ ocorrencia.encarregadoVtr }}</td>
+                        <td>{{ ocorrencia.auxiliar1 }}</td>
+                    </tr>
                 </tbody>
             </table>
 

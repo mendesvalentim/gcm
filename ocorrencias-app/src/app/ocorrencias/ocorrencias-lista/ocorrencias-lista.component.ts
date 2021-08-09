@@ -14,6 +14,7 @@ export class OcorrenciasListaComponent implements OnInit {
   constructor(private service: OcorrenciasService) { }
 
   ngOnInit(): void {
+    this.ocorrencias = this.service.getOcorrencias();
   }
 
 }
