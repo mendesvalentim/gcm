@@ -14,7 +14,6 @@ export class OcorrenciasService {
 
   }
    
-
    salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
      return this.http.post<Ocorrencia>('http://localhost:8080/api/ocorrencias', ocorrencia);
    }
