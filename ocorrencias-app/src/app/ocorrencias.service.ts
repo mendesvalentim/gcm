@@ -18,6 +18,9 @@ export class OcorrenciasService {
      return this.http.post<Ocorrencia>('http://localhost:8080/api/ocorrencias', ocorrencia);
    }
 
+   atualizar(ocorrencia: Ocorrencia): Observable<any>{
+    return this.http.put<Ocorrencia>(`http://localhost:8080/api/ocorrencias/${ocorrencia.id}`, ocorrencia);
+  }
   getOcorrencias() : Observable<Ocorrencia[]> {
     return this.http.get<Ocorrencia[]>('http://localhost:8080/api/ocorrencias');
  

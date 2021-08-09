@@ -46,6 +46,19 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
   onSubmit(){
+    if(this.id){
+      this.service
+        .atualizar(this.ocorrencia)
+        .subscribe(response =>{
+          this.success = true;
+            this.errors = []; 
+        }, errorResponse =>{
+           this.errors = ['Erro ao atualizar ocorrência.']
+        })
+
+    }else{
+
+    
     this.service
       .salvar(this.ocorrencia)
       .subscribe( response => {
@@ -55,8 +68,9 @@ export class OcorrenciasformComponent implements OnInit {
       } , errorResponse => {
         this.success = false;              
         this.errors = errorResponse.error.errors;  
-      }      
-      )  
-  }
+      })
+    }
+  }   
+  
 
 }
