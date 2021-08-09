@@ -15,6 +15,17 @@
             </div>
         </div>
 
+        <div class="row" *ngIf="ocorrencia.id">         
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>ID:</label>
+                     <input type="text" class="form-control" 
+                            [(ngModel)]="ocorrencia.id" name="id"/>      
+                </div>
+            </div>
+        </div>    
+             
+
         <div class="row">         
             <div class="col-md-2">
                 <div class="form-goup">
@@ -144,11 +155,7 @@
             </div>  
         </div> 
 
-        <div class="row">
-            <div class="col-md-2">
-                <label></label>
-            </div>
-        </div>        
+       <br  />     
 
         <div class="row">
             <div class="col-md-2">
