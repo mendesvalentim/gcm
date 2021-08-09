@@ -52,6 +52,7 @@ public class Ocorrencia {
     private Integer kmFinal;
     private String equipe;
     private String encEquipe;
+    private String boGcm;
 
    /* @JsonFormat(pattern = "HH:mm")
     private Time horaInicial;
