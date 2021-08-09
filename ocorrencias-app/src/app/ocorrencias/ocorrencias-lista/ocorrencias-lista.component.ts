@@ -11,6 +11,9 @@ import { Router } from  '@angular/router'
 export class OcorrenciasListaComponent implements OnInit {
   
   ocorrencias: Ocorrencia[] = [];
+  ocorrenciaSelecionada!: Ocorrencia;
+  mensagemSucesso!: String;
+  mensagemErro!: String;
 
   constructor(
     private service: OcorrenciasService, 
@@ -24,6 +27,22 @@ export class OcorrenciasListaComponent implements OnInit {
 
   novoCadastro(){
     this.router.navigate(['/ocorrencias-form'])
+  }
+
+  preparaDelecao(ocorrencia: Ocorrencia){
+    this.ocorrenciaSelecionada = ocorrencia;
+  }
+
+  deletarOcorrencia(){
+    this.service
+     .deletar(this.ocorrenciaSelecionada)
+     .subscribe( 
+       response => {
+         this.mensagemSucesso = 'Talão deletado com sucesso!'
+         this.ngOnInit(); 
+      },
+       erro => this.mensagemErro = 'Ocorreu um erro ao deletar o Talão.'
+     ) 
   }
 
 }

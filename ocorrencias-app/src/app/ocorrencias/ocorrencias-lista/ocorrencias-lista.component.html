@@ -4,6 +4,16 @@
 </ol>
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+               {{ mensagemSucesso }}
+            </div>  
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>                                               
+        </div>
+    </div>    
+    <div class="row">
         <div class="col-md-2">
             <button class="btn btn-success" (click)="novoCadastro()" >
                 <i class="fa fa-plus"></i> Novo
@@ -49,10 +59,33 @@
                                     routerLink="/ocorrencias-form/{{ocorrencia.id}}">
                                 <i class="fa fa-edit"></i>
                             </button>
+
+                            <button type="button" class="btn btn-danger ml-1"  (click)="preparaDelecao(ocorrencia)" 
+                                    data-bs-toggle="modal" data-bs-target="#modalDelecao">
+                                <i class="fa fa-trash"></i>
+                            </button>                                                       
                         </td>                        
-                    </tr>
-                </tbody>
-            </table>           
+                    </tr>                           
+                </tbody>                 
+            </table>                                  
+        </div> 
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalDelecao" tabindex="-1" aria-labelledby="modalDelecaoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalDelecaoLabel">Remoção</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="ocorrenciaSelecionada">
+                Dejesa remover o talão {{ ocorrenciaSelecionada.numeroTalao }} ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="deletarOcorrencia()" data-bs-dismiss="modal">Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
         </div>
-    </div>    
+      </div>           
 </div>

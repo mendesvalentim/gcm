@@ -30,6 +30,10 @@ export class OcorrenciasService {
     return this.http.get<any>(`http://localhost:8080/api/ocorrencias/${id}`);
 
   }
+
+  deletar(ocorrencia: Ocorrencia): Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/api/ocorrencias/${ocorrencia.id}`);
+  }
   
 
   /*getOcorrencias(): Ocorrencia[]{
