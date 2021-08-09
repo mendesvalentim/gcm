@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Ocorrencia } from '../ocorrencias';
 import { OcorrenciasService } from '../../ocorrencias.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ocorrenciasform',
@@ -27,18 +28,18 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let params = this.activatedRoute.params
-   // @ts-ignore    
-    if(params && params.value && params.value.id){
-   // @ts-ignore      
-      this.id = params.value.id;
+    let params : Observable<Params> = this.activatedRoute.params
+    params.subscribe( urlParams =>{
+      this.id = urlParams['id'];
+      if(this.id){
       this.service
         .getClienteById(this.id)
         .subscribe(
             response => this.ocorrencia = response ,
             errorResponse => this.ocorrencia = new Ocorrencia()
-      )
-    }   
+          )
+      }    
+    })   
   }
 
   voltarParaListagem(){
