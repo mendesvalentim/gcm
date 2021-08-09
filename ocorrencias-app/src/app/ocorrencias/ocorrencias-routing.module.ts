@@ -5,6 +5,7 @@ import { OcorrenciasListaComponent } from './ocorrencias-lista/ocorrencias-lista
 
 const routes: Routes = [
   { path: 'ocorrencias-form',  component: OcorrenciasformComponent  },
+  { path: 'ocorrencias-form/:id', component: OcorrenciasformComponent  },  
   { path: 'ocorrencias-lista', component: OcorrenciasListaComponent }  
 ];
 

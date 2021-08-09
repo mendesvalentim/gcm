@@ -27,6 +27,7 @@
                         <th>KmF</th>
                         <th>Enc. Vtr</th>
                         <th>Auxiliar1</th>
+                        <th>BOGCM</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,13 @@
                         <td>{{ ocorrencia.kmFinal }}</td>
                         <td>{{ ocorrencia.encarregadoVtr }}</td>
                         <td>{{ ocorrencia.auxiliar1 }}</td>
+                        <td>{{ ocorrencia.boGcm }}</td>
+                        <td>
+                            <button class="btn btn-primary" 
+                                    routerLink="/ocorrencias-form/{{ocorrencia.id}}">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </td>                        
                     </tr>
                 </tbody>
             </table>           

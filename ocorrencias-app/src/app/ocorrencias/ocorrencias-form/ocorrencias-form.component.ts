@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Ocorrencia } from '../ocorrencias';
 import { OcorrenciasService } from '../../ocorrencias.service';
 
@@ -12,14 +14,35 @@ export class OcorrenciasformComponent implements OnInit {
   ocorrencia: Ocorrencia;
   success: boolean = false;
   errors: String[];
+  id!: number;
   
 
-  constructor( private service: OcorrenciasService) { 
+  constructor( 
+    private service: OcorrenciasService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    ){ 
     this.ocorrencia = new Ocorrencia;
     this.errors = [];
   }
 
   ngOnInit(): void {
+    let params = this.activatedRoute.params
+   // @ts-ignore    
+    if(params && params.value && params.value.id){
+   // @ts-ignore      
+      this.id = params.value.id;
+      this.service
+        .getClienteById(this.id)
+        .subscribe(
+            response => this.ocorrencia = response ,
+            errorResponse => this.ocorrencia = new Ocorrencia()
+      )
+    }   
+  }
+
+  voltarParaListagem(){
+    this.router.navigate(['/ocorrencias-lista'])
   }
 
   onSubmit(){
@@ -30,8 +53,8 @@ export class OcorrenciasformComponent implements OnInit {
         this.errors = [];
         this.ocorrencia = response;
       } , errorResponse => {
-        this.errors = errorResponse.error.errors;  
         this.success = false;              
+        this.errors = errorResponse.error.errors;  
       }      
       )  
   }

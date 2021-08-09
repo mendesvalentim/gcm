@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Ocorrencia } from './ocorrencias/ocorrencias';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,12 @@ export class OcorrenciasService {
     return this.http.get<Ocorrencia[]>('http://localhost:8080/api/ocorrencias');
  
   }
+
+  getClienteById(id: number) : Observable<Ocorrencia>{
+    return this.http.get<any>(`http://localhost:8080/api/ocorrencias/${id}`);
+
+  }
+  
 
   /*getOcorrencias(): Ocorrencia[]{
     let ocorrencia: Ocorrencia = new Ocorrencia;
