@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms'
 
 import { OcorrenciasRoutingModule } from './ocorrencias-routing.module';
 import { OcorrenciasformComponent } from './ocorrencias-form/ocorrencias-form.component';
+import { OcorrenciaslistaComponent } from './ocorrenciaslista/ocorrenciaslista.component';
 
 
 @NgModule({
   declarations: [
-    OcorrenciasformComponent
+    OcorrenciasformComponent,
+    OcorrenciaslistaComponent
   ],
   imports: [
     CommonModule,
