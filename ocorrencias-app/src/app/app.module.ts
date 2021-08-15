@@ -8,6 +8,7 @@ import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
 import { OcorrenciasModule } from './ocorrencias/ocorrencias.module';
 import { OcorrenciasService } from './ocorrencias.service';
+import { BoGcmModule } from './bo-gcm/bo-gcm.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { OcorrenciasService } from './ocorrencias.service';
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
-    OcorrenciasModule
+    OcorrenciasModule,
+    BoGcmModule
   ],
   providers: [
     OcorrenciasService

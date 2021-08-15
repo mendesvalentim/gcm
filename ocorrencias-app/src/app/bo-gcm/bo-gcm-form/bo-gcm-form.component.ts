@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Ocorrencia } from '../../ocorrencias/ocorrencias';
+import { OcorrenciasService } from '../../ocorrencias.service';
+import { BoGcm } from '../bo-gcm';
 
 @Component({
   selector: 'app-bo-gcm-form',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoGcmFormComponent implements OnInit {
 
-  constructor() { }
+  ocorrencias: Ocorrencia[] = [] 
+  boGcm: BoGcm; 
+
+  constructor(
+    private ocorrenciaService: OcorrenciasService
+  ) { 
+    this.boGcm = new BoGcm();
+  }
 
   ngOnInit(): void {
+    this.ocorrenciaService
+    .getOcorrencias().subscribe(response => this.ocorrencias = response);
+  }
+
+  onSubmit(){
+    console.log('submit')
+
   }
 
 }
