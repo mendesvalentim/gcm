@@ -30,14 +30,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/exception/ApiErrors.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/ApplicatioControllerAdvice.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/messages.properties" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/OcorrenciaController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/config/InternacionalizacaoConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/model/entity/Ocorrencia.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/ApplicatioControllerAdvice.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/exception/ApiErrors.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/target/classes/io/github/gcm/ocorrencias/OcorrenciasApplication.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1vbCytdwWq1seA93GHrqXhu0m12" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

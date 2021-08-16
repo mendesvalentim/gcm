@@ -1,6 +1,6 @@
 package io.github.gcm.ocorrencias.rest;
 
-import io.github.gcm.ocorrencias.model.entity.BoGcm;
+import io.github.gcm.ocorrencias.model.entity.boGcm;
 import io.github.gcm.ocorrencias.model.entity.Ocorrencia;
 import io.github.gcm.ocorrencias.model.repository.BoGcmRepository;
 import io.github.gcm.ocorrencias.model.repository.OcorrenciaRepository;
@@ -13,7 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/bogcm")
@@ -23,14 +22,12 @@ public class BoGcmController {
     private final OcorrenciaRepository ocorrenciaRepository;
     private final BoGcmRepository repository;
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BoGcm salvar( @RequestBody BoGcmDTO dto){
+    public boGcm salvar(@RequestBody BoGcmDTO dto){
         LocalDate data = LocalDate.parse(dto.getDataOcorrencia(),
                          DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Integer idOcorrencia = dto.getIdOcorrencia();
-// @ts-ignore
         Ocorrencia ocorrencia =
                 ocorrenciaRepository
                         .findById(idOcorrencia)
@@ -38,7 +35,7 @@ public class BoGcmController {
                                 new ResponseStatusException(
                                         HttpStatus.BAD_REQUEST, "Ocorrência não foi encontrada."));
 
-        BoGcm boGcm = new BoGcm();
+        boGcm boGcm = new boGcm();
         boGcm.setOcorrencia(ocorrencia);
         boGcm.setDataOcorrencia(data);
         boGcm.setEncarregadoVtr(dto.getEncarregadoVtr());
@@ -51,7 +48,7 @@ public class BoGcmController {
     }
 
     @GetMapping
-    public List<BoGcm> pesquisar(
+    public List<boGcm> pesquisar(
             @RequestParam(value = "numeroTalao", required = false) Integer numeroTalao
     ){
         return repository.findByNumeroTalao(numeroTalao);

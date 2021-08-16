@@ -3,21 +3,69 @@
     <li class="breadcrum-bitem active">Novo</li>
 </ol>
 <div class="container">
-    <form #form="ngForm" (sbmit)="onSubmit()">
+    <form #form="ngForm" (submit)="onSubmit()">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                   Ocorrência salva/atualizada com sucesso!
+                </div>  
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>                                               
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Ocorrência: </label>
-                    <select class="form-control">
+                    <select class="form-control" 
+                            [ngModelOptions]="{standalone: true}"                   
+                            [ngModel]="boGcm.equipe">
                         <option value="">Selecione...</option>
                         <option *ngFor="let ocorrencia of ocorrencias" 
                                 [ngValue]= "ocorrencia.id"> 
-                                {{ ocorrencia.numeroTalao }}
-                                                   
+                                {{ ocorrencia.numeroTalao }}                                                   
                         </option>
                     </select>
                 </div>
             </div>
+ 
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <input class="form-control" 
+                           (ngModel)="boGcm.encarregadoVtr" type="text" 
+                           name="descricao" id="inputDescricao"/>
+                    
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-goup">
+                        <label>Data:</label>
+                         <input type="text" class="form-control" 
+                                [(ngModel)]="boGcm.dataOcorrencia" name="dataOcorrencia"/>      
+                    </div>
+                </div>                
+            </div>        
+        </div>  
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i> Salvar
+                </button> 
+
+                <button type="button" routerLink="/bo-gcm/lista"
+                        class="btn btn-danger ml-1" >
+                    <i class="fa fa-arrow-alt-circle-left" ></i> Voltar
+                </button>                
+            </div>
+        </div>                     
     </form>
 </div>

@@ -2,9 +2,6 @@ package io.github.gcm.ocorrencias.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.boot.autoconfigure.web.servlet.ConditionalOnMissingFilterBean;
-import org.springframework.core.SpringVersion;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

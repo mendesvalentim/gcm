@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class BoGcm {
+public class boGcm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,6 +4,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Ocorrencia } from '../ocorrencias';
 import { OcorrenciasService } from '../../ocorrencias.service';
 import { Observable } from 'rxjs';
+import { getLocaleDateTimeFormat } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-ocorrenciasform',
@@ -16,18 +19,27 @@ export class OcorrenciasformComponent implements OnInit {
   success: boolean = false;
   errors: String[];
   id!: number;
-  
+ 
 
   constructor( 
     private service: OcorrenciasService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-    ){ 
+    ){  
     this.ocorrencia = new Ocorrencia;
+    this.ocorrencia.dataOcorrencia = this.dataAtual();
+   
     this.errors = [];
   }
 
-  ngOnInit(): void {
+  dataAtual(){
+    var data  = new Date();
+    var dia   = String(data.getDate()).padStart(2, '0');
+    var mes   = String(data.getMonth() + 1).padStart(2, '0');
+    var ano   = data.getFullYear();
+    return  dia + '/' + mes + '/' + ano; 
+  }
+   ngOnInit(): void {
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams =>{
       this.id = urlParams['id'];
@@ -43,7 +55,7 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate(['/ocorrencias-lista'])
+    this.router.navigate(['/ocorrencias/lista'])
   }
 
   onSubmit(){
@@ -57,9 +69,7 @@ export class OcorrenciasformComponent implements OnInit {
            this.errors = ['Erro ao atualizar ocorrência.']
         })
 
-    }else{
-
-    
+    }else{    
     this.service
       .salvar(this.ocorrencia)
       .subscribe( response => {

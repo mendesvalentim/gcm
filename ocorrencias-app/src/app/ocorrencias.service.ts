@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Ocorrencia } from './ocorrencias/ocorrencias';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,29 +11,30 @@ import { Observable } from 'rxjs';
 
 export class OcorrenciasService {
 
-  constructor( private http: HttpClient) {
+  apiURL: string = environment.apiUrlBase + '/api/ocorrencias';
 
+  constructor( private http: HttpClient) {
   }
    
    salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
-     return this.http.post<Ocorrencia>('http://localhost:8080/api/ocorrencias', ocorrencia);
+     return this.http.post<Ocorrencia>(`${this.apiURL}`, ocorrencia);
    }
 
    atualizar(ocorrencia: Ocorrencia): Observable<any>{
-    return this.http.put<Ocorrencia>(`http://localhost:8080/api/ocorrencias/${ocorrencia.id}`, ocorrencia);
+    return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
   getOcorrencias() : Observable<Ocorrencia[]> {
-    return this.http.get<Ocorrencia[]>('http://localhost:8080/api/ocorrencias');
+    return this.http.get<Ocorrencia[]>(`${this.apiURL}`);
  
   }
 
   getClienteById(id: number) : Observable<Ocorrencia>{
-    return this.http.get<any>(`http://localhost:8080/api/ocorrencias/${id}`);
+    return this.http.get<any>(`${this.apiURL}/${id}`);
 
   }
 
   deletar(ocorrencia: Ocorrencia): Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/api/ocorrencias/${ocorrencia.id}`);
+    return this.http.delete<any>(`${this.apiURL}/${ocorrencia.id}`);
   }
   
 

@@ -26,7 +26,7 @@ export class OcorrenciasListaComponent implements OnInit {
   }
 
   novoCadastro(){
-    this.router.navigate(['/ocorrencias-form'])
+    this.router.navigate(['/ocorrencias/form'])
   }
 
   preparaDelecao(ocorrencia: Ocorrencia){

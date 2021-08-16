@@ -4,6 +4,7 @@
 </ol>
 <div class="container">
     <form #ocorrenciaForm="ngForm" (ngSubmit)="onSubmit()" >
+        
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">
@@ -26,15 +27,7 @@
         </div>    
              
 
-        <div class="row">         
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Data:</label>
-                     <input type="text" class="form-control" 
-                            [(ngModel)]="ocorrencia.dataOcorrencia" name="dataOcorrencia"/>      
-                </div>
-            </div>  
-
+        <div class="row">   
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Talão:</label>
@@ -45,13 +38,30 @@
 
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>Codigo:</label>
-                    <input type="text" class="form-control" 
-                    [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
-                </div>   
-            </div>   
+                    <label>Data:</label>
+                     <input type="text" class="form-control" 
+                            value="ocorrencia.dataOcorrencia"
+                            [(ngModel)]="ocorrencia.dataOcorrencia" name="dataOcorrencia"/>      
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Hora Inicial:</label>
+                    <input type="time" class="form-control"  
+                    [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
+                </div>
+            </div>
 
             <div class="row"> 
+                <div class="col-md-2">
+                    <div class="form-goup">
+                        <label>Codigo:</label>
+                        <input type="text" class="form-control" 
+                        [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
+                    </div>   
+                </div>   
+
                 <div class="col-md-2">
                     <div class="form-goup">
                         <label>Vtr:</label>
@@ -71,14 +81,7 @@
             
         </div>
         
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Hora Inicial:</label>
-                    <input type="time" class="form-control"  
-                    [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
-                </div>
-            </div>   
+        <div class="row">   
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>KM Inicial:</label>
