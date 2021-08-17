@@ -14,6 +14,7 @@ import { OcorrenciasService } from './ocorrencias.service';
 import { BoGcmService } from './bo-gcm.service';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './auth.service';
 
 
 
@@ -35,7 +36,8 @@ import { LayoutComponent } from './layout/layout.component';
   ],
   providers: [
     OcorrenciasService,
-    BoGcmService
+    BoGcmService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
