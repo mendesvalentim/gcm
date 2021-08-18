@@ -20,8 +20,9 @@ import java.util.List;
 
 @Configuration
 @Component
+
 class FilterChainConfig implements Filter {
-        @Override
+      @Override
         public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
             if (servletResponse instanceof HttpServletResponse){
                 HttpServletResponse response = (HttpServletResponse)servletResponse;
@@ -29,16 +30,15 @@ class FilterChainConfig implements Filter {
                 String requestOrigin = request.getHeader("Origin");
                 response.setHeader("Access-Control-Allow-Origin", requestOrigin);
                 response.setHeader("Access-Control-Allow-Credentials", "true");
-                response.setHeader("Access-Control-Allow-Methods", "*");
                 response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS, HEAD");
                 response.setHeader("Access-Control-Max-Age", "3600");
-                response.setHeader("Access-Control-Allow-Headers", "*");
+                response.setHeader("Access-Control-Allow-Headers", requestOrigin);
                 filterChain.doFilter(request, response);
             }
         }
-
-   /* @Bean
-    public UrlBasedCorsConfigurationSource corsFilterFilterRegistrationBean(){
+/*
+    @Bean
+    public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(){
         List<String> all = Arrays.asList("*");
 
         CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -53,6 +53,6 @@ class FilterChainConfig implements Filter {
         CorsFilter corsFilter = new CorsFilter();
         FilterRegistrationBean<CorsFilter> filter = new FilterRegistrationBean<>(corsFilter);
         filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        return source;
+        return filter;
     }*/
 }

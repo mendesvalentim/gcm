@@ -29,10 +29,10 @@ export class OcorrenciasService {
    atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
+  
   getOcorrencias() : Observable<Ocorrencia[]> {
-    const tokenString = localStorage.getItem('access_token')
-    //@ts-ignore
-    const token = JSON.parse(tokenString)
+    
+    const token = JSON.parse(localStorage.getItem('access_token')!);
     const headers = {
       'Authorization' : 'Bearer' + token.access_token
     }

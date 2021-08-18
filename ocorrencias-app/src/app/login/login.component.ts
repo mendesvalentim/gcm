@@ -29,7 +29,7 @@ export class LoginComponent {
         .tentarLogar(this.username, this.password)
         .subscribe(response => {
           const acces_token = JSON.stringify(response);
-          console.log(acces_token);          
+          console.log(response);          
           localStorage.setItem('acces_token', acces_token);
           this.router.navigate(['/home'])
         }, errorResponse => {
