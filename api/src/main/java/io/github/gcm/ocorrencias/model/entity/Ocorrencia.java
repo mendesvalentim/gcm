@@ -54,10 +54,10 @@ public class Ocorrencia {
     private String encEquipe;
     private String boGcm;
 
-   /* @JsonFormat(pattern = "HH:mm")
-    private Time horaInicial;
     @JsonFormat(pattern = "HH:mm")
-    private Time horaFinal;*/
+    private String horaInicial;
+    @JsonFormat(pattern = "HH:mm")
+    private String horaFinal;
 
     @Column(length = 500)
     private String obs;

@@ -62,7 +62,7 @@ horaAtual() {
       this.id = urlParams['id'];
       if(this.id){
       this.service
-        .getClienteById(this.id)
+        .getOcorrenciaById(this.id)
         .subscribe(
             response => this.ocorrencia = response ,
             errorResponse => this.ocorrencia = new Ocorrencia()
