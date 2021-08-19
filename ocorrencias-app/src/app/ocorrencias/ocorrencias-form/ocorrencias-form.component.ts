@@ -22,10 +22,39 @@ export class OcorrenciasformComponent implements OnInit {
     private service: OcorrenciasService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-    ){ 
+    ){  
     this.ocorrencia = new Ocorrencia;
+    this.ocorrencia.dataOcorrencia = this.dataAtual();
+    this.ocorrencia.horaInicial = this.horaAtual();
+   
     this.errors = [];
   }
+
+  dataAtual(){
+    var data  = new Date();
+    var dia   = String(data.getDate()).padStart(2, '0');
+    var mes   = String(data.getMonth() + 1).padStart(2, '0');
+    var ano   = data.getFullYear();
+    return  dia + '/' + mes + '/' + ano; 
+  }
+
+horaAtual() {
+   var data = new Date();
+   var horas = new Date().getHours();
+   if (horas < 10) {
+     //@ts-ignore
+       horas = "0" + horas;
+   }
+   var minutos = new Date().getMinutes();
+   if (minutos < 10) {
+      //@ts-ignore     
+       minutos = "0" + minutos;
+   }
+   var result = horas + ":" + minutos;
+   return result;
+}
+
+
 
   ngOnInit(): void {
     let params : Observable<Params> = this.activatedRoute.params
