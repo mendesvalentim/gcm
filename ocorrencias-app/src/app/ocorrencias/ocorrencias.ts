@@ -1,5 +1,3 @@
-import { Time } from "@angular/common";
-
 export class Ocorrencia {
     id!: number;
     idUsuario!: number;
@@ -18,8 +16,8 @@ export class Ocorrencia {
     kmInicial!: string;
     kmFinal!: string;
 
-    horaInicial!: Time;
-    horaFinal!: Time;
+    horaInicial!: string;
+    horaFinal!: string;
 
     auxiliar1!: string;
     auxiliar2!: string;
