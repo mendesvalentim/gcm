@@ -2,7 +2,9 @@ package io.github.gcm.ocorrencias.rest;
 
 import io.github.gcm.ocorrencias.model.entity.Ocorrencia;
 import io.github.gcm.ocorrencias.model.repository.OcorrenciaRepository;
+import javassist.runtime.Desc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ocorrencias")
-@CrossOrigin("http://localhost:4200")
+
 public class OcorrenciaController {
 
     private final OcorrenciaRepository repository;
@@ -24,7 +26,7 @@ public class OcorrenciaController {
 
     @GetMapping
     public List<Ocorrencia> obterTodos(){
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     @PostMapping

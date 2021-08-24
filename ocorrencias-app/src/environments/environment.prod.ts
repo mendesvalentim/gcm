@@ -1,5 +1,6 @@
 export const environment = {
-  apiUrlBase: 'http://localhost:8080',  
+  //@ts-ignore
+  apiUrlBase: window["cfgApiBaseUrl"],  
   production: true
 
 };

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: true,
-  apiUrlBase: 'http://localhost:8080',
+    //@ts-ignore
+    apiUrlBase: window["cfgApiBaseUrl"],
   clientId: 'my-angular-app'
 };
 
