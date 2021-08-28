@@ -29,6 +29,12 @@ public class OcorrenciaController {
         return repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
+    @GetMapping("/bogcm")
+    public List<Ocorrencia> obtemBogcm(){
+        return repository.findByNumeroBogcm();
+
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Ocorrencia salvar( @RequestBody @Valid Ocorrencia ocorrencia){
@@ -61,9 +67,28 @@ public class OcorrenciaController {
         repository
                 .findById(id)
                 .map( ocorrencia -> {
-                    // ocorrenciaAtualizada.setId(ocorrencia.getId()); atualiza completo
-                    ocorrencia.setEncarregadoVtr(ocorrenciaAtualizada.getEncarregadoVtr());
+                    // ocorrenciaAtualizada.setId(ocorrencia.getId()); //atualiza completo
                     ocorrencia.setNumeroTalao(ocorrenciaAtualizada.getNumeroTalao());
+                    ocorrencia.setEncarregadoVtr(ocorrenciaAtualizada.getEncarregadoVtr());
+                    ocorrencia.setDataCadastro(ocorrenciaAtualizada.getDataCadastro());
+                    ocorrencia.setUsuario(ocorrenciaAtualizada.getUsuario());
+                    ocorrencia.setDataOcorrencia(ocorrenciaAtualizada.getDataOcorrencia());
+                    ocorrencia.setCodOcorrencia(ocorrenciaAtualizada.getCodOcorrencia());
+                    ocorrencia.setViatura(ocorrenciaAtualizada.getViatura());
+                    ocorrencia.setEndereco(ocorrenciaAtualizada.getEndereco());
+                    ocorrencia.setMotorista(ocorrenciaAtualizada.getMotorista());
+                    ocorrencia.setKmInicial(ocorrenciaAtualizada.getKmInicial());
+                    ocorrencia.setKmFinal(ocorrenciaAtualizada.getKmFinal());
+                    ocorrencia.setEquipe(ocorrenciaAtualizada.getEquipe());
+                    ocorrencia.setEncEquipe(ocorrenciaAtualizada.getEncEquipe());
+                    ocorrencia.setBoGcm(ocorrenciaAtualizada.getBoGcm());
+                    ocorrencia.setHoraInicial(ocorrenciaAtualizada.getHoraInicial());
+                    ocorrencia.setHoraFinal(ocorrenciaAtualizada.getHoraFinal());
+                    ocorrencia.setObs(ocorrenciaAtualizada.getObs());
+                    ocorrencia.setAuxiliar1(ocorrenciaAtualizada.getAuxiliar1());
+                    ocorrencia.setAuxiliar2(ocorrenciaAtualizada.getAuxiliar2());
+                    ocorrencia.setAuxiliar3(ocorrenciaAtualizada.getAuxiliar3());
+                    ocorrencia.setAuxiliar4(ocorrenciaAtualizada.getAuxiliar4());
                     return repository.save(ocorrenciaAtualizada);
                 })
                 .orElseThrow( () ->new ResponseStatusException(HttpStatus.NOT_FOUND) );

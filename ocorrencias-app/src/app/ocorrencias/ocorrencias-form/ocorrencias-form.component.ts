@@ -74,7 +74,10 @@ horaAtual() {
   voltarParaListagem(){
     this.router.navigate(['/ocorrencias-lista'])
   }
-
+  
+  novoCadastro(){
+    this.router.navigate(['/ocorrencias-form'])
+  }
   onSubmit(){
     if(this.id){
       this.service

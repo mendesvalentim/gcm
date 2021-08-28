@@ -51,10 +51,8 @@ public class BoGcmController {
     }
 
     @GetMapping
-    public List<BoGcm> pesquisar(
-            @RequestParam(value = "numeroTalao", required = false) Integer numeroTalao
-    ){
-        return repository.findByNumeroTalao(numeroTalao);
+    public List<BoGcm> pesquisa(){
+        return repository.findByNumeroTalao();
 
     }
 }

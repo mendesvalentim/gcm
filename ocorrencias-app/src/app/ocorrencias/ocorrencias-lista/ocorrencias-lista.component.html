@@ -22,7 +22,7 @@
     </div>
     <br  >
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 table-overflow">
             <table class="table table-condensed table-hover">
                 <thead>
                     <tr>
@@ -32,15 +32,15 @@
                         <th>Qth</th>
                         <th>QtrI</th>
                         <th>KmI</th>
-                        <th>Qth</th>
                         <th>QtrF</th>
                         <th>KmF</th>
                         <th>Enc. Vtr</th>
-                        <th>Auxiliar1</th>
+                        <th>Motorista</th>
                         <th>BOGCM</th>
+                        <th>R. Operador</th>                        
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>                    
                     <tr *ngFor="let ocorrencia of ocorrencias">
                         <td>{{ ocorrencia.numeroTalao }}</td>
                         <td>{{ ocorrencia.codOcorrencia }}</td>
@@ -48,12 +48,12 @@
                         <td>{{ ocorrencia.endereco }}</td>
                         <td>{{ ocorrencia.horaInicial }}</td>
                         <td>{{ ocorrencia.kmInicial }}</td>
-                        <td>{{ ocorrencia.endereco }}</td>
                         <td>{{ ocorrencia.horaFinal }}</td>
                         <td>{{ ocorrencia.kmFinal }}</td>
                         <td>{{ ocorrencia.encarregadoVtr }}</td>
-                        <td>{{ ocorrencia.auxiliar1 }}</td>
+                        <td>{{ ocorrencia.motorista }}</td>
                         <td>{{ ocorrencia.boGcm }}</td>
+                        <td>{{ ocorrencia.usuario }}</td>                        
                         <td>
                             <button class="btn btn-primary" 
                                     routerLink="/ocorrencias-form/{{ocorrencia.id}}">

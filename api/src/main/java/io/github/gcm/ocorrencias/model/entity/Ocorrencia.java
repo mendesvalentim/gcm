@@ -35,7 +35,8 @@ public class Ocorrencia {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
-    private Integer idUsuario;
+    @NotNull(message = "{campo.usuario.obrigatorio}")
+    private String usuario;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataOcorrencia;

@@ -23,7 +23,7 @@ export class Ocorrencia {
     auxiliar2!: string;
     auxiliar3!: string;
     auxiliar4!: string;
-
+    usuario!: string;
     obs!: string;
 
 }
