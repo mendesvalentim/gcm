@@ -1,0 +1,42 @@
+<h1 class="mt-4">BOGCM</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+    <br  >
+    <div class="row">
+        <div class="col-md-12 table-overflow">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Data</th>                       
+                        <th>Talão</th>                                               
+                        <th>BOGCM</th>                        
+                        <th>Enc. Vtr</th>
+                        <th>Cod. Ocorrencia</th>
+                        <th>Vtr</th>
+                        <th>Equipe</th>                       
+                        <th>Enc. Equipe</th>                     
+                        <th>R. Operador</th>                        
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr *ngFor="let ocorrencia of ocorrencias">
+                        <td>{{ ocorrencia.dataOcorrencia }}</td>
+                        <td>{{ ocorrencia.numeroTalao }}</td>                        
+                        <td>{{ ocorrencia.boGcm }}</td>
+                        <td>{{ ocorrencia.encarregadoVtr }}</td> 
+                        <td>{{ ocorrencia.codOcorrencia }}</td>                       
+                        <td>{{ ocorrencia.viatura }}</td>
+                        <td>{{ ocorrencia.equipe }}</td>                                                
+                        <td>{{ ocorrencia.encEquipe }}</td>                                                
+                        <td>{{ ocorrencia.usuario }}</td>                        
+                        <td>
+                        </td>                        
+                    </tr>                           
+                </tbody>                 
+            </table>                                  
+        </div> 
+    </div>          
+</div>
