@@ -36,7 +36,11 @@ export class OcorrenciasService {
   getBoGcms() : Observable<Ocorrencia[]> {
     return this.http.get<Ocorrencia[]>(`${this.apiURL}/bogcm`);
   }  
+  
+  buscaUltimoTalao() : Observable<Ocorrencia>{
+    return this.http.get<Ocorrencia>(`${this.apiURL}/ultimotalao`);
 
+  }
   deletar(ocorrencia: Ocorrencia): Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/${ocorrencia.id}`);        
   }

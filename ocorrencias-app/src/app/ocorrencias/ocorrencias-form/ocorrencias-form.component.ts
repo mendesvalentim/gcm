@@ -38,21 +38,21 @@ export class OcorrenciasformComponent implements OnInit {
     return  dia + '/' + mes + '/' + ano; 
   }
 
-horaAtual() {
-   var data = new Date();
-   var horas = new Date().getHours();
-   if (horas < 10) {
-     //@ts-ignore
-       horas = "0" + horas;
-   }
-   var minutos = new Date().getMinutes();
-   if (minutos < 10) {
-      //@ts-ignore     
-       minutos = "0" + minutos;
-   }
-   var result = horas + ":" + minutos;
-   return result;
-}
+  horaAtual() {
+    var data = new Date();
+    var horas = new Date().getHours();
+    if (horas < 10) {
+      //@ts-ignore
+        horas = "0" + horas;
+    }
+    var minutos = new Date().getMinutes();
+    if (minutos < 10) {
+        //@ts-ignore     
+        minutos = "0" + minutos;
+    }
+    var result = horas + ":" + minutos;
+    return result;
+  }
 
 
 
@@ -67,7 +67,13 @@ horaAtual() {
             response => this.ocorrencia = response ,
             errorResponse => this.ocorrencia = new Ocorrencia()
           )
-      }    
+      }/*else{ this.service
+        .buscaUltimoTalao()
+        .subscribe(response => 
+          console.log(this.ocorrencia.numeroTalao = response.numeroTalao) )
+          console.log(this.ocorrencia.numeroTalao += this.ocorrencia.numeroTalao);
+
+      } retorna nan na ao somar +1  */  
     })   
   }
 

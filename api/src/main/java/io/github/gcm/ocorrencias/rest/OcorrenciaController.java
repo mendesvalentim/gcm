@@ -35,6 +35,11 @@ public class OcorrenciaController {
 
     }
 
+    @GetMapping("/ultimotalao")
+    public Ocorrencia buscaTalao(){
+        return repository.findByUltimoTalao();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Ocorrencia salvar( @RequestBody @Valid Ocorrencia ocorrencia){
