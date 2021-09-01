@@ -9,5 +9,5 @@ import java.util.List;
 public interface BoGcmRepository extends JpaRepository<BoGcm,Integer>{
 
     @Query("select s from Ocorrencia s where s.boGcm IS NOT NULL")
-    List<BoGcm> findByNumeroTalao();
+    List<BoGcm> findByNumeroBo();
 }

@@ -52,7 +52,7 @@ public class BoGcmController {
 
     @GetMapping
     public List<BoGcm> pesquisa(){
-        return repository.findByNumeroTalao();
+        return repository.findByNumeroBo();
 
     }
 }
