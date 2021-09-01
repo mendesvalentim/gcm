@@ -50,7 +50,7 @@
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Hora Inicial:</label>
-                    <input type="text" class="form-control form-control border border-info"
+                    <input type="time" class="form-control form-control border border-info"
                            autocomplete="off"  
                            [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
                 </div>
@@ -62,7 +62,6 @@
                     <div class="form-goup">
                         <label>Codigo:</label>
                         <input type="text" class="form-control border border-info"
-                               autocomplete="off"
                                [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
                     </div>   
                 </div>   
@@ -71,7 +70,6 @@
                     <div class="form-goup">
                         <label>Vtr:</label>
                         <input type="text" class="form-control border border-info"
-                               autocomplete="off"
                                [(ngModel)]="ocorrencia.viatura" name="viatura"/>
                     </div>
                 </div>
@@ -99,8 +97,7 @@
                 <div class="form-goup">
                     <label>R. Operador:</label>
                     <input type="text" class="form-control border border-info"
-                           autocomplete="off"
-                           [(ngModel)]="ocorrencia.usuario" name="encarregadoVtr"/>
+                           [(ngModel)]="ocorrencia.usuario" name="usuario"/>
                 </div>
             </div>             
         </div>   
@@ -110,23 +107,20 @@
                 <div class="form-goup">
                     <label>Enc. Vtr:</label>
                     <input type="text" class="form-control border border-info"
-                           autocomplete="off"
                            [(ngModel)]="ocorrencia.encarregadoVtr" name="encarregadoVtr"/>
                 </div>
             </div> 
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Motorista:</label>
-                    <input type="text" class="form-control border border-info"
-                           autocomplete="off" 
+                    <input type="text" class="form-control border border-info" 
                            [(ngModel)]="ocorrencia.motorista" name="motorista"/>
                 </div>
             </div>    
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Auxiliar1:</label>
-                    <input type="text" class="form-control border border-info"
-                           autocomplete="off" 
+                    <input type="text" class="form-control border border-info" 
                            [(ngModel)]="ocorrencia.auxiliar1" name="auxiliar1"/>
                 </div>
             </div>                                    
@@ -137,7 +131,6 @@
                 <div class="form-goup">
                     <label>Auxiliar2:</label>
                     <input type="text" class="form-control border border-info"
-                           autocomplete="off" 
                            [(ngModel)]="ocorrencia.auxiliar2" name="auxiliar2"/>
                 </div>
             </div> 
@@ -172,16 +165,14 @@
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Equipe:</label>                  
-                    <input type="text" class="form-control border border-info"   
-                           autocomplete="off"                    
+                    <input type="text" class="form-control border border-info"                       
                            [(ngModel)]="ocorrencia.equipe" name="equipe"/> 
                 </div>  
             </div>               
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Enc. Equipe:</label>
-                    <input type="text" class="form-control border border-info"  
-                           autocomplete="off"                    
+                    <input type="text" class="form-control border border-info"                     
                            [(ngModel)]="ocorrencia.encEquipe" name="encEquipe"/> 
                 </div>  
             </div>                               
@@ -191,7 +182,9 @@
             <div class="col-md-6">
                 <div class="form-goup">
                     <label>Obs:</label>
-                    <input type="text" class="form-control border border-info" autocomplete="off"/>
+                    <input type="text" class="form-control border border-info"
+                           [(ngModel)]="ocorrencia.obs" name="obs"
+                           autocomplete="off"/>
                 </div>
             </div>  
         </div> 
