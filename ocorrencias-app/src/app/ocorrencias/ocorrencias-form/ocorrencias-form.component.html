@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">
-                   Ocorrência salva/atualizada com sucesso!
+                   Ocorrência <b>{{ ocorrencia.numeroTalao }}</b> salva/atualizada com sucesso!
                 </div>  
                 <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
                     {{ erro }}
@@ -193,7 +193,8 @@
 
         <div class="row">
             <div class="col-md-4">
-                <button type="submit" class="btn btn-warning" *ngIf="!ocorrencia.id">
+                <button type="submit" class="btn btn-warning" 
+                        *ngIf="!ocorrencia.id">
                     <i class="fa fa-save"></i> Salvar
                 </button>
 
@@ -201,12 +202,19 @@
                     <i class="fa fa-sync-alt"></i> Atualizar
                 </button>            
 
-                <button type="button" class="btn btn-danger ml-1"  (click)="voltarParaListagem()">
+                <button type="button" 
+                        class="btn btn-danger ml-1"
+                        (click)="voltarParaListagem()">
                     <i class="fa fa-arrow-alt-circle-left" ></i> Voltar
-                </button>  
-                           
+                </button> 
+
+                <button type="button" 
+                        *ngIf="ocorrencia.id"               
+                        class="btn btn-success ml-1"
+                        (click)="novoCadastro()" >
+                    <i class="fa fa-plus"></i> Novo
+                </button>
             </div>
         </div>
-
     </form>
 </div>
