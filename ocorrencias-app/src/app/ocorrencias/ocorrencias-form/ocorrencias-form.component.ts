@@ -14,7 +14,7 @@ export class OcorrenciasformComponent implements OnInit {
 
   ocorrencia: Ocorrencia;
   success: boolean = false;
-  errors: String[];
+  errors!: String[];
   id!: number;
   
 
@@ -23,11 +23,16 @@ export class OcorrenciasformComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
     ){  
-    this.ocorrencia = new Ocorrencia;
-    this.ocorrencia.dataOcorrencia = this.dataAtual();
-    this.ocorrencia.horaInicial = this.horaAtual();
-   
-    this.errors = [];
+    this.ocorrencia = this.novaOcorrencia();      
+  }
+
+  novaOcorrencia(){
+    var ocorrencia = new Ocorrencia;
+    this.errors = [];    
+    this.success = false;
+    ocorrencia.dataOcorrencia = this.dataAtual();
+    ocorrencia.horaInicial = this.horaAtual();
+    return ocorrencia;
   }
 
   dataAtual(){
@@ -55,11 +60,11 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams =>{
       this.id = urlParams['id'];
+      console.log(this.id);
       if(this.id){
       this.service
         .getOcorrenciaById(this.id)
@@ -82,8 +87,10 @@ export class OcorrenciasformComponent implements OnInit {
   }
   
   novoCadastro(){
-    this.router.navigate(['/ocorrencias-form'])
+    this.ocorrencia = this.novaOcorrencia();
+    this.ngOnInit();    
   }
+
   onSubmit(){
     if(this.id){
       this.service
