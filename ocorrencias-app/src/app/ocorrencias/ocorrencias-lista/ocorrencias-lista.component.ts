@@ -14,7 +14,7 @@ export class OcorrenciasListaComponent implements OnInit {
   ocorrenciaSelecionada!: Ocorrencia;
   mensagemSucesso!: String;
   mensagemErro!: String;
-  resposive: boolean = true;
+  filterTerm!: string;
  
   page = 1;
   count = 0;

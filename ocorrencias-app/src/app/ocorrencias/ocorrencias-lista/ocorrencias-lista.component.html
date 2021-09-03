@@ -14,22 +14,31 @@
         </div>
     </div>  
 
-    <div class="d-flex flex-row-reverse bd-highlight mb-2">
-        <div class="p-2 bd-highlight">
-          <select (change)="onTableSizeChange($event)" class="custom-select">
-            <option selected>Quantidade de itens</option>              
-            <option *ngFor="let size of tableSizes" [ngValue]="size">
-                    {{ size }}
-            </option>
-          </select>
-        </div>
-      </div>     
 
-    <div class="row">
-        <div class="col-md-2">
-            <button class="btn btn-success" (click)="novoCadastro()" >
-                <i class="fa fa-plus"></i> Novo
-            </button>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">
+        </div>
+       
+        <div class="row">
+            <div class="col-md-2 ">
+                <select (change)="onTableSizeChange($event)" class="custom-select">
+                    <option selected>Quantidade de itens</option>              
+                    <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                {{ size }}
+                    </option>
+                </select>  
+            </div>             
+        </div> 
+
+        <br  >
+
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn btn-success" (click)="novoCadastro()" >
+                    <i class="fa fa-plus"></i> Novo
+                </button>
+            </div>
         </div>
     </div>
 
@@ -55,7 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>                    
-                    <tr *ngFor="let ocorrencia of ocorrencias | paginate : {
+                    <tr *ngFor="let ocorrencia of ocorrencias | filter:filterTerm | paginate : {
                         itemsPerPage: tableSize,
                         currentPage: page,
                         totalItems: count
