@@ -12,7 +12,19 @@
                 {{ mensagemErro }}
             </div>                                               
         </div>
-    </div>    
+    </div>  
+
+    <div class="d-flex flex-row-reverse bd-highlight mb-2">
+        <div class="p-2 bd-highlight">
+          <select (change)="onTableSizeChange($event)" class="custom-select">
+            <option selected>Quantidade de itens</option>              
+            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                    {{ size }}
+            </option>
+          </select>
+        </div>
+      </div>     
+
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-success" (click)="novoCadastro()" >
@@ -20,7 +32,9 @@
             </button>
         </div>
     </div>
+
     <br  >
+
     <div class="row">
         <div class="col-md-12 table-overflow">
             <table class="table table-condensed table-striped">
@@ -41,7 +55,11 @@
                     </tr>
                 </thead>
                 <tbody>                    
-                    <tr *ngFor="let ocorrencia of ocorrencias">
+                    <tr *ngFor="let ocorrencia of ocorrencias | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };">
                         <td>{{ ocorrencia.numeroTalao }}</td>
                         <td>{{ ocorrencia.codOcorrencia }}</td>
                         <td>{{ ocorrencia.viatura }}</td>
@@ -67,7 +85,15 @@
                         </td>                        
                     </tr>                           
                 </tbody>                 
-            </table>                                  
+            </table> 
+            <div class="d-flex justify-content-center">
+                <pagination-controls     
+                  previousLabel="Prev" 
+                  nextLabel="Next" 
+                  (pageChange)="onTableDataChange($event)"
+                  >
+                </pagination-controls>
+              </div>                                              
         </div> 
     </div>
     <!-- Modal -->

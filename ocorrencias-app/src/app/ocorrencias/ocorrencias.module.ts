@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms'
 import { OcorrenciasRoutingModule } from './ocorrencias-routing.module';
 import { OcorrenciasformComponent } from './ocorrencias-form/ocorrencias-form.component';
 import { OcorrenciasListaComponent } from './ocorrencias-lista/ocorrencias-lista.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { OcorrenciasListaComponent } from './ocorrencias-lista/ocorrencias-lista
   imports: [
     CommonModule,
     OcorrenciasRoutingModule,
+    NgxPaginationModule,
     FormsModule
   ], exports: [
     OcorrenciasformComponent,

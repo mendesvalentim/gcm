@@ -21,7 +21,7 @@ export class BoGcmFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.ocorrenciaService
-    .getOcorrencias().subscribe(response => this.ocorrencias = response);
+    .getAllOcorrencias().subscribe(response => this.ocorrencias = response);
   }
 
   onSubmit(){

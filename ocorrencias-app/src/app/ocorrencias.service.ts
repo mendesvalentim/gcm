@@ -17,14 +17,14 @@ export class OcorrenciasService {
 
   }
    
-   salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
+  salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
     return this.http.post<Ocorrencia>(`${this.apiURL}`, ocorrencia);     
-   }
+  }
 
    atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
-  getOcorrencias() : Observable<Ocorrencia[]> {
+  getAllOcorrencias() : Observable<Ocorrencia[]> {
     return this.http.get<Ocorrencia[]>(`${this.apiURL}`);
   }
 

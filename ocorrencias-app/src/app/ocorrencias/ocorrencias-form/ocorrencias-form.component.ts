@@ -64,7 +64,6 @@ export class OcorrenciasformComponent implements OnInit {
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams =>{
       this.id = urlParams['id'];
-      console.log(this.id);
       if(this.id){
       this.service
         .getOcorrenciaById(this.id)
@@ -87,6 +86,7 @@ export class OcorrenciasformComponent implements OnInit {
   }
   
   novoCadastro(){
+    console.log(this.ocorrencia.numeroTalao)
     this.ocorrencia = this.novaOcorrencia();
     this.ngOnInit();    
   }
