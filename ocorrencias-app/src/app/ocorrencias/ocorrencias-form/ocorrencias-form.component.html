@@ -176,8 +176,11 @@
             <label>Staus Ocorrência:</label>
             <div class="col-md-2">
                     <div class="onoffswitch">
-                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"   
-                        		id="myonoffswitch" [checked]="ocorrencia.status">                             
+                        <input type="checkbox" name="onoffswitch" 
+                               [(ngModel)]="ocorrencia.status"
+                               class="onoffswitch-checkbox"   
+                        	   id="myonoffswitch" 
+                               [checked]="ocorrencia.status">                             
                         <label class="onoffswitch-label" for="myonoffswitch">    
                             <span class="onoffswitch-inner"></span>
                             <span class="onoffswitch-switch"></span>

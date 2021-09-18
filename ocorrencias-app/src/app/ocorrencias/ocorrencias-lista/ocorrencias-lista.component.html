@@ -59,7 +59,9 @@
                         <th>Enc. Vtr</th>
                         <th>Motorista</th>
                         <th>BOGCM</th>
-                        <th>R. Operador</th>                        
+                        <th>R. Operador</th> 
+                        <th>Status</th> 
+                        <th></th>                      
                     </tr>
                 </thead>
                 <tbody>                    
@@ -79,9 +81,14 @@
                         <td>{{ ocorrencia.encarregadoVtr }}</td>
                         <td>{{ ocorrencia.motorista }}</td>
                         <td>{{ ocorrencia.boGcm }}</td>
-                        <td>{{ ocorrencia.usuario }}</td>                        
+                        <td>{{ ocorrencia.usuario }}</td>  
+                        <td>
+                            <span class="label label-success" *ngIf="ocorrencia.status"> Aberta  </span>                           
+                            <span class="label label-default" *ngIf="!ocorrencia.status">Fechada</span>
+                        </td>                                              
                         <td>
                             <button class="btn btn-warning" 
+                                    *ngIf="ocorrencia.status" 
                                     routerLink="/ocorrencias-form/{{ocorrencia.id}}">
                                 <i class="fa fa-edit"></i>
                             </button>
