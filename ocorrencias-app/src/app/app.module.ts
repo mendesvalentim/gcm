@@ -12,7 +12,7 @@ import { BoGcmModule } from './bo-gcm/bo-gcm.module';
 
 import { OcorrenciasService } from './ocorrencias.service';
 import { LayoutComponent } from './layout/layout.component';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { LayoutComponent } from './layout/layout.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,

@@ -1,10 +1,8 @@
-<h1 class="mt-4">Ocorrências</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">{{ ocorrencia.id ? 'Edição' : 'Cadastro'}}</li>
 </ol>
 <div class="container">
-    <form #ocorrenciaForm="ngForm" (ngSubmit)="onSubmit()" >
-        
+    <form #ocorrenciaForm="ngForm" (ngSubmit)="onSubmit()" >       
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-success" role="alert" *ngIf="success == true">
@@ -15,170 +13,180 @@
                 </div>                                               
             </div>
         </div>
-
-        <div class="row">   
+        <div class="row">
             <div class="col-md-2">
+                <label id="talao">Talão:</label>
+                <input id="inputNumerotalao" type="text" class="form-control border border-info"
+                    autocomplete="off" 
+                    [(ngModel)]="ocorrencia.numeroTalao" 
+                    name="numeroTalao" />
+            </div>    
+            
+            <div class="col-md-3">
                 <div class="form-goup">
-                    <label>Talão:</label>
-                    <input type="text" class="form-control border border-info"
-                           autocomplete="off"
-                           [(ngModel)]="ocorrencia.numeroTalao" name="numeroTalao" />
-                </div>   
-            </div> 
-
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Data:</label>
-                     <input type="text" class="form-control border border-info"
-                            value="ocorrencia.dataOcorrencia"
+                    <label id="talao">Data:</label>
+                    <input id="inputtalao" type="text"
+                            value="ocorrencia.dataOcorrencia" class="form-control border border-info"
                             autocomplete="off"
                             [(ngModel)]="ocorrencia.dataOcorrencia" name="dataOcorrencia"/>      
                 </div>
             </div>  
 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-goup">
-                    <label>Hora Inicial:</label>
-                    <input type="time" class="form-control form-control border border-info"
-                           autocomplete="off"  
-                           [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
+                    <label id="talao">Hora Inicial:</label>
+                    <input id="inputtalao" type="time" class="form-control border border-info"
+                        autocomplete="off"  
+                        [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
                 </div>
-            </div>
-        </div>    
+            </div>             
+        </div>
 
-            <div class="row"> 
-                <div class="col-md-2">
-                    <div class="form-goup">
-                        <label>Codigo:</label>
-                        <input type="text" class="form-control border border-info"
-                               [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
-                    </div>   
+        <div class="row"> 
+            <legend> 
+                Dados da Ocorrência 
+            </legend>        
+
+            <div class="col-md-2"  >
+                <div class="form-goup">
+                    <label>Codigo:</label>
+                    <input id="codigo" autofocus type="text" class="form-control border border-info"
+                            [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
                 </div>   
-
-                <div class="col-md-2">
-                    <div class="form-goup">
-                        <label>Vtr:</label>
-                        <input type="text" class="form-control border border-info"
-                               [(ngModel)]="ocorrencia.viatura" name="viatura"/>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-goup">
-                        <label>KM Inicial:</label>
-                        <input type="text" class="form-control border border-info" 
-                               autocomplete="off" 
-                               [(ngModel)]="ocorrencia.kmInicial" name="kmInicial"/> 
-                    </div>                     
-                    
-                </div>                                    
             </div>  
 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Vtr:</label>
+                    <input type="text" class="form-control border border-info"
+                            [(ngModel)]="ocorrencia.viatura" name="viatura"/>
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>KM Inicial:</label>
+                    <input type="text" class="form-control border border-info"
+                            autocomplete="off" 
+                            [(ngModel)]="ocorrencia.kmInicial" name="kmInicial"/> 
+                </div>                                     
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>KM Final:</label>
+                    <input type="text" class="form-control border border-info" 
+                            autocomplete="off"
+                            [(ngModel)]="ocorrencia.kmFinal" name="kmFinal"/> 
+                </div>
+            </div> 
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label id="qtrf">Hora Final:</label>
+                    <input type="time" class="form-control border border-info"  
+                            autocomplete="off"                    
+                            [(ngModel)]="ocorrencia.horaFinal" name="horaFinal"/> 
+                </div>
+            </div>                                                   
+        </div> 
+         
         <div class="row">   
             <div class="col-md-4">
                 <div class="form-goup">
                     <label>Endereço (QTH):</label>
                     <input type="text" class="form-control border border-info" 
-                    [(ngModel)]="ocorrencia.endereco" name="endereco"/>
+                        [(ngModel)]="ocorrencia.endereco" name="endereco"
+                    />
                 </div>    
-            </div>                   
+            </div>       
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>R. Operador:</label>
                     <input type="text" class="form-control border border-info"
-                           [(ngModel)]="ocorrencia.usuario" name="usuario"/>
+                            [(ngModel)]="ocorrencia.usuario" name="usuario"
+                        />
                 </div>
-            </div>             
-        </div>   
-        
-        <div class="row">               
+            </div>     
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Equipe:</label>                  
+                    <input type="text" class="form-control border border-info"                       
+                        [(ngModel)]="ocorrencia.equipe" name="equipe"/> 
+                </div>  
+            </div>                        
+        </div>             
+
+
+        <div class="row">
+            <legend> 
+                Guarnição 
+            </legend>   
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Enc. Vtr:</label>
                     <input type="text" class="form-control border border-info"
-                           [(ngModel)]="ocorrencia.encarregadoVtr" name="encarregadoVtr"/>
+                        [(ngModel)]="ocorrencia.encarregadoVtr" name="encarregadoVtr"/>
                 </div>
-            </div> 
+            </div>  
+
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Motorista:</label>
                     <input type="text" class="form-control border border-info" 
-                           [(ngModel)]="ocorrencia.motorista" name="motorista"/>
+                        [(ngModel)]="ocorrencia.motorista" name="motorista"/>
                 </div>
             </div>    
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Auxiliar1:</label>
                     <input type="text" class="form-control border border-info" 
-                           [(ngModel)]="ocorrencia.auxiliar1" name="auxiliar1"/>
+                        [(ngModel)]="ocorrencia.auxiliar1" name="auxiliar1"/>
                 </div>
-            </div>                                    
-        </div>
-
-        <div class="row">
+            </div>     
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Auxiliar2:</label>
                     <input type="text" class="form-control border border-info"
-                           [(ngModel)]="ocorrencia.auxiliar2" name="auxiliar2"/>
+                        [(ngModel)]="ocorrencia.auxiliar2" name="auxiliar2"/>
                 </div>
-            </div> 
-
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Hora Final (QtrF):</label>
-                    <input type="time" class="form-control border border-info"  
-                           autocomplete="off"                    
-                           [(ngModel)]="ocorrencia.horaFinal" name="horaFinal"/> 
-                </div>
-            </div>      
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>KM Final (KMF):</label>
-                    <input type="text" class="form-control border border-info" 
-                           autocomplete="off"
-                           [(ngModel)]="ocorrencia.kmFinal" name="kmFinal"/> 
-                </div>
-            </div>                   
+            </div>                                                       
         </div>
 
         <div class="row">
+            <legend> 
+                Informações Complementares 
+            </legend>        
+
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>BOGCM:</label>
                     <input type="text" class="form-control border border-info"  
-                           autocomplete="off"
-                           [(ngModel)]="ocorrencia.boGcm" name="boGcm"/> 
+                        autocomplete="off"
+                        [(ngModel)]="ocorrencia.boGcm" name="boGcm"/> 
                 </div> 
-            </div>
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Equipe:</label>                  
-                    <input type="text" class="form-control border border-info"                       
-                           [(ngModel)]="ocorrencia.equipe" name="equipe"/> 
-                </div>  
-            </div>               
+            </div>              
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Enc. Equipe:</label>
                     <input type="text" class="form-control border border-info"                     
-                           [(ngModel)]="ocorrencia.encEquipe" name="encEquipe"/> 
+                        [(ngModel)]="ocorrencia.encEquipe" name="encEquipe"/> 
                 </div>  
             </div>                               
+            <label>Staus Ocorrência:</label>
+            <div class="col-md-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"   
+                        		id="myonoffswitch" [checked]="ocorrencia.status">                             
+                        <label class="onoffswitch-label" for="myonoffswitch">    
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+            </div>            
         </div>  
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-goup">
-                    <label>Obs:</label>
-                    <input type="text" class="form-control border border-info"
-                           [(ngModel)]="ocorrencia.obs" name="obs"
-                           autocomplete="off"/>
-                </div>
-            </div>  
-        </div> 
-
-       <br  />     
+        <br/> 
 
         <div class="row">
             <div class="col-md-4">
@@ -207,3 +215,4 @@
         </div>
     </form>
 </div>
+

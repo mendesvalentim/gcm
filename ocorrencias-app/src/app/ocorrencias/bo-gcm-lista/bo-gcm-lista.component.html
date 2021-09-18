@@ -5,6 +5,11 @@
 <div class="container">
     <div class="row">
     <br  >
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">
+        </div>
+    </div>       
     <div class="row">
         <div class="col-md-12 table-overflow">
             <table class="table table-condensed table-striped">
@@ -22,7 +27,11 @@
                     </tr>
                 </thead>
                 <tbody>                    
-                    <tr *ngFor="let ocorrencia of ocorrencias">
+                    <tr *ngFor="let ocorrencia of ocorrencias| filter:filterTerm | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };">
                         <td>{{ ocorrencia.dataOcorrencia }}</td>
                         <td>{{ ocorrencia.numeroTalao }}</td>                        
                         <td>{{ ocorrencia.boGcm }}</td>
@@ -33,10 +42,23 @@
                         <td>{{ ocorrencia.encEquipe }}</td>                                                
                         <td>{{ ocorrencia.usuario }}</td>                        
                         <td>
-                        </td>                        
+                            <button type="button" class="btn btn-primary ml-1"  
+                                    routerLink="/ocorrencias-visualizar/{{ocorrencia.id}}">
+                                    <i class="fas fa-search"></i>
+                            </button>                                                       
+                        </td>                             
+                                            
                     </tr>                           
                 </tbody>                 
-            </table>                                  
+            </table> 
+            <div class="d-flex justify-content-center">
+                <pagination-controls     
+                  previousLabel="Prev" 
+                  nextLabel="Next" 
+                  (pageChange)="onTableDataChange($event)"
+                  >
+                </pagination-controls>
+            </div>                                             
         </div> 
     </div>          
 </div>

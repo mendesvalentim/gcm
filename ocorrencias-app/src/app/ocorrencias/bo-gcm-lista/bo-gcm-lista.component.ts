@@ -11,7 +11,10 @@ import { Ocorrencia } from '../ocorrencias';
 export class BoGcmListaComponent implements OnInit {
   
   ocorrencias: Ocorrencia[] = [];  
-    
+  page = 1;
+  count = 0;
+  tableSize = 30 ; 
+  filterTerm!: string;    
 
   constructor(    private service: OcorrenciasService, 
     private router: Router) { }
@@ -21,5 +24,26 @@ export class BoGcmListaComponent implements OnInit {
     .getBoGcms()
     .subscribe( resposta => this.ocorrencias = resposta );
   }
+
+  onTableDataChange(event: any){
+    this.page = event;
+    this.buscaOcorrencias();
+  }  
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.buscaOcorrencias();
+  } 
+
+  buscaOcorrencias(): void{
+    this.service
+    .getAllOcorrencias()
+    .subscribe( resposta =>
+                  {this.ocorrencias = resposta},
+      error =>{
+        console.log(error);
+      });    
+  }  
 
 }

@@ -17,7 +17,6 @@ export class OcorrenciasformComponent implements OnInit {
   errors!: String[];
   id!: number;
   
-
   constructor( 
     private service: OcorrenciasService,
     private router: Router,
@@ -34,6 +33,64 @@ export class OcorrenciasformComponent implements OnInit {
     ocorrencia.horaInicial = this.horaAtual();
     return ocorrencia;
   }
+
+
+  ngOnInit(): void {
+    let params : Observable<Params> = this.activatedRoute.params
+    params.subscribe( urlParams =>{
+      this.id = urlParams['id'];
+      if(this.id){
+      this.service
+        .getOcorrenciaById(this.id)
+        .subscribe(
+            response => this.ocorrencia = response ,
+            errorResponse => this.ocorrencia = new Ocorrencia()
+          )
+      }else{ this.service
+        .buscaUltimoTalao()
+        .subscribe(response => 
+          this.ocorrencia.numeroTalao = response 
+          )
+      }
+    })   
+  }
+
+  voltarParaListagem(){
+    this.router.navigate(['/ocorrencias-lista'])
+  }
+  
+  novoCadastro(){
+    console.log(this.ocorrencia.numeroTalao)
+    this.ocorrencia = this.novaOcorrencia();
+    this.ngOnInit();    
+  }
+
+  onSubmit(){
+    if(this.id){
+      console.log(this.ocorrencia.status);
+      this.service
+        .atualizar(this.ocorrencia)
+        .subscribe(response =>{
+          this.success = true;
+            this.errors = []; 
+        }, errorResponse =>{
+           this.errors = ['Erro ao atualizar ocorrência.']
+        })
+
+    }else{
+    
+    this.service
+      .salvar(this.ocorrencia)
+      .subscribe( response => {
+        this.success = true;
+        this.errors = [];
+        this.ocorrencia = response;
+      } , errorResponse => {
+        this.success = false;              
+        this.errors = errorResponse.error.errors;  
+      })
+    }
+  } 
 
   dataAtual(){
     var data  = new Date();
@@ -58,65 +115,6 @@ export class OcorrenciasformComponent implements OnInit {
     var result = horas + ":" + minutos;
     return result;
   }
-
-
-  ngOnInit(): void {
-    let params : Observable<Params> = this.activatedRoute.params
-    params.subscribe( urlParams =>{
-      this.id = urlParams['id'];
-      if(this.id){
-      this.service
-        .getOcorrenciaById(this.id)
-        .subscribe(
-            response => this.ocorrencia = response ,
-            errorResponse => this.ocorrencia = new Ocorrencia()
-          )
-      }/*else{ this.service
-        .buscaUltimoTalao()
-        .subscribe(response => 
-          console.log(this.ocorrencia.numeroTalao = response.numeroTalao) )
-          console.log(this.ocorrencia.numeroTalao += this.ocorrencia.numeroTalao);
-
-      } retorna nan na ao somar +1  */  
-    })   
-  }
-
-  voltarParaListagem(){
-    this.router.navigate(['/ocorrencias-lista'])
-  }
-  
-  novoCadastro(){
-    console.log(this.ocorrencia.numeroTalao)
-    this.ocorrencia = this.novaOcorrencia();
-    this.ngOnInit();    
-  }
-
-  onSubmit(){
-    if(this.id){
-      this.service
-        .atualizar(this.ocorrencia)
-        .subscribe(response =>{
-          this.success = true;
-            this.errors = []; 
-        }, errorResponse =>{
-           this.errors = ['Erro ao atualizar ocorrência.']
-        })
-
-    }else{
-
-    
-    this.service
-      .salvar(this.ocorrencia)
-      .subscribe( response => {
-        this.success = true;
-        this.errors = [];
-        this.ocorrencia = response;
-      } , errorResponse => {
-        this.success = false;              
-        this.errors = errorResponse.error.errors;  
-      })
-    }
-  }   
   
 
 }

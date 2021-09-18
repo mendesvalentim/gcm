@@ -14,7 +14,6 @@
         </div>
     </div>  
 
-
     <div class="container">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">
@@ -82,14 +81,14 @@
                         <td>{{ ocorrencia.boGcm }}</td>
                         <td>{{ ocorrencia.usuario }}</td>                        
                         <td>
-                            <button class="btn btn-primary" 
+                            <button class="btn btn-warning" 
                                     routerLink="/ocorrencias-form/{{ocorrencia.id}}">
                                 <i class="fa fa-edit"></i>
                             </button>
 
-                            <button type="button" class="btn btn-danger ml-1"  (click)="preparaDelecao(ocorrencia)" 
-                                    data-bs-toggle="modal" data-bs-target="#modalDelecao">
-                                <i class="fa fa-trash"></i>
+                            <button type="button" class="btn btn-primary ml-1"  
+                                    routerLink="/ocorrencias-visualizar/{{ocorrencia.id}}">
+                                    <i class="fas fa-search"></i>
                             </button>                                                       
                         </td>                        
                     </tr>                           
@@ -102,7 +101,7 @@
                   (pageChange)="onTableDataChange($event)"
                   >
                 </pagination-controls>
-              </div>                                              
+            </div>                                              
         </div> 
     </div>
     <!-- Modal -->

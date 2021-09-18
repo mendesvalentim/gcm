@@ -69,6 +69,8 @@ public class Ocorrencia {
     private String auxiliar3;
     private String auxiliar4;
 
+    private Boolean status = true;
+
     @PrePersist
     public void prePersist(){
         setDataCadastro(LocalDate.now());

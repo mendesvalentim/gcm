@@ -25,6 +25,7 @@ export class Ocorrencia {
     auxiliar4!: string;
     usuario!: string;
     obs!: string;
+    status!: boolean;
 
 }
     

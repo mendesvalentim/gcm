@@ -21,7 +21,7 @@ export class OcorrenciasService {
     return this.http.post<Ocorrencia>(`${this.apiURL}`, ocorrencia);     
   }
 
-   atualizar(ocorrencia: Ocorrencia): Observable<any>{
+  atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
   getAllOcorrencias() : Observable<Ocorrencia[]> {
@@ -37,8 +37,8 @@ export class OcorrenciasService {
     return this.http.get<Ocorrencia[]>(`${this.apiURL}/bogcm`);
   }  
   
-  buscaUltimoTalao() : Observable<Ocorrencia>{
-    return this.http.get<Ocorrencia>(`${this.apiURL}/ultimotalao`);
+  buscaUltimoTalao() : Observable<number>{
+    return this.http.get<number>(`${this.apiURL}/ultimotalao`);
 
   }
   deletar(ocorrencia: Ocorrencia): Observable<any> {
