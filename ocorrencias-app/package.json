@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^5.0.2",
     "bootstrap-toggle": "^2.2.2",
     "bootstrap4-toggle": "^3.6.1",
