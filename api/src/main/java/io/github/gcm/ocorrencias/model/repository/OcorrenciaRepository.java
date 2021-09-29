@@ -15,6 +15,9 @@ public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Integer>
     Ocorrencia findByUltimoTalao();*/
 
 
-    @Query("SELECT u.numeroTalao FROM Ocorrencia u order by u.id DESC")
+    @Query("SELECT u.numeroTalao FROM Ocorrencia u WHERE u.numeroTalao= (SELECT MAX(numeroTalao) FROM Ocorrencia)")
     List<Integer> findByUltimoTalao();
+
+    @Query("SELECT u.boGcm FROM Ocorrencia u WHERE u.boGcm = (SELECT MAX(boGcm) FROM Ocorrencia)")
+    List<Integer> findByUltimoBoGcm();
 }

@@ -41,6 +41,12 @@ export class OcorrenciasService {
     return this.http.get<number>(`${this.apiURL}/ultimotalao`);
 
   }
+  
+  buscaUltimoBoGcm() : Observable<number>{
+    return this.http.get<number>(`${this.apiURL}/ultimobogcm`);
+
+  }
+
   deletar(ocorrencia: Ocorrencia): Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/${ocorrencia.id}`);        
   }

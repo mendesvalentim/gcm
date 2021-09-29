@@ -25,15 +25,25 @@ export class OcorrenciasformComponent implements OnInit {
     this.ocorrencia = this.novaOcorrencia();      
   }
 
+  gerarNumeroBoGcm(){
+    this.service
+      .buscaUltimoBoGcm()
+      .subscribe(response => 
+      this.ocorrencia.boGcm = response 
+    )
+        
+  }
+
   novaOcorrencia(){
     var ocorrencia = new Ocorrencia;
     this.errors = [];    
     this.success = false;
+    ocorrencia.status = true;
     ocorrencia.dataOcorrencia = this.dataAtual();
     ocorrencia.horaInicial = this.horaAtual();
+
     return ocorrencia;
   }
-
 
   ngOnInit(): void {
     let params : Observable<Params> = this.activatedRoute.params
@@ -43,9 +53,10 @@ export class OcorrenciasformComponent implements OnInit {
       this.service
         .getOcorrenciaById(this.id)
         .subscribe(
-            response => this.ocorrencia = response ,
+            response => this.ocorrencia = response,
             errorResponse => this.ocorrencia = new Ocorrencia()
           )
+         
       }else{ this.service
         .buscaUltimoTalao()
         .subscribe(response => 

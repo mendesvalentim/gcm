@@ -25,7 +25,18 @@ export class Ocorrencia {
     auxiliar4!: string;
     usuario!: string;
     obs!: string;
+    
     status!: boolean;
+    bairro!: string;
+
+    imovel!: string;
+    proprietario!: string;
+    rg!:string;
+    cpf!:string;
+    legislacao!:string;
+
+
+
 
 }
     

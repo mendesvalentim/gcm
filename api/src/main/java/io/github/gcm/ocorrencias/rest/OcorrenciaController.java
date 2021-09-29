@@ -49,6 +49,20 @@ public class OcorrenciaController {
         return numero;
     }
 
+    @GetMapping("/ultimobogcm")
+    public Integer buscaBogcm(){
+        List<Integer> listaDeBogcm = new ArrayList();
+        Integer numero = 0;
+
+        listaDeBogcm.add(repository.findByUltimoBoGcm().get(0));
+
+        for (int i = 0; i < listaDeBogcm.size(); i++) {
+            numero = (Integer) listaDeBogcm.get(0) + 1;
+        }
+
+        return numero;
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Ocorrencia salvar( @RequestBody @Valid Ocorrencia ocorrencia){

@@ -70,6 +70,16 @@ public class Ocorrencia {
     private String auxiliar4;
 
     private Boolean status = true;
+    @Column(length = 50)
+    private String imovel;
+    @Column(length = 50)
+    private String proprietario;
+    @Column(length = 50)
+    private String rg;
+    @Column(length = 50)
+    private String cpf;
+    @Column(length = 50)
+    private String legislacao;
 
     @PrePersist
     public void prePersist(){
