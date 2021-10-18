@@ -1,136 +1,134 @@
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
-               {{ mensagemSucesso }}
-            </div>  
-            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
-                {{ mensagemErro }}
-            </div>                                               
-        </div>
-    </div>  
-        <br  >
-        <div class="container-xl">
-            <div class="table-responsive">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h2>Lista de Ocorrências</h2>
-                            </div>
-                            <div class="col-sm-8">						                                
-                                <button class="btn btn-success" (click)="novoCadastro()" >
-                                    <i class="fa fa-plus"></i> Novo
-                                </button>                                  
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-filter">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="show-entries">
-                                    <span>Mostrar</span>
-                                    <select (change)="onTableSizeChange($event)" class="form-control">
-                                        <option *ngFor="let size of tableSizes" [ngValue]="size">
-                                                {{ size }}
-                                        </option>
-                                    </select>                                      
-                                    <span>Ocorrências</span>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                              
-                            </div>
-                        </div>
-                    </div>
-    
-         
-            <table class="table table-condensed table-striped">
-                <thead>
-                    <tr>
-                        <th>Talão</th>
-                        <th>Data</th>                        
-                        <th>Codigo</th>
-                        <th>Vtr</th>
-                        <th>Qth</th>
-                        <th>QtrI</th>
-                        <th>KmI</th>
-                        <th>QtrF</th>
-                        <th>KmF</th>
-                        <th>Enc. Vtr</th>
-                        <th>Motorista</th>
-                        <th>BOGCM</th>
-                        <th>R. Operador</th> 
-                        <th>Status</th> 
-                        <th></th>                      
-                    </tr>
-                </thead>
-                <tbody>                    
-                    <tr *ngFor="let ocorrencia of ocorrencias | filter:filterTerm | paginate : {
-                        itemsPerPage: tableSize,
-                        currentPage: page,
-                        totalItems: count
-                      };">
-                        <td>{{ ocorrencia.numeroTalao }}</td>
-                        <td>{{ ocorrencia.dataOcorrencia }}</td>                        
-                        <td>{{ ocorrencia.codOcorrencia }}</td>
-                        <td>{{ ocorrencia.viatura }}</td>
-                        <td>{{ ocorrencia.endereco }}</td>
-                        <td>{{ ocorrencia.horaInicial }}</td>
-                        <td>{{ ocorrencia.kmInicial }}</td>
-                        <td>{{ ocorrencia.horaFinal }}</td>
-                        <td>{{ ocorrencia.kmFinal }}</td>
-                        <td>{{ ocorrencia.encarregadoVtr }}</td>
-                        <td>{{ ocorrencia.motorista }}</td>
-                        <td>{{ ocorrencia.boGcm }}</td>
-                        <td>{{ ocorrencia.usuario }}</td>  
-                        <td>
-                            <span class="label label-success" *ngIf="ocorrencia.status"> Aberta </span>                           
-                            <span class="label label-default" *ngIf="!ocorrencia.status">Fechada</span>
-                        </td>                                              
-                        <td>
-
-                            <button type="button" class="btn btn-danger ml-1"  (click)="preparaDelecao(ocorrencia)" 
-                                    data-bs-toggle="modal" data-bs-target="#modalDelecao">
-                                <i class="fa fa-trash"></i>
-                            </button>                                  
-                                                                          
-                            <button class="btn btn-warning" 
-                                    routerLink="/ocorrencias-form/{{ocorrencia.id}}">
-                                <i class="fa fa-edit"></i>
-                            </button>
-
-                        </td>                        
-                    </tr>                           
-                </tbody>                 
-            </table> 
-            <div class="d-flex justify-content-center">
-                <pagination-controls     
-                  previousLabel="Prev" 
-                  nextLabel="Next" 
-                  (pageChange)="onTableDataChange($event)"
-                  >
-                </pagination-controls>
-            </div>                                              
-        </div> 
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+            {{ mensagemSucesso }}
+        </div>  
+        <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+            {{ mensagemErro }}
+        </div>   
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Lista de Ocorrências</h2>
+                </div>
+            </div>
+        </div>                                                    
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="modalDelecao" tabindex="-1" aria-labelledby="modalDelecaoLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalDelecaoLabel">Remoção</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>  
+
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-filter">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="show-entries">
+                        <span>Mostrar</span>
+                            <select (change)="onTableSizeChange($event)" class="form-control">
+                                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                        {{ size }}
+                                </option>
+                            </select>                                      
+                            <span>Ocorrências</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
+                    </div>
+                                    
+                        <div class="col-md-2" id="btn-novo">
+                            <button class="btn btn-success" (click)="novoCadastro()" >
+                                <i class="fa fa-plus"></i> Novo
+                            </button>                                 
+                        </div>   
+                                                  
+                </div>
             </div>
-            <div class="modal-body" *ngIf="ocorrenciaSelecionada">
-                Dejesa remover o talão {{ ocorrenciaSelecionada.numeroTalao }} ?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="deletarOcorrencia()" data-bs-dismiss="modal">Confirmar</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            </div>
-          </div>
+
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>Talão</th>
+                <th>Data</th>                        
+                <th>Codigo</th>
+                <th>Vtr</th>
+                <th>Qth</th>
+                <th>QtrI</th>
+                <th>KmI</th>
+                <th>QtrF</th>
+                <th>KmF</th>
+                <th>Enc. Vtr</th>
+                <th>Motorista</th>
+                <th>BOGCM</th>
+                <th>R. Operador</th> 
+                <th>Status</th> 
+                <th></th>                      
+            </tr>
+        </thead>
+        <tbody>                    
+            <tr *ngFor="let ocorrencia of ocorrencias | filter:filterTerm | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+                };">
+                <td>{{ ocorrencia.numeroTalao }}</td>
+                <td>{{ ocorrencia.dataOcorrencia }}</td>                        
+                <td>{{ ocorrencia.codOcorrencia }}</td>
+                <td>{{ ocorrencia.viatura }}</td>
+                <td>{{ ocorrencia.endereco }}</td>
+                <td>{{ ocorrencia.horaInicial }}</td>
+                <td>{{ ocorrencia.kmInicial }}</td>
+                <td>{{ ocorrencia.horaFinal }}</td>
+                <td>{{ ocorrencia.kmFinal }}</td>
+                <td>{{ ocorrencia.encarregadoVtr }}</td>
+                <td>{{ ocorrencia.motorista }}</td>
+                <td>{{ ocorrencia.boGcm }}</td>
+                <td>{{ ocorrencia.usuario }}</td>  
+                <td>
+                    <span class="label label-success" *ngIf="ocorrencia.status"> Aberta </span>                           
+                    <span class="label label-default" *ngIf="!ocorrencia.status">Fechada</span>
+                </td>                                              
+                <td>
+
+                    <button type="button" class="btn btn-danger ml-1"  (click)="preparaDelecao(ocorrencia)" 
+                            data-bs-toggle="modal" data-bs-target="#modalDelecao">
+                        <i class="fa fa-trash"></i>
+                    </button>                                  
+                                                                    
+                    <button class="btn btn-warning" 
+                            routerLink="/ocorrencias-form/{{ocorrencia.id}}">
+                        <i class="fa fa-edit"></i>
+                    </button>
+
+                </td>                        
+            </tr>                           
+        </tbody>                 
+    </table> 
+    <div class="d-flex justify-content-center">
+        <pagination-controls     
+            previousLabel="Prev" 
+            nextLabel="Next" 
+            (pageChange)="onTableDataChange($event)"
+            >
+        </pagination-controls>
+    </div>                                              
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelecao" tabindex="-1" aria-labelledby="modalDelecaoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalDelecaoLabel">Remoção</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>           
-</div>
+        <div class="modal-body" *ngIf="ocorrenciaSelecionada">
+            Dejesa remover o talão {{ ocorrenciaSelecionada.numeroTalao }} ?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="deletarOcorrencia()" data-bs-dismiss="modal">Confirmar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+        </div>
+    </div>
+</div>           
+
