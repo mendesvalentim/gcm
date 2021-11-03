@@ -27,18 +27,18 @@ export class BoGcmListaComponent implements OnInit {
 
   onTableDataChange(event: any){
     this.page = event;
-    this.buscaOcorrencias();
+    this.buscaBogcm();
   }  
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.buscaOcorrencias();
+    this.buscaBogcm();
   } 
 
-  buscaOcorrencias(): void{
+  buscaBogcm(): void{
     this.service
-    .getAllOcorrencias()
+    .getBoGcms()
     .subscribe( resposta =>
                   {this.ocorrencias = resposta},
       error =>{
