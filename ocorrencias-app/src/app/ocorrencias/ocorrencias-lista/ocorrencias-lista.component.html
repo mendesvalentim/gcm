@@ -1,23 +1,23 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
-            {{ mensagemSucesso }}
-        </div>  
-        <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
-            {{ mensagemErro }}
-        </div>   
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-4">
-                    <h2>Lista de Ocorrências</h2>
-                </div>
-            </div>
-        </div>                                                    
-    </div>
-</div>  
 
-<div class="table-responsive">
-    <div class="table-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>  
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>   
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Lista de Ocorrências</h2>
+                    </div>
+                </div>
+            </div>                                                    
+        </div>
+    </div>  
+
+
         <div class="table-filter">
             <div class="row">
                 <div class="col-md-3">
@@ -31,15 +31,19 @@
                             <span>Ocorrências</span>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
                     </div>
                                     
                         <div class="col-md-2" id="btn-novo">
                             <button class="btn btn-success" (click)="novoCadastro()" >
                                 <i class="fa fa-plus"></i> Novo
-                            </button>                                 
-                        </div>   
+                            </button>   
+                     
+                            <button class="btn btn-primary ml-1" (click)="novoCadastro()" >
+                                <i class="fas fa-print"></i> Relatório
+                            </button>                                                          
+                        </div>                            
                                                   
                 </div>
             </div>

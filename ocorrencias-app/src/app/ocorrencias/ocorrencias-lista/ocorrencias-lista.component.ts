@@ -50,6 +50,12 @@ export class OcorrenciasListaComponent implements OnInit {
     this.buscaOcorrencias();
   } 
 
+  geraRelatorio(){
+    var ocorrencia = new Ocorrencia;
+    this.ocorrenciaSelecionada = ocorrencia; 
+
+  }
+
   novoCadastro(){
     this.router.navigate(['/ocorrencias-form'])
   }
