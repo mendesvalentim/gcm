@@ -48,20 +48,11 @@ export class OcorrenciasformComponent implements OnInit {
   ngOnInit(): void {
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams =>{
-      this.id = urlParams['id'];
+      this.id = urlParams['id'];   
       if(this.id){
-      this.service
-        .getOcorrenciaById(this.id)
-        .subscribe(
-            response => this.ocorrencia = response,
-            errorResponse => this.ocorrencia = new Ocorrencia()
-          )
-         
-      }else{ this.service
-        .buscaUltimoTalao()
-        .subscribe(response => 
-          this.ocorrencia.numeroTalao = response 
-          )
+        this.buscaOcorrenciaPorId(this.id, false)      
+      }else{ 
+        this.ajustaUltimoTalao()
       }
     })   
   }
@@ -71,9 +62,44 @@ export class OcorrenciasformComponent implements OnInit {
   }
   
   novoCadastro(){
-    console.log(this.ocorrencia.numeroTalao)
     this.ocorrencia = this.novaOcorrencia();
-    this.ngOnInit();    
+    this.ajustaUltimoTalao();    
+  }
+
+  proximoTalao(){
+    var id: number;
+    id = Number(this.id) + 1;
+    this.id = id;
+    this.buscaOcorrenciaPorId(this.id, true);
+  }
+
+  talaoAnterior(){
+    var id: number;
+    id = Number(this.id) - 1;
+    this.id = id;
+    this.buscaOcorrenciaPorId(this.id, false);
+  }
+
+  ajustaUltimoTalao(){
+    this.service
+    .buscaUltimoTalao()
+    .subscribe(response => 
+      this.ocorrencia.numeroTalao = response 
+      )    
+  }
+
+  buscaOcorrenciaPorId(id: number, proximotalao: boolean) {
+    this.service
+    .getOcorrenciaById(this.id)
+    .subscribe(
+        response => this.ocorrencia = response,
+        errorResponse => {
+          if(proximotalao){
+           this.errors = ['Não existe próxima ocorrência criada!']
+          }else{
+            this.errors = ['Falha ao buscar ocorrência!']           
+          } 
+       })  
   }
 
   onSubmit(){
@@ -129,3 +155,5 @@ export class OcorrenciasformComponent implements OnInit {
   
 
 }
+
+

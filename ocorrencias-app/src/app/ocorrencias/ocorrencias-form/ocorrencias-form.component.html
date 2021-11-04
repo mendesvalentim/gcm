@@ -245,7 +245,7 @@
                         (click)="gerarNumeroBoGcm()"
                     >
                  <i class="fas fa-cog">
-                 </i> Gerar Nº de BOGCM
+                 </i> BOGCM
                 </button>                    
                </div>
            </div>
@@ -268,7 +268,13 @@
         </div>  
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
+                <button type="button" class="btn btn-secondary mr-5" 
+                        (click)="talaoAnterior()"
+                        *ngIf="ocorrencia.id">
+                    <i class="fas fa-arrow-circle-left"></i> Anterior
+                </button>
+
                 <button type="submit" class="btn btn-warning" 
                         *ngIf="!ocorrencia.id">
                     <i class="fa fa-save"></i> Salvar
@@ -290,6 +296,12 @@
                         (click)="novoCadastro()" >
                     <i class="fa fa-plus"></i> Novo
                 </button>
+
+                <button type="button" class="btn btn-secondary ml-5" 
+                        *ngIf="ocorrencia.id"
+                        (click)="proximoTalao()">
+                        <i class="fas fa-arrow-circle-right"></i> Proximo
+                </button>                
             </div>
         </div>
     </form>
