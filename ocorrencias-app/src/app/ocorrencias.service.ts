@@ -24,7 +24,7 @@ export class OcorrenciasService {
   atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
-  getAllOcorrencias() : Observable<Ocorrencia[]> {
+  getAllOcorrencias() : Observable<Ocorrencia[]> {   
     return this.http.get<Ocorrencia[]>(`${this.apiURL}`);
   }
 

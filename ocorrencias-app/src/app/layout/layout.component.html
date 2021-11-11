@@ -1,7 +1,14 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<app-navbar></app-navbar>
 <div id="layoutSidenav">
+    <app-sidebar></app-sidebar>
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid">                
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
             </div>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">

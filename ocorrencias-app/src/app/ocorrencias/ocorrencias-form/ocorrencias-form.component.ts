@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 import { Ocorrencia } from '../ocorrencias';
 import { OcorrenciasService } from '../../ocorrencias.service';
@@ -18,6 +19,7 @@ export class OcorrenciasformComponent implements OnInit {
   id!: number;
   
   constructor( 
+    private authService: AuthService,
     private service: OcorrenciasService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -38,6 +40,7 @@ export class OcorrenciasformComponent implements OnInit {
     var ocorrencia = new Ocorrencia;
     this.errors = [];    
     this.success = false;
+    ocorrencia.usuario = this.authService.getUsuarioAutenticado();
     ocorrencia.status = true;
     ocorrencia.dataOcorrencia = this.dataAtual();
     ocorrencia.horaInicial = this.horaAtual();
@@ -58,7 +61,7 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate(['/ocorrencias-lista'])
+    this.router.navigate(['/ocorrencias/lista'])
   }
   
   novoCadastro(){

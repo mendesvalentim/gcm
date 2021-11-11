@@ -42,7 +42,7 @@ export class OcorrenciasVisualizarComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate(['/ocorrencias-lista'])
+    this.router.navigate(['/ocorrencias/lista'])
   }
   
 }

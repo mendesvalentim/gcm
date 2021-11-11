@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ocorrencias")
-
 public class OcorrenciaController {
 
     private final OcorrenciaRepository repository;

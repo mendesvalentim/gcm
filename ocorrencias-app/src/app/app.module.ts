@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,13 +11,17 @@ import { OcorrenciasModule } from './ocorrencias/ocorrencias.module';
 import { BoGcmModule } from './bo-gcm/bo-gcm.module';
 
 import { OcorrenciasService } from './ocorrencias.service';
-import { LayoutComponent } from './layout/layout.component';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './auth.service';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     LayoutComponent
   ],
   imports: [
@@ -25,13 +29,19 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     TemplateModule,
     OcorrenciasModule,
-    BoGcmModule
+    BoGcmModule,
+    AppRoutingModule
   ],
   providers: [
-    OcorrenciasService
+    OcorrenciasService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
