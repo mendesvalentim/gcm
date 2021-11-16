@@ -2,11 +2,13 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark bg-primary" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div class="sb-sidenav-menu-heading"><h5>Cadastro</h5></div>
+                <div class="sb-sidenav-menu-heading">Home</div>
                 <a class="nav-link collapsed" routerLink="/ocorrencias"
                     data-toggle="collapse" data-target="#collapseLayouts" 
-                    aria-expanded="false" aria-controls="collapseLayouts"
-                    ><div class="sb-nav-link-icon"><i class="fas fa-clipboard"></i></div>
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon">
+                        <i class="fas fa-clipboard"></i>
+                    </div>
                     Ocorrências
                 </a>
                 <a class="nav-link collapsed" routerLink="/bo-gcm"
@@ -15,13 +17,23 @@
                     ><div class="sb-nav-link-icon"><i class="fas fa-clone"></i></div>
                     BOGCM
                 </a> 
+                
                 <a class="nav-link collapsed" routerLink="/sinesp"
                     data-toggle="collapse" data-target="#collapseLayouts" 
                     aria-expanded="false" aria-controls="collapseLayouts"
                     ><div class="sb-nav-link-icon"><i class="fas fa-clone"></i></div>
                     Sinesp
-                </a>                 
-                <div class="sb-sidenav-menu-heading"><h5>Logout</h5></div>
+                </a> 
+
+                <a class="nav-link collapsed" routerLink="/dashboard"
+                    data-toggle="collapse" data-target="#collapseLayouts" 
+                    aria-expanded="false" aria-controls="collapseLayouts"
+                    ><div class="sb-nav-link-icon"><i class="fas fa-clone"></i></div>
+                    Dashboard
+                </a>   
+
+                <div class="sb-sidenav-menu-heading">Logout</div>
+
                 <a class="nav-link collapsed" (click)="logout();" href="#"
                     data-toggle="collapse" data-target="#collapseLayouts" 
                     aria-expanded="false" aria-controls="collapseLayouts"

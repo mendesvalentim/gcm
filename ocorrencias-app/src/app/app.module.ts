@@ -19,12 +19,17 @@ import { TokenInterceptor } from './token.interceptor';
 import { SinespModule } from './sinesp/sinesp.module';
 
 
+import { DashboardService } from './dashboard.service';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +40,12 @@ import { SinespModule } from './sinesp/sinesp.module';
     OcorrenciasModule,
     BoGcmModule,
     SinespModule,
+    DashboardModule,
     AppRoutingModule
   ],
   providers: [
     OcorrenciasService,
+    DashboardService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
