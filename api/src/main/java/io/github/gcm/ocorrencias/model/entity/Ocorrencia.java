@@ -38,6 +38,10 @@ public class Ocorrencia {
     @NotNull(message = "{campo.usuario.obrigatorio}")
     private String usuario;
 
+    @Column(nullable = false)
+    @NotNull(message = "campo.codigo.obrigatorio")
+    private Integer idCodOcorrencia;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataOcorrencia;
 

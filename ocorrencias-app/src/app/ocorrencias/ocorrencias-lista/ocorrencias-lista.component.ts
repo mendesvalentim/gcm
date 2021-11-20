@@ -35,7 +35,7 @@ export class OcorrenciasListaComponent implements OnInit {
     .subscribe( resposta =>
                   {this.ocorrencias = resposta},
       error =>{
-        console.log(error);
+        this.mensagemErro = 'Ocorreu um erro ao carregar as ocorrências.'
       });    
   }
   

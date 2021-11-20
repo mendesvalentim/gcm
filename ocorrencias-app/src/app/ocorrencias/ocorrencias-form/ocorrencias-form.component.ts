@@ -5,6 +5,11 @@ import { AuthService } from 'src/app/auth.service';
 import { Ocorrencia } from '../ocorrencias';
 import { OcorrenciasService } from '../../ocorrencias.service';
 import { Observable } from 'rxjs';
+import { Select2OptionData } from 'ng-select2';
+import { Options } from "select2";
+
+import { CodocorrenciasService } from 'src/app/codocorrencias.service';
+
 
 @Component({
   selector: 'app-ocorrenciasform',
@@ -13,6 +18,10 @@ import { Observable } from 'rxjs';
 })
 export class OcorrenciasformComponent implements OnInit {
 
+  public codigosOcorrencia: Array<Select2OptionData>; 
+  public options: Options;   
+
+  codigo: Select2OptionData;
   ocorrencia: Ocorrencia;
   success: boolean = false;
   errors!: String[];
@@ -21,6 +30,7 @@ export class OcorrenciasformComponent implements OnInit {
   constructor( 
     private authService: AuthService,
     private service: OcorrenciasService,
+    private codOcorrenciaService: CodocorrenciasService,
     private router: Router,
     private activatedRoute: ActivatedRoute
     ){  
@@ -33,9 +43,20 @@ export class OcorrenciasformComponent implements OnInit {
       .subscribe(response => 
       this.ocorrencia.boGcm = response 
     )
-        
   }
 
+  //devido a lista de ocorrencia precisar do codocorrencia foi necessario gravar o mesmo no banco
+  onChanged(data): void {
+    for(var i = 0; i < this.codigosOcorrencia.length; i++){ 
+      if(Number(this.codigosOcorrencia[i].id) === Number(data)) {         
+        console.log(this.codigosOcorrencia[i].codigo);
+        this.ocorrencia.codOcorrencia = this.codigosOcorrencia[i].codigo;
+        break;
+       } 
+       console.log("passando no loop",i)
+    }
+  }
+ 
   novaOcorrencia(){
     var ocorrencia = new Ocorrencia;
     this.errors = [];    
@@ -49,6 +70,7 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.buscaCodigoOcorrencia();
     let params : Observable<Params> = this.activatedRoute.params
     params.subscribe( urlParams =>{
       this.id = urlParams['id'];   
@@ -59,6 +81,20 @@ export class OcorrenciasformComponent implements OnInit {
       }
     })   
   }
+
+
+  buscaCodigoOcorrencia(): void {
+    this.codOcorrenciaService
+    .getAllCodOcorrencia()
+    .subscribe(
+      response =>{ this.codigosOcorrencia = response});
+
+    this.options = {
+      loading: true,
+      teme:'classic',
+      width: "100%"
+    };     
+  };
 
   voltarParaListagem(){
     this.router.navigate(['/ocorrencias/lista'])
@@ -95,8 +131,9 @@ export class OcorrenciasformComponent implements OnInit {
     this.service
     .getOcorrenciaById(this.id)
     .subscribe(
-        response => this.ocorrencia = response,
-        errorResponse => {
+        response => {
+          this.ocorrencia = response
+        },errorResponse => {
           if(proximotalao){
            this.errors = ['Não existe próxima ocorrência criada!']
           }else{

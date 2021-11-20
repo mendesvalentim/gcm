@@ -1,6 +1,7 @@
 export class Ocorrencia {
     id!: number;
     idUsuario!: number;
+    idCodOcorrencia: number=1;
     numeroTalao!: number;
     boGcm!: number;
     equipe!: string;

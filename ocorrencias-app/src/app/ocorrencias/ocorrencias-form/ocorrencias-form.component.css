@@ -9,9 +9,16 @@
 #numeroTalao{
     font-size: 20px;    
     width:100px;    
-    font-weight: bold;  
-       
+    font-weight: bold;         
 }
+.ng-select2{
+    text-align: center; 
+    height: 50px;   
+}
+#codigo{
+    margin-top: 25px;  
+    height: 50px;       
+}    
 
 #talao{    
     font-size: 15px;    

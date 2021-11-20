@@ -52,15 +52,19 @@
         <legend> 
             Dados da Ocorrência 
         </legend>   
-        <div class="row"> 
-     
-  
-            <div class="col-md-2"  >
+        <div class="row">        
+            <div class="col-md-2" id="codigo" >
                 <div class="form-goup">
-                    <label>Codigo:</label>
-                    <input id="codigo"  type="text" class="form-control border border-info"
-                            [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
-                </div>   
+                    <ng-select2                                            
+                        name="codOcorrencia" 
+                        value="ocorrencia.idCodOcorrencia"                                              
+                        [data]="codigosOcorrencia"
+                        [placeholder]="'Código de Ocorrência'"                        
+                        [(ngModel)]="ocorrencia.idCodOcorrencia"
+                        [options]="options"
+                        (valueChanged)="onChanged($event)"                        
+                  ></ng-select2>  
+                </div>                  
             </div>  
 
             <div class="col-md-2">

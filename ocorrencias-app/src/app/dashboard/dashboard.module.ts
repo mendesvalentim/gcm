@@ -25,23 +25,3 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class DashboardModule { }
-
-/**@NgModule({
-  declarations: [
-    OcorrenciasformComponent,
-    OcorrenciasListaComponent,
-    OcorrenciasVisualizarComponent
-  ],
-  imports: [  
-    CommonModule,
-    OcorrenciasRoutingModule,
-    NgxPaginationModule,
-    Ng2SearchPipeModule,
-    FormsModule
-  ], exports: [
-    OcorrenciasformComponent,
-    OcorrenciasListaComponent,
-    OcorrenciasVisualizarComponent    
-  ]
-})
-export class OcorrenciasModule { } */
