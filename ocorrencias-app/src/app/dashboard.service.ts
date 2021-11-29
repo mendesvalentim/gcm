@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -7,28 +9,17 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-  readonly dados = [
-    ['Janeiro', 33],
-    ['Fevereiro', 68],
-    ['Março', 49],
-    ['Abril', 15],
-    ['Maio', 80],
-    ['Junho', 27]
-];
+  apiURL: string = environment.apiUrlBase + '/api/dashboard';
 
-constructor() {}
+  constructor( private http: HttpClient) { }
 
-/**
-* Retorna um observable contendo os dados a serem
-* exibidos no gráfico.
-*
-* @return Observable<any>
-*/
-obterDados(): Observable<any> {
-  console.log(this.dados)
-return new Observable(observable => {
-  observable.next(this.dados);
-  observable.complete();
-});
-}
+  getAllDashboard(): 
+    Observable<Array<any>> {
+      return this.http.get<Array<any>>(`${this.apiURL}`);      
+  }
+
+  getAllDashboardDate(dataInicia: string, dataFinal: string ) : Observable<Array<any>>{
+    return this.http.get<Array<any>>(`${this.apiURL}/${dataInicia}/${dataFinal}`);
+    
+  }
 }

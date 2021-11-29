@@ -114,6 +114,8 @@ export class SinespFormComponent implements OnInit {
   }
 
 
-
+  novoCadastro(){
+    this.consultaSinesp = this.novaConsulta();   
+  }
 }
 

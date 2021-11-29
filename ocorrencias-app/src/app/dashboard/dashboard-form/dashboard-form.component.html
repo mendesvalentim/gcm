@@ -1,7 +1,35 @@
-<p>dashboard works!</p> 
-<div id="pie_chart"></div><!--
-<div id="3d_pie_chart"></div>
-<div id="donut_chart"></div>
-<div id="bar_chart"></div>
-<div id="line_chart"></div>
-<div id="column_chart"></div> -->
+
+<div class="row">    
+    <div class="col-md-2">
+        <div class="form-goup">
+            <label id="talao">Data Inicial:</label>
+            <input id="inputtalao" type="date"
+                    value="dataInicial" class="form-control border border-info"
+                    autocomplete="off"
+                    [(ngModel)]="dataInicial" name="dataInicial"/>      
+        </div>   
+    </div>   
+    <div class="col-md-2">    
+        <div class="form-goup">
+            <label id="talao">Data Final:</label>
+            <input id="inputtalao" type="date"
+                    value="dataFinal" class="form-control border border-info"
+                    autocomplete="off"
+                    [(ngModel)]="dataFinal" name="dataFinal"/>      
+        </div> 
+    </div>
+
+    <div class="col-md-2" id="btn-buscar">
+        <div class="form-group" >
+            <button class="btn btn-primary" 
+                (click)="buscaOcorrenciasPorData()" >
+                <i class="fas fa-search"></i> Buscar
+            </button>   
+        </div>                              
+    </div> 
+
+    <div class="col-md-12" id="3d_pie_chart"> </div>
+</div>
+
+
+

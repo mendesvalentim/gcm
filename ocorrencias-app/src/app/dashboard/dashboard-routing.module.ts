@@ -5,8 +5,9 @@ import { LayoutComponent } from '../layout/layout.component';
 import { DashboardComponent } from './dashboard-form/dashboard-form.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: LayoutComponent, children: [      
+  { path: 'dashboard', component: LayoutComponent, canActivate: [AuthGuard], children: [      
     { path: 'form', component: DashboardComponent},
+    { path: 'form/:dataInicial/:dataFinal', component: DashboardComponent},
     { path: '', redirectTo: '/dashboard/form', pathMatch: 'full'}    
   ]}
 ];

@@ -45,18 +45,6 @@ export class OcorrenciasformComponent implements OnInit {
     )
   }
 
-  //devido a lista de ocorrencia precisar do codocorrencia foi necessario gravar o mesmo no banco
-  onChanged(data): void {
-    for(var i = 0; i < this.codigosOcorrencia.length; i++){ 
-      if(Number(this.codigosOcorrencia[i].id) === Number(data)) {         
-        console.log(this.codigosOcorrencia[i].codigo);
-        this.ocorrencia.codOcorrencia = this.codigosOcorrencia[i].codigo;
-        break;
-       } 
-       console.log("passando no loop",i)
-    }
-  }
- 
   novaOcorrencia(){
     var ocorrencia = new Ocorrencia;
     this.errors = [];    

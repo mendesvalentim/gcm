@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { DashboardService } from '../../dashboard.service';
 
 
@@ -12,16 +13,19 @@ declare var google: any;/* variavel global*/
 export class DashboardComponent implements OnInit {
 
   private dados: any;
+  public dataInicial: string;
+  public dataFinal: string;
 
   constructor(private dadosService: DashboardService) { }
 
   ngOnInit(): void {
-    this.dadosService.obterDados().subscribe(
+    /* busca todas as ocorrencias, comentei para fazer a busca por período
+    this.dadosService.getAllDashboard().subscribe(
       dados => {
         this.dados = dados;
         this.init();
       }
-    )
+    )*/
   }
 
   init(): void{
@@ -38,8 +42,9 @@ export class DashboardComponent implements OnInit {
   }
 
   exibirPieChart(): void{
-    const el = document.getElementById('pie_chart');
+    const el = document.getElementById('3d_pie_chart');
     const chart = new google.visualization.PieChart(el);
+       
 
     chart.draw(this.obterDataTable(), this.obterOpcoes());
   }
@@ -47,8 +52,9 @@ export class DashboardComponent implements OnInit {
   obterDataTable(): any {
   	const data = new google.visualization.DataTable();
 
-    data.addColumn('string', 'Mês');
+    data.addColumn('string', 'Código Ocorrência');
     data.addColumn('number', 'Quantidade');
+
     data.addRows(this.dados);
 
     return data;
@@ -56,12 +62,24 @@ export class DashboardComponent implements OnInit {
 
   obterOpcoes(): any {
   	return {
-    	'title': 'Quantidade de cadastros primeiro semestre',
-        'width': 600,
-        'height': 500
+      'legend': 'top',
+    	'title' : 'Ocorrências por período',
+      'width' : 800,
+      'height': 800,
+      'is3D'  : true
     };
   }
 
-
+  buscaOcorrenciasPorData(): void {
+    this.dadosService.getAllDashboardDate(this.dataInicial, this.dataFinal).subscribe(
+      dados => {
+        this.dados = dados;
+        console.log(dados);
+        this.init();
+      },errorResponse => {
+        console.log(errorResponse.error.errors)
+      }
+    )    
+  }
 
 }

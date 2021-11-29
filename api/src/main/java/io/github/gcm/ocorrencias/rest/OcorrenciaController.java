@@ -25,7 +25,7 @@ public class OcorrenciaController {
 
     @GetMapping
     public List<Ocorrencia> obterTodos(){
-        return repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        return repository.findByAllOcorrencia();
     }
 
     @GetMapping("/bogcm")
