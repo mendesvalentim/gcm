@@ -46,6 +46,8 @@ public class Ocorrencia {
     private Integer viatura;
     @Column(length = 200)
     private String endereco;
+    @Column(length = 200)
+    private String bairro;
     @Column(length = 50)
     private String motorista;
 
