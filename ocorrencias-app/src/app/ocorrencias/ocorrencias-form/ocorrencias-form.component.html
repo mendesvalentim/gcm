@@ -40,7 +40,10 @@
             <div class="col-md-2">
                 <div class="form-goup">
                     <label id="talao">Hora Inicial:</label>
-                    <input id="inputtalao" type="time" class="form-control border border-info"
+                    <input class="form-control border border-info" 
+                        autofocus
+                        id="inputtalao" 
+                        type="time" 
                         autocomplete="off"  
                         [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
                 </div>
@@ -55,7 +58,7 @@
             <div class="col-md-2"  >
                 <div class="form-goup">
                     <label>Codigo:</label>
-                    <input id="codigo" autofocus type="text" class="form-control border border-info"
+                    <input id="codigo"  type="text" class="form-control border border-info"
                             [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
                 </div>   
             </div>  
@@ -116,7 +119,7 @@
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>R. Operador:</label>
-                    <input type="text" class="form-control border border-info"
+                    <input type="text" disabled="" class="form-control border border-info"
                             [(ngModel)]="ocorrencia.usuario" name="usuario"
                         />
                 </div>

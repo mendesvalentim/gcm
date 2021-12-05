@@ -13,6 +13,7 @@ export class LoginComponent {
 
   username!: string;
   password!: string;
+  matricula!: number;
   cadastrando!: boolean;
   mensagemSucesso!: string;
   errors!: String[] ;
@@ -52,6 +53,7 @@ export class LoginComponent {
     const usuario: Usuario = new Usuario();
     usuario.username = this.username;
     usuario.password = this.password;
+    usuario.matricula = this.matricula;
     console.log(usuario)
     this.authService
         .salvar(usuario)
@@ -60,6 +62,7 @@ export class LoginComponent {
             this.cadastrando = false;
             this.username = '';
             this.password = '';
+            this.matricula = null;
             this.errors = []
         }, errorResponse =>{
           this.mensagemSucesso = null;

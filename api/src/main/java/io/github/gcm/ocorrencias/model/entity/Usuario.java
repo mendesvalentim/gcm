@@ -23,4 +23,8 @@ public class Usuario {
     @NotEmpty(message = "{campo.senha.obriatorio}")
     private String password;
 
+    @Column()
+    @NotEmpty(message = "{campo.matricula.obriatorio}")
+    private String matricula;
+
 }

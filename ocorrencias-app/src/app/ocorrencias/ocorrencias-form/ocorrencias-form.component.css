@@ -2,6 +2,10 @@
     color:black; 
 }
 
+.uppercase { 
+    text-transform: uppercase; 
+} 
+
 #numeroTalao{
     font-size: 20px;    
     width:100px;    
@@ -27,9 +31,11 @@
     color: red;   
     font-weight: bold;       
 }
+
 input[type=text]{
     border: #0dcaf0;
     box-sizing: border-box; 
+    text-transform: uppercase;
 }
 legend{
     font-size: 15px;    
