@@ -1,0 +1,91 @@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>  
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>   
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Lista de Consultas via Sinesp</h2>
+                    </div>
+                </div>
+            </div>                                                    
+        </div>
+    </div>  
+
+
+        <div class="table-filter">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="show-entries">
+                        <span>Mostrar</span>
+                            <select (change)="onTableSizeChange($event)" class="form-control">
+                                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                        {{ size }}
+                                </option>
+                            </select>                                      
+                            <span>Consultas Sinesp</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
+                    </div>
+                                    
+                        <div class="col-md-2" id="btn-novo">
+                            <button class="btn btn-success" (click)="novoCadastro()" >
+                                <i class="fa fa-plus"></i> Novo
+                            </button>   
+                                                          
+                        </div>                            
+                                                  
+                </div>
+            </div>
+
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Data</th>
+                <th>Vtr</th>
+                <th>Averiguado</th>                 
+                <th>CPF/CNPJ</th> 
+                <th>Placa</th> 
+                <th>R. Operador</th>                 
+                <th></th>                      
+            </tr>
+        </thead>
+        <tbody>                    
+            <tr *ngFor="let consulta of listaConsultas | filter:filterTerm | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+                };" style="text-transform: uppercase">
+                <td>{{ consulta.id }}</td>
+                <td>{{ consulta.data }}</td>                                
+                <td>{{ consulta.viatura }}</td>
+                <td>{{ consulta.averiguado }}</td>                 
+                <td>{{ consulta.cpf }}</td>
+                <td>{{ consulta.placa }}</td>                               
+                <td>{{ consulta.usuario }}</td>                                          
+                <td>                        
+                    <button class="btn btn-warning" 
+                            routerLink="/sinesp/form/{{consulta.id}}">
+                        <i class="fa fa-edit"></i>
+                    </button>
+
+                </td>                        
+            </tr>                           
+        </tbody>                 
+    </table> 
+    <div class="d-flex justify-content-center">
+        <pagination-controls     
+            previousLabel="Prev" 
+            nextLabel="Next" 
+            (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>                                                        
+

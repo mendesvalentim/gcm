@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './auth.service';
 import { TokenInterceptor } from './token.interceptor';
+import { SinespModule } from './sinesp/sinesp.module';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { TokenInterceptor } from './token.interceptor';
     TemplateModule,
     OcorrenciasModule,
     BoGcmModule,
+    SinespModule,
     AppRoutingModule
   ],
   providers: [

@@ -107,7 +107,6 @@ export class OcorrenciasformComponent implements OnInit {
 
   onSubmit(){
     if(this.id){
-      console.log(this.ocorrencia.status);
       this.service
         .atualizar(this.ocorrencia)
         .subscribe(response =>{
