@@ -8,16 +8,13 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Integer> {
-    @Query("select s from Ocorrencia s where s.boGcm IS NOT NULL order by s.boGcm desc")
+    @Query("select s from Ocorrencia s where s.boGcm IS NOT NULL order by s.id desc")
     List<Ocorrencia>findByNumeroBogcm();
 
- /*   @Query("SELECT s FROM Ocorrencia s WHERE s.id = (SELECT MAX(id) FROM Ocorrencia) ")
-    Ocorrencia findByUltimoTalao();*/
-
-
-    @Query("SELECT u.numeroTalao FROM Ocorrencia u WHERE u.numeroTalao= (SELECT MAX(numeroTalao) FROM Ocorrencia)")
+    @Query("SELECT u.numeroTalao FROM Ocorrencia u WHERE u.id = (SELECT MAX(oco.id) FROM Ocorrencia oco)")
     List<Integer> findByUltimoTalao();
 
-    @Query("SELECT u.boGcm FROM Ocorrencia u WHERE u.boGcm = (SELECT MAX(boGcm) FROM Ocorrencia)")
+    @Query("SELECT u.boGcm FROM Ocorrencia u WHERE u.id = (SELECT MAX(id) FROM Ocorrencia where boGcm is not null)")
+
     List<Integer> findByUltimoBoGcm();
 }
