@@ -1,0 +1,144 @@
+<div class="table-title">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>{{ consultaSinesp.id ? 'Edição' : 'Cadastro'}}</h2>
+        </div>
+    </div>
+</div>   
+
+<form #sinespForm="ngForm" (ngSubmit)="onSubmit()" >       
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="success == true">
+                Sinesp <b>{{ consultaSinesp.id }}</b> salva/atualizada com sucesso!
+            </div>  
+            <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                {{ erro }}
+            </div>                                               
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label id="talao">Data:</label>
+                <input id="inputtalao" type="text"
+                        value="consultaSinesp.data" class="form-control border border-info"
+                        autocomplete="off"
+                        [(ngModel)]="consultaSinesp.data" name="dataconsultaSinesp"/>      
+            </div>
+        </div>  
+
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label id="talao">Hora:</label>
+                <input class="form-control border border-info" 
+                    autofocus
+                    id="inputtalao" 
+                    type="time" 
+                    autocomplete="off"  
+                    [(ngModel)]="consultaSinesp.hora" name="hora"/> 
+            </div>
+        </div> 
+
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>R. Operador:</label>
+                <input type="text" disabled="" class="form-control border border-info"
+                        [(ngModel)]="consultaSinesp.usuario" name="usuario"
+                    />
+            </div>
+        </div> 
+    </div>
+
+    <div class="row">   
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>Vtr:</label>
+                <input type="number" class="form-control border border-info"
+                        [(ngModel)]="consultaSinesp.viatura" name="viatura"/>
+            </div>
+        </div> 
+        
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>Averiguado:</label>
+                <input type="text" class="form-control border border-info" 
+                    [(ngModel)]="consultaSinesp.averiguado" name="averiguado"
+                />
+            </div>    
+        </div>                   
+
+
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>CPF/CNPJ:</label>                  
+                <input type="text" class="form-control border border-info"                      
+                        [(ngModel)]="consultaSinesp.cpf" name="cpf"/> 
+            </div>  
+        </div>                             
+    </div>                  
+
+    <div class="row">
+
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>Placa:</label>
+                <input type="text" class="form-control border border-info"
+                    [(ngModel)]="consultaSinesp.placa" name="placa"/>
+            </div>
+        </div>  
+
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>Chassi:</label>
+                <input type="text" class="form-control border border-info" 
+                    [(ngModel)]="consultaSinesp.chassi" name="chassi"/>
+            </div>
+        </div>    
+        <div class="col-md-2">
+            <div class="form-goup">
+                <label>Sinarm:</label>
+                <input type="text" class="form-control border border-info" 
+                    [(ngModel)]="consultaSinesp.sinarm" name="sinarm"/>
+            </div>
+        </div>     
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-goup">
+                <label>Obs:</label>
+                <input type="text" class="form-control border border-info"
+                        [(ngModel)]="consultaSinesp.obs" name="obs"
+                        autocomplete="off"/>
+            </div>
+        </div>  
+    </div>         
+<br>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-warning" 
+                    *ngIf="!consultaSinesp.id">
+                <i class="fa fa-save"></i> Salvar
+            </button>
+
+            <button type="submit" class="btn btn-primary" *ngIf="consultaSinesp.id">
+                <i class="fa fa-sync-alt"></i> Atualizar
+            </button>            
+
+            <button type="button" 
+                    class="btn btn-danger ml-1"
+                    (click)="voltarParaLista()">
+                <i class="fa fa-arrow-alt-circle-left" ></i> Voltar
+            </button> 
+
+            <button type="button" 
+                    *ngIf="consultaSinesp.id"               
+                    class="btn btn-success ml-1"
+                    (click)="novoCadastro()" >
+                <i class="fa fa-plus"></i> Novo
+            </button>                
+        </div>
+    </div>
+</form>
+
+

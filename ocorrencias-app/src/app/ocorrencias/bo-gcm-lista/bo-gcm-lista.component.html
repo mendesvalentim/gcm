@@ -1,0 +1,69 @@
+<h1 class="mt-4">BOGCM</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+    <br  >
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">
+        </div>
+    </div>       
+    <div class="row">
+        <div class="col-md-12 table-overflow">
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Data</th>                       
+                        <th>Talão</th>                                               
+                        <th>BOGCM</th>                        
+                        <th>Enc. Vtr</th>
+                        <th>Cod. Ocorrencia</th>
+                        <th>Vtr</th>
+                        <th>Equipe</th>                       
+                        <th>Enc. Equipe</th>                     
+                        <th>R. Operador</th>                        
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr *ngFor="let ocorrencia of ocorrencias| filter:filterTerm | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };">
+                        <td>{{ ocorrencia.dataOcorrencia }}</td>
+                        <td>{{ ocorrencia.numeroTalao }}</td>                        
+                        <td>{{ ocorrencia.boGcm }}</td>
+                        <td>{{ ocorrencia.encarregadoVtr }}</td> 
+                        <td>{{ ocorrencia.codOcorrencia }}</td>                       
+                        <td>{{ ocorrencia.viatura }}</td>
+                        <td>{{ ocorrencia.equipe }}</td>                                                
+                        <td>{{ ocorrencia.encEquipe }}</td>                                                
+                        <td>{{ ocorrencia.usuario }}</td>                        
+                        <td>
+                            <button type="button" class="btn btn-primary ml-1"  
+                                    routerLink="/ocorrencias/visualizar/{{ocorrencia.id}}">
+                                    <i class="fas fa-search"></i>
+                            </button>  
+     
+                            <button class="btn btn-warning" 
+                                    routerLink="/ocorrencias/form/{{ocorrencia.id}}">
+                                <i class="fa fa-edit"></i>
+                            </button>                                                                           
+                        </td>                             
+                                            
+                    </tr>                           
+                </tbody>                 
+            </table> 
+            <div class="d-flex justify-content-center">
+                <pagination-controls     
+                  previousLabel="Prev" 
+                  nextLabel="Next" 
+                  (pageChange)="onTableDataChange($event)"
+                  >
+                </pagination-controls>
+            </div>                                             
+        </div> 
+    </div>          
+</div>

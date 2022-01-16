@@ -14,38 +14,41 @@ export class OcorrenciasService {
   apiURL: string = environment.apiUrlBase + '/api/ocorrencias';
 
   constructor( private http: HttpClient) {
+
   }
    
-   salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
-    const tokenString = localStorage.getItem('access_token')
-    //@ts-ignore
-    const token = JSON.parse(tokenString)
-    const headers = {
-      'Authorization' : 'Bearer' + token.access_token
-    }     
-     return this.http.post<Ocorrencia>(`${this.apiURL}`, ocorrencia, { headers });
-   }
+  salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
+    return this.http.post<Ocorrencia>(`${this.apiURL}`, ocorrencia);     
+  }
 
-   atualizar(ocorrencia: Ocorrencia): Observable<any>{
+  atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
-  
-  getOcorrencias() : Observable<Ocorrencia[]> {
-    
-    const token = JSON.parse(localStorage.getItem('access_token')!);
-    const headers = {
-      'Authorization' : 'Bearer' + token.access_token
-    }
-    return this.http.get<Ocorrencia[]>(this.apiURL, { headers });
- 
+  getAllOcorrencias() : Observable<Ocorrencia[]> {   
+    return this.http.get<Ocorrencia[]>(`${this.apiURL}`);
   }
 
-  getClienteById(id: number) : Observable<Ocorrencia>{
+  getOcorrenciaById(id: number) : Observable<Ocorrencia>{
     return this.http.get<any>(`${this.apiURL}/${id}`);
 
   }
 
+  getBoGcms() : Observable<Ocorrencia[]> {
+    return this.http.get<Ocorrencia[]>(`${this.apiURL}/bogcm`);
+  }  
+  
+  buscaUltimoTalao() : Observable<number>{
+    return this.http.get<number>(`${this.apiURL}/ultimotalao`);
+
+  }
+  
+  buscaUltimoBoGcm() : Observable<number>{
+    return this.http.get<number>(`${this.apiURL}/ultimobogcm`);
+
+  }
+
   deletar(ocorrencia: Ocorrencia): Observable<any> {
-    return this.http.delete<any>(`${this.apiURL}/${ocorrencia.id}`);
+    return this.http.delete<any>(`${this.apiURL}/${ocorrencia.id}`);        
   }
-  }
+  
+}

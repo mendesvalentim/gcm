@@ -1,0 +1,82 @@
+#codigo:focus{
+    color:black; 
+}
+
+.uppercase { 
+    text-transform: uppercase; 
+} 
+
+#numeroTalao{
+    font-size: 20px;    
+    width:100px;    
+    font-weight: bold;  
+       
+}
+
+#talao{    
+    font-size: 15px;    
+    width:100px;  
+    font-weight: bold;       
+}
+
+#inputtalao{
+    height: 35px; 
+    font-size: 25px;
+    font-weight: bold; 
+    color:black;         
+}
+#inputNumerotalao{
+    height: 35px; 
+    font-size: 25px;
+    color: red;   
+    font-weight: bold;       
+}
+
+input[type=text]{
+    border: #0dcaf0;
+    box-sizing: border-box; 
+    text-transform: uppercase;
+}
+legend{
+    font-size: 15px;    
+    text-align: start;
+    color: cornflowerblue;
+} 
+
+
+body {
+	color: #566787;
+	background: #f5f5f5;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 13px;
+}
+    
+
+.table-title /** titulo cadastro */{
+	color: #fff;
+	background: #4b5366;		
+	padding: 10px 25px;
+    margin-bottom: 15px;
+	margin-right: -18px;
+    margin-left: -18px;
+	border-radius: 3px 3px 0 0;
+
+	
+}
+.table-title h2 {
+	margin: 5px 0 0;
+	font-size: 24px;
+}
+
+.hint-text {
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+}    
+legend{
+    margin-top: 10px;
+    margin-bottom: 11px;
+    font-size: 15px; 
+    font-weight: bold;
+    
+}

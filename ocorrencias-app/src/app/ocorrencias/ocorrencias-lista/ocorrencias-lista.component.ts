@@ -14,15 +14,46 @@ export class OcorrenciasListaComponent implements OnInit {
   ocorrenciaSelecionada!: Ocorrencia;
   mensagemSucesso!: String;
   mensagemErro!: String;
+  filterTerm!: string;
+ 
+  page = 1;
+  count = 0;
+  tableSize = 15;
+  tableSizes = [20, 25, 30 ,35, 50];
 
   constructor(
     private service: OcorrenciasService, 
     private router: Router) { }
 
   ngOnInit(): void {
+    this.buscaOcorrencias();
+  }
+
+  buscaOcorrencias(): void{
     this.service
-    .getOcorrencias()
-    .subscribe( resposta => this.ocorrencias = resposta );
+    .getAllOcorrencias()
+    .subscribe( resposta =>
+                  {this.ocorrencias = resposta},
+      error =>{
+        this.mensagemErro = 'Ocorreu um erro ao carregar as ocorrências.'
+      });    
+  }
+  
+  onTableDataChange(event: any){
+    this.page = event;
+    this.buscaOcorrencias();
+  }  
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.buscaOcorrencias();
+  } 
+
+  geraRelatorio(){
+    var ocorrencia = new Ocorrencia;
+    this.ocorrenciaSelecionada = ocorrencia; 
+
   }
 
   novoCadastro(){

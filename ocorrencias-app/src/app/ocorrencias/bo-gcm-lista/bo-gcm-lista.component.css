@@ -1,0 +1,7 @@
+.btn {
+	float: right;
+	border-radius: 3px;
+	border: none;
+	outline: none !important;
+	margin-left: 10px;
+}

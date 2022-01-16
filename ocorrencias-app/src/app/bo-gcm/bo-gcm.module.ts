@@ -6,8 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 import { BoGcmRoutingModule } from './bo-gcm-routing.module';
 import { BoGcmFormComponent } from './bo-gcm-form/bo-gcm-form.component';
-import { BoGcmListaComponent } from './bo-gcm-lista/bo-gcm-lista.component';
+import { BoGcmListaComponent } from '../ocorrencias/bo-gcm-lista/bo-gcm-lista.component';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     BoGcmRoutingModule,
     FormsModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,    
     RouterModule
   ], exports:[
     BoGcmFormComponent,

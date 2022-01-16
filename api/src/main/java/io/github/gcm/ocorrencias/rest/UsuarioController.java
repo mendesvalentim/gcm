@@ -2,7 +2,6 @@ package io.github.gcm.ocorrencias.rest;
 
 import io.github.gcm.ocorrencias.exceptions.UsuarioCadastradoException;
 import io.github.gcm.ocorrencias.model.entity.Usuario;
-import io.github.gcm.ocorrencias.model.repository.UsuarioRepository;
 import io.github.gcm.ocorrencias.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,19 +13,17 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/usuarios")
 @RequiredArgsConstructor
-
 public class UsuarioController {
 
     private final UsuarioService service;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     public void salvar(@RequestBody @Valid Usuario usuario){
         try{
             service.salvar(usuario);
         }catch (UsuarioCadastradoException e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+            throw new ResponseStatusException( HttpStatus.BAD_REQUEST, e.getMessage() );
         }
-
     }
 }

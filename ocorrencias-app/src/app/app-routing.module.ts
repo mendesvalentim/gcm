@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component'
+import { AuthGuard } from './auth.guard';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
+import { OcorrenciasListaComponent } from './ocorrencias/ocorrencias-lista/ocorrencias-lista.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
-
+  { path: 'login',  component: LoginComponent },
   { path: '', component: LayoutComponent, children: [
-    { path: 'home', component: HomeComponent }
-  ]}  
+    { path: 'home',  component: OcorrenciasListaComponent, canActivate: [AuthGuard] },
+    { path: '', redirectTo: '/ocorrencias/lista', pathMatch: 'full'}
+
+  ]}
 ];
 
 @NgModule({

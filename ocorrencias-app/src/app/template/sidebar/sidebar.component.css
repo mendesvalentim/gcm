@@ -1,3 +1,7 @@
-/*.sb-sidenav-dark{
-    background-color: rgb(0, 174, 255);
-  }  */
+.sb-sidenav-footer{
+    margin-bottom: 20px;
+    font-size: 20px;    
+}
+.nav{
+    font-size: 14px;
+}

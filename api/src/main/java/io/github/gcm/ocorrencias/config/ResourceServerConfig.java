@@ -12,8 +12,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/api/usuarios/**").permitAll()
-                .antMatchers("/api/ocorrencias/**",
-                        "/api/bo-gcm/**").authenticated()
+                .antMatchers( "/api/ocorrencias/**", "/api/codocorrencias/**",
+                        "/api/bo-gcm/**", "/api/dashboard/**", "/api/sinesp/**").authenticated()
                 .anyRequest().denyAll();
     }
 }

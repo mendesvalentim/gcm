@@ -12,60 +12,67 @@
                                     </div>                                    
                                     
                                     <h4 class="text-justify font-weight-light my-0" >
-                                        {{cadastrando ? 'Cadasto de Novo Usuário' : 'Entrar'}}
+                                        {{cadastrando ? 'Cadastro de Novo Usuário' : 'Entrar'}}
                                     </h4>
                                 </div>
-
                                 <div class="card-body">
-                                    <div class="alert alert-danger" *ngFor="let erro of errors">
-                                        {{ erro }}
-                                    </div> 
-
                                     <div class="alert alert-success" *ngIf="mensagemSucesso">
                                         {{ mensagemSucesso }}
                                     </div> 
-
+                                    <div class="alert alert-danger" *ngFor="let erro of errors">
+                                        {{ erro }}
+                                    </div>
+									
                                     <form #loginForm="ngForm" (submit)="onSubmit();">
                                         <div class="form-group">
                                             <label class="small mb-1">Login</label>
-                                            <input type="text" name="username" autocomplete="off"
-                                                [(ngModel)]="username"
+                                            <input type="text" name="username"
+                                                [(ngModel)]="username" autocomplete="off"
                                                 class="form-control py-4"
                                                 placeholder="Digite seu login" />
                                         </div>
-        
+       
                                         <div class="form-group">
-                                        <label class="small mb-1">Senha</label>
-                                        <input type="password" name="password"
+											<label class="small mb-1">Senha</label>
+											<input type="password" name="password"
                                                 [(ngModel)]="password"
                                                 class="form-control py-4"
-                                                placeholder="Digite sua senha" />
-                                        </div> 
-        
-                                        <div class="form-group align-items-center justify-content-betwen mt-4 mb-0">
-                                        <button type="submit" class="btn btn-primary" *ngIf="!cadastrando">
-                                            Enviar
-                                        </button> 
-        
-                                        <button type="button" class="btn btn-success" 
-                                                                (click)="cadastrar()"
-                                                                *ngIf="cadastrando">
-                                            Cadastrar
-                                        </button> 
-        
-                                        <button type="button"  (click)="cancelaCadastro()"
-                                                class="btn btn-danger ml-1" *ngIf="cadastrando">
-                                            Cancelar
-                                        </button>                                 
+                                                placeholder="Digite sua Senha" />																				  
                                         </div>
-                                    </form>  
-                                    <div class="card-footer text-center">
-                                        <div class="small">
-                                            <a href="#" (click)="preparaCadastrar($event)" >
-                                                Não possui Usuário? Cadastre-se!
-                                            </a>
+
+                                        <div class="form-group" *ngIf="cadastrando">
+											<label class="small mb-1">Matrícula</label>
+											<input type="number" name="matricula"
+                                                [(ngModel)]="matricula"
+                                                class="form-control py-4"
+                                                placeholder="Digite sua Matrícula" />																				  
                                         </div>
-                                    </div>                                                                                                                   
+
+                                        <div class="form-group align-items-center justify-content-between mt-4 mb-0">
+                                            <button type="submit" class="btn btn-primary" *ngIf="!cadastrando">
+                                                Enviar
+                                            </button>
+
+                                            <button type="button" class="btn btn-success" 
+                                                    (click)="cadastrar()"
+                                                    *ngIf="cadastrando">
+                                                Cadastrar
+                                            </button>
+
+                                            <button type="button" (click)="cancelaCadastro()"
+                                                    class="btn btn-danger ml-1" *ngIf="cadastrando">
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="card-footer text-center">
+                                    <div class="small">
+                                        <a href="#" (click)="preparaCadastrar($event)" >
+                                            Não possui Usuário? Cadastre-se!
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -74,4 +81,4 @@
             </main>
         </div>
     </div>
-</div>    
+</div>

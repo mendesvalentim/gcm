@@ -3,11 +3,22 @@
 <head>
   <meta charset="utf-8">
   <title>OcorrenciasApp</title>
-  <base href="/">
+  <base href="ocorrencia">
+  <script type="text/javascript">
+    var cfgApiBaseUrl = "http://localhost:8080";
+    /*
+    IDE: http://localhost:8080"
+    Tomcat1: http://localhost:8080/ocorrenciasservice
+    web: http://201.23.85.173/ocorrenciasservice
+    */
+    window.cfgApiBaseUrl = cfgApiBaseUrl;
+  </script> 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
 </head>
+
 <body class="sb-nav-fixed">
   <app-root></app-root>
 </body>

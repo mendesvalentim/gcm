@@ -6,7 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -32,7 +31,12 @@ public class Ocorrencia {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
 
-    private Integer idUsuario;
+    @NotNull(message = "{campo.usuario.obrigatorio}")
+    private String usuario;
+
+    @Column(nullable = false)
+    @NotNull(message = "campo.codigo.obrigatorio")
+    private Integer idCodOcorrencia;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataOcorrencia;
@@ -42,6 +46,8 @@ public class Ocorrencia {
     private Integer viatura;
     @Column(length = 200)
     private String endereco;
+    @Column(length = 200)
+    private String bairro;
     @Column(length = 50)
     private String motorista;
 
@@ -51,10 +57,10 @@ public class Ocorrencia {
     private String encEquipe;
     private String boGcm;
 
-   /* @JsonFormat(pattern = "HH:mm")
-    private Time horaInicial;
     @JsonFormat(pattern = "HH:mm")
-    private Time horaFinal;*/
+    private String horaInicial;
+    @JsonFormat(pattern = "HH:mm")
+    private String horaFinal;
 
     @Column(length = 500)
     private String obs;
@@ -64,6 +70,18 @@ public class Ocorrencia {
     private String auxiliar2;
     private String auxiliar3;
     private String auxiliar4;
+
+    private Boolean status = true;
+    @Column(length = 50)
+    private String imovel;
+    @Column(length = 50)
+    private String proprietario;
+    @Column(length = 50)
+    private String rg;
+    @Column(length = 50)
+    private String cpf;
+    @Column(length = 50)
+    private String legislacao;
 
     @PrePersist
     public void prePersist(){

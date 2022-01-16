@@ -1,0 +1,7 @@
+input[type="text"]:disabled {
+    background: #ccc;
+  }
+
+  input:disabled {
+    background: #ccc;
+  }  

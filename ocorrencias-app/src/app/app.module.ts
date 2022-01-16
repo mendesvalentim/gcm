@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,33 +11,47 @@ import { OcorrenciasModule } from './ocorrencias/ocorrencias.module';
 import { BoGcmModule } from './bo-gcm/bo-gcm.module';
 
 import { OcorrenciasService } from './ocorrencias.service';
-import { BoGcmService } from './bo-gcm.service';
+import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthService } from './auth.service';
+import { TokenInterceptor } from './token.interceptor';
+import { SinespModule } from './sinesp/sinesp.module';
 
 
+import { DashboardService } from './dashboard.service';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     TemplateModule,
     OcorrenciasModule,
-    BoGcmModule
+    BoGcmModule,
+    SinespModule,
+    DashboardModule,
+    AppRoutingModule
   ],
   providers: [
     OcorrenciasService,
-    BoGcmService,
-    AuthService
+    DashboardService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
