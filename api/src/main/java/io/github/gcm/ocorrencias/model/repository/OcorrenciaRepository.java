@@ -39,7 +39,9 @@ public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Integer>
             "    oco.proprietario,\n" +
             "    oco.rg,\n" +
             "    oco.bairro,\n" +
-            "    oco.id_cod_ocorrencia\n" +
+            "    oco.id_cod_ocorrencia,\n" +
+            "    oco.notificacao,\n" +
+            "    oco.autuacao\n" +
             "FROM ocorrencia oco\n" +
             "LEFT JOIN cod_ocorrencia cod ON (oco.id_cod_ocorrencia=cod.id) where oco.numero_talao > 0 " +
             "order by oco.id desc", nativeQuery = true)

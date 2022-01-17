@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-public class boGcm {
+public class BoGcm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

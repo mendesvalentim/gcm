@@ -145,6 +145,20 @@
                            autocomplete="off"/>
                 </div>
             </div>  
+            <div class="col-md-2">
+                <label>Staus Ocorrência:</label>                
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" 
+                            [(ngModel)]="ocorrencia.status"
+                            class="onoffswitch-checkbox"   
+                            id="myonoffswitch" 
+                            [checked]="ocorrencia.status">                             
+                    <label class="onoffswitch-label" for="myonoffswitch">    
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>               
         </div>                  
         <legend> 
             Guarnição 
@@ -230,12 +244,28 @@
         <div class="row">  
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>legislacao:</label>
+                    <label>Legislacao:</label>
                     <input type="text" class="form-control border border-info"  
                         autocomplete="off"
                         [(ngModel)]="ocorrencia.legislacao" name="legislacao"/> 
                 </div> 
-            </div>                                
+            </div>
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Notificação:</label>
+                    <input type="number" class="form-control border border-info"  
+                        autocomplete="off"
+                        [(ngModel)]="ocorrencia.notificacao" name="notificacao"/>                         
+                </div>              
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Autuação:</label>
+                    <input type="number" class="form-control border border-info"  
+                        autocomplete="off"
+                        [(ngModel)]="ocorrencia.autuacao" name="autuacao"/>                         
+                </div>              
+            </div>                                             
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>BOGCM:</label>
@@ -255,22 +285,7 @@
                 </button>                    
                </div>
            </div>
-                                                             
-
-            <div class="col-md-2">
-                <label>Staus Ocorrência:</label>                
-                <div class="onoffswitch">
-                    <input type="checkbox" name="onoffswitch" 
-                            [(ngModel)]="ocorrencia.status"
-                            class="onoffswitch-checkbox"   
-                            id="myonoffswitch" 
-                            [checked]="ocorrencia.status">                             
-                    <label class="onoffswitch-label" for="myonoffswitch">    
-                        <span class="onoffswitch-inner"></span>
-                        <span class="onoffswitch-switch"></span>
-                    </label>
-                </div>
-            </div>              
+                                                                        
         </div>  
 
         <div class="row">

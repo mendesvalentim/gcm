@@ -35,6 +35,8 @@ export class Ocorrencia {
     rg!:string;
     cpf!:string;
     legislacao!:string;
+    notificacao!: number;
+    autuacao!: number;
 
 
 
