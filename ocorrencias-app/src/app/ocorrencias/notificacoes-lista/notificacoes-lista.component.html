@@ -1,0 +1,69 @@
+<h1 class="mt-4">Fiscalizações</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+    <br  >
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">
+        </div>
+    </div>       
+    <div class="row">
+        <div class="col-md-12 table-overflow">
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Data</th>                       
+                        <th>BOGCM</th>                        
+                        <th>Notificacao</th>
+                        <th>cod.Ocorrencia</th>
+                        <th>Endereco</th>                       
+                        <th>Atuacao</th>                     
+                        <th>Legislacao</th>  
+                        <th>Nome Proprietario</th>                        
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr *ngFor="let notificao of notificacoes| filter:filterTerm | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };">
+                        <td>{{ notificao.dataOcorrencia }}</td>
+                        <td>{{ notificao.numeroBoGcm }}</td>
+                        <td>{{ notificao.Notificacao }}</td>
+                        <td>{{ notificao.codOcorrencia }}</td>
+                        <td>{{ notificao.endereco }}</td>
+                        <td>{{ notificao.Atuacao }}</td>
+                        <td>{{ notificao.Legislacao }}</td>
+                        <td>{{ notificao.NomeProprietario }}</td>
+                        
+                       <!---
+                        <td>
+                            <button type="button" class="btn btn-primary ml-1"  
+                                    routerLink="/notificacoes/visualizar/{{notificacoes.id}}">
+                                    <i class="fas fa-search"></i>
+                            </button>  
+     
+                            <button class="btn btn-warning" 
+                                    routerLink="/notificacoes/form/{{notificacoes.id}}">
+                                <i class="fa fa-edit"></i>
+                            </button>                                                                           
+                        </td>                             
+                            -->                
+                    </tr>                           
+                </tbody>                 
+            </table> 
+            <div class="d-flex justify-content-center">
+                <pagination-controls     
+                  previousLabel="Prev" 
+                  nextLabel="Next" 
+                  (pageChange)="onTableDataChange($event)"
+                  >
+                </pagination-controls>
+            </div>                                             
+        </div> 
+    </div>          
+</div>

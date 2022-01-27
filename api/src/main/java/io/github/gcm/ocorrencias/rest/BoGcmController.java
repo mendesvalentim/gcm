@@ -4,6 +4,7 @@ import io.github.gcm.ocorrencias.model.entity.BoGcm;
 
 import io.github.gcm.ocorrencias.model.entity.Ocorrencia;
 import io.github.gcm.ocorrencias.model.repository.BoGcmRepository;
+import io.github.gcm.ocorrencias.model.repository.CodOcorrenciaRepository;
 import io.github.gcm.ocorrencias.model.repository.OcorrenciaRepository;
 import io.github.gcm.ocorrencias.rest.dto.BoGcmDTO;
 

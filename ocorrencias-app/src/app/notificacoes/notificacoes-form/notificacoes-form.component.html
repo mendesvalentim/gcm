@@ -7,12 +7,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Ocorrência: </label>
+                    <label>Notificações e Atuações: </label>
                     <select class="form-control">
                         <option value="">Selecione...</option>
-                        <option *ngFor="let ocorrencia of ocorrencias" 
-                                [ngValue]= "ocorrencia.id"> 
-                                {{ ocorrencia.numeroTalao }}
+                        <option *ngFor="let notificacao of notificacoes" 
+                                [ngValue]= "notificacao.numeroBoGcm"> 
+                                {{ notificacao.numeroBoGcm}}
                                                    
                         </option>
                     </select>

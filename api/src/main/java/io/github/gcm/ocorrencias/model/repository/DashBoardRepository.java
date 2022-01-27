@@ -17,7 +17,7 @@ public interface DashBoardRepository extends JpaRepository<Ocorrencia, Integer> 
             "where oco.cod_Ocorrencia is not null \n" +
             "and cod.id not in (1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 216, 226) \n"+
             "group by oco.cod_Ocorrencia \n" +
-            "order by quantidade desc", nativeQuery = true)
+            "order by cod.codigo desc", nativeQuery = true)
     List findAllCuston();
 
     @Query(value = "select " +
@@ -28,8 +28,7 @@ public interface DashBoardRepository extends JpaRepository<Ocorrencia, Integer> 
             "where oco.cod_Ocorrencia is not null \n" +
             "and cod.id not in (1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 13, 216, 226) \n" +
             "and oco.data_ocorrencia BETWEEN  :dataInicial AND :dataFinal "+
-            "and oco.bo_gcm is not null " +
             "group by oco.cod_Ocorrencia \n" +
-            "order by quantidade desc ", nativeQuery = true)
+            "order by cod.codigo", nativeQuery = true)
     List findAllCustonDate(String dataInicial, String dataFinal);
 }

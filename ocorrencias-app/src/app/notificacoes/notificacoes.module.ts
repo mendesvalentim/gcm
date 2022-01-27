@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-
-
-import { BoGcmRoutingModule } from './bo-gcm-routing.module';
-import { BoGcmFormComponent } from './bo-gcm-form/bo-gcm-form.component';
-import { BoGcmListaComponent } from '../ocorrencias/bo-gcm-lista/bo-gcm-lista.component';
+import { NotificacoesRoutingModule } from './notificacoes-routing.module';
+import { NotificacoesFormComponent } from './notificacoes-form/notificacoes-form.component';
+import { NotificacoesListaComponent } from '../ocorrencias/notificacoes-lista/notificacoes-lista.component';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -14,21 +12,19 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
-    BoGcmFormComponent,
-    BoGcmListaComponent,
-    
-
+    NotificacoesFormComponent,
+    NotificacoesListaComponent
   ],
   imports: [
     CommonModule,
-    BoGcmRoutingModule,
+    NotificacoesRoutingModule,
     FormsModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,    
     RouterModule
   ], exports:[
-    BoGcmFormComponent,
-    BoGcmListaComponent
+    NotificacoesFormComponent,
+    NotificacoesListaComponent
   ]
 })
-export class BoGcmModule { }
+export class NotificacoesModule { }

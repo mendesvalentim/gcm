@@ -13,7 +13,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/api/usuarios/**").permitAll()
                 .antMatchers( "/api/ocorrencias/**", "/api/codocorrencias/**",
-                        "/api/bo-gcm/**", "/api/dashboard/**", "/api/sinesp/**").authenticated()
+                        "/api/bo-gcm/**", "/api/dashboard/**", "/api/notificacoes/**","/api/sinesp/**").authenticated()
                 .anyRequest().denyAll();
     }
 }

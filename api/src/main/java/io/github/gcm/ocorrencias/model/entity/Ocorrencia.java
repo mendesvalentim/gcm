@@ -83,9 +83,6 @@ public class Ocorrencia {
     @Column(length = 50)
     private String legislacao;
 
-    private Integer notificacao;
-    private Integer autuacao;
-
     @PrePersist
     public void prePersist(){
         setDataCadastro(LocalDate.now());
