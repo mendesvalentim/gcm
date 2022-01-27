@@ -1,0 +1,23 @@
+<h1 class="mt-4">Boletim de Ocorrência GCM</h1>
+<ol class="breadcrumb md-4">
+    <li class="breadcrum-bitem active">Novo</li>
+</ol>
+<div class="container">
+    <form #form="ngForm" (sbmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Notificações e Atuações: </label>
+                    <select class="form-control">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let notificacao of notificacoes" 
+                                [ngValue]= "notificacao.numeroBoGcm"> 
+                                {{ notificacao.numeroBoGcm}}
+                                                   
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

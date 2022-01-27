@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Ocorrencia } from './ocorrencias/ocorrencias';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
+import { Notificacoes } from './notificacoes/notificacoes';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,12 @@ export class OcorrenciasService {
 
   getBoGcms() : Observable<Ocorrencia[]> {
     return this.http.get<Ocorrencia[]>(`${this.apiURL}/bogcm`);
+  }
+  
+  getNotificacoes() : Observable<Notificacoes[]> {
+    return this.http.get<Notificacoes[]>(`${this.apiURL}/notificacoes`);
   }  
+  
   
   buscaUltimoTalao() : Observable<number>{
     return this.http.get<number>(`${this.apiURL}/ultimotalao`);

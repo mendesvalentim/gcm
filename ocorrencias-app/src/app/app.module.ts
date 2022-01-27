@@ -9,6 +9,7 @@ import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
 import { OcorrenciasModule } from './ocorrencias/ocorrencias.module';
 import { BoGcmModule } from './bo-gcm/bo-gcm.module';
+import { NotificacoesModule } from './notificacoes/notificacoes.module';
 
 import { OcorrenciasService } from './ocorrencias.service';
 import { CommonModule } from '@angular/common';
@@ -41,7 +42,8 @@ import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.co
     BoGcmModule,
     SinespModule,
     DashboardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NotificacoesModule
   ],
   providers: [
     OcorrenciasService,
