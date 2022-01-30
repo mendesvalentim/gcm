@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -36,12 +36,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/resources/messages.properties" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/exception/ApiErrors.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/model/entity/Ocorrencia.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/ApplicatioControllerAdvice.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/config/InternacionalizacaoConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/model/entity/Ocorrencia.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/exception/ApiErrors.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/OcorrenciaController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/ApplicatioControllerAdvice.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1vbCytdwWq1seA93GHrqXhu0m12" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -121,6 +121,25 @@
     </ignored-roots>
     <MESSAGE value="Comunicação banco de dados h2" />
     <option name="LAST_COMMIT_MESSAGE" value="Comunicação banco de dados h2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/github/gcm/ocorrencias/rest/PertubacaoSossegoController.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint log-message="true" log-stack="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.aop.framework.JdkDynamicAopProxy" memberName="advised" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
