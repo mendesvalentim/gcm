@@ -13,6 +13,7 @@ import { Notificacoes } from './notificacoes/notificacoes';
 export class OcorrenciasService {
 
   apiURL: string = environment.apiUrlBase + '/api/ocorrencias';
+  apiURLNotficacao: string = environment.apiUrlBase + '/api/notificacoes';
 
   constructor( private http: HttpClient) {
 
@@ -21,6 +22,10 @@ export class OcorrenciasService {
   salvar(ocorrencia: Ocorrencia): Observable<Ocorrencia>{
     return this.http.post<Ocorrencia>(`${this.apiURL}`, ocorrencia);     
   }
+
+  salvarNotificacao(notificacao: Notificacoes): Observable<Notificacoes>{
+    return this.http.post<Notificacoes>(`${this.apiURLNotficacao}`, notificacao);     
+  }  
 
   atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);

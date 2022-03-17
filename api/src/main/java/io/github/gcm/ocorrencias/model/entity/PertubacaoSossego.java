@@ -20,7 +20,7 @@ public class PertubacaoSossego {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataOcorrencia;
     @Column(name="notificacao")
-    private Integer notificacao ;
+    private String notificacao ;
     @Column(name="atuacao")
     private String atuacao ;
     @Column(name="numero_bo_gcm")

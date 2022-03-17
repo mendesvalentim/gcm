@@ -23,6 +23,7 @@ import { SinespModule } from './sinesp/sinesp.module';
 import { DashboardService } from './dashboard.service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.component';
+import { CodOcorrenciaModule } from './cod-ocorrencia/cod-ocorrencia.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.co
     BoGcmModule,
     SinespModule,
     DashboardModule,
+    CodOcorrenciaModule,
     AppRoutingModule,
     NotificacoesModule
   ],

@@ -9,6 +9,7 @@ import { Select2OptionData } from 'ng-select2';
 import { Options } from "select2";
 
 import { CodocorrenciasService } from 'src/app/codocorrencias.service';
+import { Notificacoes } from 'src/app/notificacoes/notificacoes';
 
 
 @Component({
@@ -73,7 +74,7 @@ export class OcorrenciasformComponent implements OnInit {
 
   buscaCodigoOcorrencia(): void {
     this.codOcorrenciaService
-    .getAllCodOcorrencia()
+    .getAllCodOcorrenciaSelect2()
     .subscribe(
       response =>{ this.codigosOcorrencia = response});
 
@@ -142,6 +143,9 @@ export class OcorrenciasformComponent implements OnInit {
         })
 
     }else{
+      if(this.ocorrencia.idCodOcorrencia == 59, 66, 253){
+        this.salvaNotificacao();
+      }
     
     this.service
       .salvar(this.ocorrencia)
@@ -154,8 +158,32 @@ export class OcorrenciasformComponent implements OnInit {
         this.errors = errorResponse.error.errors;  
       })
     }
-  } 
+  }
+  
+  salvaNotificacao(){
 
+    var notificacao = new Notificacoes;
+       
+    notificacao.dataOcorrencia   = this.ocorrencia.dataOcorrencia;
+    notificacao.numeroBoGcm      = String(this.ocorrencia.boGcm);
+    notificacao.endereco         = this.ocorrencia.endereco;
+    notificacao.notificacao      = this.ocorrencia.notificacao;
+    notificacao.atuacao          = String(this.ocorrencia.autuacao);
+    notificacao.legislacao       = this.ocorrencia.legislacao;
+    notificacao.nomeProprietario = this.ocorrencia.proprietario;
+
+    this.service
+    .salvarNotificacao(notificacao)
+    .subscribe(response =>{ notificacao = response;
+      this.errors=[];
+      this.success = true;
+      }, errorResponse => {    
+        this.success = false;    
+        this.errors = errorResponse.error.errors;  
+    });    
+
+  }
+  
   dataAtual(){
     var data  = new Date();
     var dia   = String(data.getDate()).padStart(2, '0');

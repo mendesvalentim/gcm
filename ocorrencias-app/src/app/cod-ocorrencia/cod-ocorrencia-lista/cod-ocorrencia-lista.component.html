@@ -1,0 +1,84 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>  
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>   
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Lista de Códigos de Ocorrências</h2>
+                    </div>
+                </div>
+            </div>                                                    
+        </div>
+    </div>  
+
+        <div class="table-filter">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="show-entries">
+                        <span>Mostrar</span>
+                            <select (change)="onTableSizeChange($event)" class="form-control">
+                                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                        {{ size }}
+                                </option>
+                            </select>                                      
+                            <span>Códigos de Ocorrências</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
+                    </div>
+                                    
+                        <div class="col-md-2" id="btn-novo">
+                            <button class="btn btn-success" (click)="novoCadastro()" >
+                                <i class="fa fa-plus"></i> Novo
+                            </button>   
+                                                          
+                        </div>                            
+                                                  
+                </div>
+            </div>
+
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>Numero</th>                
+                <th>Codigo</th>
+                <th>Descrição</th>                
+                <th></th>                      
+            </tr>
+        </thead>
+        <tbody>                    
+            <tr *ngFor="let codocorrencia of codocorrencias | filter:filterTerm | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+                };"style="text-transform: uppercase">
+                <td>{{ codocorrencia.id }}</td>
+                <td>{{ codocorrencia.codigo }}</td>
+                <td>{{ codocorrencia.text }}</td>                                               
+                <td>
+                                             
+                    <button class="btn btn-warning" 
+                            routerLink="/cod-ocorrencia/form/{{codocorrencia.id}}">
+                        <i class="fa fa-edit"></i>
+                    </button>
+
+                </td>                        
+            </tr>                           
+        </tbody>                 
+    </table> 
+    <div class="d-flex justify-content-center">
+        <pagination-controls     
+            previousLabel="Prev" 
+            nextLabel="Next" 
+            (pageChange)="onTableDataChange($event)"
+            >
+        </pagination-controls>
+    </div>                                              
+</div>
