@@ -24,6 +24,9 @@ import { DashboardService } from './dashboard.service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.component';
 import { CodOcorrenciaModule } from './cod-ocorrencia/cod-ocorrencia.module';
+import { LivroDiarioComponent } from './livro-diario/livro-diario.component';
+import { LivroDiarioListaComponent } from './livroDiario/livro-diario-lista/livro-diario-lista.component';
+import { LivroDiarioFormComponent } from './livroDiario/livro-diario-form/livro-diario-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { CodOcorrenciaModule } from './cod-ocorrencia/cod-ocorrencia.module';
     HomeComponent,
     LoginComponent,
     LayoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    LivroDiarioComponent,
+    LivroDiarioListaComponent,
+    LivroDiarioFormComponent
   ],
   imports: [
     BrowserModule,
