@@ -27,13 +27,11 @@ export class BoGcmListaComponent implements OnInit {
 
   onTableDataChange(event: any){
     this.page = event;
-    this.buscaBogcm();
   }  
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.buscaBogcm();
   } 
 
   buscaBogcm(): void{

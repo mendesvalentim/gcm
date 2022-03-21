@@ -41,13 +41,11 @@ export class OcorrenciasListaComponent implements OnInit {
   
   onTableDataChange(event: any){
     this.page = event;
-    this.buscaOcorrencias();
   }  
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.buscaOcorrencias();
   } 
 
   geraRelatorio(){

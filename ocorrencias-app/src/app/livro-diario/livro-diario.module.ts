@@ -14,6 +14,10 @@ import { LivroDiarioListaComponent } from './livro-diario-lista/livro-diario-lis
   imports: [
     CommonModule,
     LivroDiarioRoutingModule
+  ], exports:[
+    LivroDiarioFormComponent,
+    LivroDiarioListaComponent
+
   ]
 })
 export class LivroDiarioModule { }

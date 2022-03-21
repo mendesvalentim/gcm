@@ -41,13 +41,11 @@ export class CodOcorrenciaListaComponent implements OnInit {
   
   onTableDataChange(event: any){
     this.page = event;
-    this.buscacodOcorrencias();
   }  
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.buscacodOcorrencias();
   } 
 
   novoCadastro(){
