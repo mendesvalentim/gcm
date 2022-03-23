@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/auth.service';
 
 import { Ocorrencia } from '../ocorrencias';
 import { OcorrenciasService } from '../../ocorrencias.service';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from "select2";
 
@@ -131,57 +131,66 @@ export class OcorrenciasformComponent implements OnInit {
        })  
   }
 
-  onSubmit(){
+  async onSubmit(){
+    console.log(this.id)
     if(this.id){
+      console.log("atualizar")
       this.service
         .atualizar(this.ocorrencia)
         .subscribe(response =>{
           this.success = true;
-            this.errors = []; 
+          this.errors = []; 
+          this.ocorrencia = response;
         }, errorResponse =>{
            this.errors = ['Erro ao atualizar ocorrência.']
         })
-
     }else{
-      if(this.ocorrencia.idCodOcorrencia == 59, 66, 253){
-        this.salvaNotificacao();
+      console.log("salvar")
+      if(this.ocorrencia.idCodOcorrencia == 59 && 66 && 253 && 251){
+        const notificacao = await this.preparaNotificacao();   
+        this.ocorrencia.pertubacao  = notificacao.id;                      
       }
-    
+      this.salvaOcorrencia(); 
+    } 
+  }
+
+  async preparaNotificacao(){
+    var notificacao = new Notificacoes;
+       
+    notificacao.dataOcorrencia   = this.ocorrencia.dataOcorrencia;
+    notificacao.numeroBoGcm      = this.ocorrencia.boGcm ? this.ocorrencia.boGcm.toString() : '' ;
+    notificacao.endereco         = this.ocorrencia.endereco;
+    notificacao.notificacao      = this.ocorrencia.notificacao;     
+    notificacao.atuacao          = this.ocorrencia.autuacao ? this.ocorrencia.autuacao.toString() : '';
+    notificacao.legislacao       = this.ocorrencia.legislacao;
+    notificacao.nomeProprietario = this.ocorrencia.proprietario;
+
+    return await this.salvaNotificacao(notificacao);
+  }
+
+  async salvaNotificacao(notificacao: Notificacoes): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.service
+        .salvarNotificacao(notificacao)
+        .subscribe({
+          next: (data) => resolve(data),
+          error: (err) => reject(err),
+        });
+    });
+  }
+
+  salvaOcorrencia(){  
     this.service
       .salvar(this.ocorrencia)
       .subscribe( response => {
         this.success = true;
         this.errors = [];
-        this.ocorrencia = response;
+        this.ocorrencia =response;
+        this.id = response.id
       } , errorResponse => {
         this.success = false;              
         this.errors = errorResponse.error.errors;  
-      })
-    }
-  }
-  
-  salvaNotificacao(){
-
-    var notificacao = new Notificacoes;
-       
-    notificacao.dataOcorrencia   = this.ocorrencia.dataOcorrencia;
-    notificacao.numeroBoGcm      = String(this.ocorrencia.boGcm);
-    notificacao.endereco         = this.ocorrencia.endereco;
-    notificacao.notificacao      = this.ocorrencia.notificacao;
-    notificacao.atuacao          = String(this.ocorrencia.autuacao);
-    notificacao.legislacao       = this.ocorrencia.legislacao;
-    notificacao.nomeProprietario = this.ocorrencia.proprietario;
-
-    this.service
-    .salvarNotificacao(notificacao)
-    .subscribe(response =>{ notificacao = response;
-      this.errors=[];
-      this.success = true;
-      }, errorResponse => {    
-        this.success = false;    
-        this.errors = errorResponse.error.errors;  
-    });    
-
+      });
   }
   
   dataAtual(){

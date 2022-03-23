@@ -2,6 +2,7 @@ export class Ocorrencia {
     id!: number;
     idUsuario!: number;
     idCodOcorrencia: number=1;
+    pertubacao!: number;
     numeroTalao!: number;
     boGcm!: number;
     equipe!: string;

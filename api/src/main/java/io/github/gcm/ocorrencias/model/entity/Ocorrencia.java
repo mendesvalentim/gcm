@@ -83,6 +83,7 @@ public class Ocorrencia {
     @Column(length = 50)
     private String legislacao;
 
+    private Integer pertubacao;
     private Integer notificacao;
     private Integer autuacao;
 

@@ -1,9 +1,9 @@
 export class Notificacoes {
-    idOcorrencia!: Number;
+    id!: number;
     dataOcorrencia!: String;
     numeroBoGcm!: String;
     endereco!: String;   
-    notificacao!: Number;
+    notificacao!: number;
     atuacao!: String;
     legislacao!:String;
     nomeProprietario!:String;

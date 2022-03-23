@@ -3,7 +3,6 @@ package io.github.gcm.ocorrencias.rest;
 import io.github.gcm.ocorrencias.model.entity.Ocorrencia;
 import io.github.gcm.ocorrencias.model.repository.OcorrenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
