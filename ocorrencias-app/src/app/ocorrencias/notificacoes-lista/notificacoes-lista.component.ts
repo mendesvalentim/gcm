@@ -14,6 +14,10 @@ export class NotificacoesListaComponent implements OnInit {
   page = 1;
   count = 0;
   tableSize = 30 ; 
+  tableSizes = [20, 25, 30 ,35, 50]; 
+  
+  mensagemSucesso!: String;
+  mensagemErro!: String;
   filterTerm!: string;    
   
   constructor(    private service: NotificacoesService, 
@@ -43,5 +47,4 @@ export class NotificacoesListaComponent implements OnInit {
         console.log(error);
       });    
   }  
-
 }

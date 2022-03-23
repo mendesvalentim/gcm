@@ -26,10 +26,14 @@ export class OcorrenciasService {
   salvarNotificacao(notificacao: Notificacoes): Observable<Notificacoes>{
     return this.http.post<Notificacoes>(`${this.apiURLNotficacao}`, notificacao);     
   }  
+  atualizarNotificacao(notificacao: Notificacoes): Observable<any>{
+    return this.http.put<Notificacoes>(`${this.apiURLNotficacao}/${notificacao.id}`, notificacao);
+  }  
 
   atualizar(ocorrencia: Ocorrencia): Observable<any>{
     return this.http.put<Ocorrencia>(`${this.apiURL}/${ocorrencia.id}`, ocorrencia);
   }
+
   getAllOcorrencias() : Observable<Ocorrencia[]> {   
     return this.http.get<Ocorrencia[]>(`${this.apiURL}`);
   }
@@ -61,5 +65,9 @@ export class OcorrenciasService {
   deletar(ocorrencia: Ocorrencia): Observable<any> {
     return this.http.delete<any>(`${this.apiURL}/${ocorrencia.id}`);        
   }
+
+  deletarNotificacao(notificacao: Notificacoes): Observable<any> {
+    return this.http.delete<any>(`${this.apiURLNotficacao}/${notificacao.id}`);        
+  }  
   
 }

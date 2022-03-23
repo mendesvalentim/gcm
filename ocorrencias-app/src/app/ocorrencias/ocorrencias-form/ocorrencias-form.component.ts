@@ -71,7 +71,6 @@ export class OcorrenciasformComponent implements OnInit {
     })   
   }
 
-
   buscaCodigoOcorrencia(): void {
     this.codOcorrenciaService
     .getAllCodOcorrenciaSelect2()
@@ -132,40 +131,98 @@ export class OcorrenciasformComponent implements OnInit {
   }
 
   async onSubmit(){
-    console.log(this.id)
     if(this.id){
-      console.log("atualizar")
-      this.service
-        .atualizar(this.ocorrencia)
-        .subscribe(response =>{
-          this.success = true;
-          this.errors = []; 
-          this.ocorrencia = response;
-        }, errorResponse =>{
-           this.errors = ['Erro ao atualizar ocorrência.']
-        })
+      await this.atualizaNotificacao();           
+      await this.atualizaOcorrencia();      
     }else{
-      console.log("salvar")
-      if(this.ocorrencia.idCodOcorrencia == 59 && 66 && 253 && 251){
-        const notificacao = await this.preparaNotificacao();   
-        this.ocorrencia.pertubacao  = notificacao.id;                      
-      }
-      this.salvaOcorrencia(); 
-    } 
+      if(this.heNotificacao()){  
+        const notificacao = await  this.preparaSalvamentoNoficacao();         
+        this.ocorrencia.pertubacao  = notificacao.id;}
+      } 
+      this.salvaOcorrencia();     
+  }
+  
+  async preparaSalvamentoNoficacao(){
+    if(this.heNotificacao()){             
+      return await this.criaHeSalvaNotificacao();           
+    }  
   }
 
-  async preparaNotificacao(){
-    var notificacao = new Notificacoes;
-       
+  heNotificacao(){
+   if (this.ocorrencia.idCodOcorrencia == 59 || this.ocorrencia.idCodOcorrencia  == 66 || 
+      this.ocorrencia.idCodOcorrencia  == 253|| this.ocorrencia.idCodOcorrencia  == 251 ){
+      return true;
+    }else{ 
+      return false}    
+ }
+
+ async atualizaOcorrencia(){
+    this.service
+    .atualizar(this.ocorrencia)
+    .subscribe(response =>{
+      this.success = true;
+      this.errors = []; 
+      this.ocorrencia = response;
+    }, errorResponse =>{
+       this.errors = ['Erro ao atualizar ocorrência.']
+    })    
+  }
+
+  async atualizaNotificacao(){
+    if(this.ocorrencia.pertubacao){
+      if(!this.heNotificacao()){
+        await this.deletaNotificacao();        
+      }else{   
+          var notificacao = new Notificacoes;    
+          this.criaNotificao(notificacao); 
+          this.service
+          .atualizarNotificacao(notificacao)
+          .subscribe(response =>{
+            this.success = true;
+            this.errors = []; 
+          }, errorResponse =>{
+            this.errors = ['Erro ao atualizar ocorrência.']
+          })       
+      }  
+    }else{
+      if(this.heNotificacao()){             
+       const notificacao = await this.criaHeSalvaNotificacao();   
+       this.ocorrencia.pertubacao  = notificacao.id;
+    }
+   }
+  }
+
+  async deletaNotificacao(){    
+    var notificacao = new Notificacoes;    
+    this.criaNotificao(notificacao);    
+    this.ocorrencia.pertubacao = null;    
+    this.service
+      .deletarNotificacao(notificacao)
+      .subscribe(response =>{
+        this.success = true;
+        this.errors = []; 
+      }, errorResponse =>{
+        this.errors = ['Erro ao atualizar ocorrência.']
+      })        
+  }
+
+  async criaHeSalvaNotificacao(){
+    var notificacao = new Notificacoes;    
+    this.criaNotificao(notificacao);    
+
+    return await this.salvaNotificacao(notificacao);
+  }
+
+  criaNotificao(notificacao: Notificacoes){          
+    notificacao.id               = this.ocorrencia.pertubacao;
     notificacao.dataOcorrencia   = this.ocorrencia.dataOcorrencia;
     notificacao.numeroBoGcm      = this.ocorrencia.boGcm ? this.ocorrencia.boGcm.toString() : '' ;
     notificacao.endereco         = this.ocorrencia.endereco;
     notificacao.notificacao      = this.ocorrencia.notificacao;     
     notificacao.atuacao          = this.ocorrencia.autuacao ? this.ocorrencia.autuacao.toString() : '';
     notificacao.legislacao       = this.ocorrencia.legislacao;
-    notificacao.nomeProprietario = this.ocorrencia.proprietario;
+    notificacao.nomeProprietario = this.ocorrencia.proprietario; 
 
-    return await this.salvaNotificacao(notificacao);
   }
 
   async salvaNotificacao(notificacao: Notificacoes): Promise<any> {
@@ -185,8 +242,8 @@ export class OcorrenciasformComponent implements OnInit {
       .subscribe( response => {
         this.success = true;
         this.errors = [];
-        this.ocorrencia =response;
-        this.id = response.id
+        this.ocorrencia = response;
+        this.id = response.id;
       } , errorResponse => {
         this.success = false;              
         this.errors = errorResponse.error.errors;  
