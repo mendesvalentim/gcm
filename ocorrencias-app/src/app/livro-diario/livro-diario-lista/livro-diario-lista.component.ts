@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LivroDiarioService } from 'src/app/livro-diario.service';
+import { Livro } from '../livro';
+
 
 @Component({
   selector: 'app-livro-diario-lista',
@@ -8,6 +10,10 @@ import { LivroDiarioService } from 'src/app/livro-diario.service';
   styleUrls: ['./livro-diario-lista.component.css']
 })
 export class LivroDiarioListaComponent implements OnInit {
+
+  livrosDiarios: Livro[] = [];
+  livroDiarioSelecionada!: Livro;
+
   mensagemSucesso!: String;
   mensagemErro!: String;
   filterTerm!: string;
@@ -22,8 +28,18 @@ export class LivroDiarioListaComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.buscaLivros();
   }
 
+  buscaLivros(): void{
+    this.service
+    .getAllLivros()
+    .subscribe( resposta =>
+                  {this.livrosDiarios = resposta},
+      error =>{
+        this.mensagemErro = 'Ocorreu um erro ao carregar os livros diários.'
+      });    
+  }
   onTableDataChange(event: any){
     this.page = event;    
   }  
@@ -34,7 +50,7 @@ export class LivroDiarioListaComponent implements OnInit {
   } 
 
   novoCadastro(){
-    this.router.navigate(['/livro/form'])
+    this.router.navigate(['/livro-diario/form'])
   }
 
 

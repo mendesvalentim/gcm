@@ -1,1 +1,61 @@
-<p>livro-diario-form works!</p>
+<div class="table-title">
+  <div class="row">
+      <div class="col-sm-4">
+          <h2>{{ livro.id ? 'Edição' : 'Cadastro'}}</h2>
+      </div>
+  </div>
+</div>   
+
+<form #ocorrenciaForm="ngForm" (ngSubmit)="onSubmit()" >       
+  <div class="row">
+      <div class="col-md-12">
+          <div class="alert alert-success" role="alert" *ngIf="success == true">
+             Livro Diário <b>{{ livro.id }}</b> salva/atualizada com sucesso!
+          </div>  
+          <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+              {{ erro }}
+          </div>                                               
+      </div>  
+
+
+<div class="container">
+    <angular-editor id="livro" 
+          [(ngModel)]="livro.texto" name="texto"
+          [config]="config1"           
+          ></angular-editor>
+</div>
+<p class="html">
+  HTML Output:  {{ livro.texto }}
+</p>
+<div class="col-md-2">
+  <div class="form-goup">
+      <label>Código:</label>
+      <input type="text" class="form-control border border-info"
+              [(ngModel)]="livro.texto" name="codigo"/>
+  </div>
+</div> 
+<form [formGroup]="form">
+  <angular-editor autofocus="true" id="editor2" 
+  formControlName="signature" [config]="config1"
+   (ngModelChange)="onChange2($event)"></angular-editor>
+</form>
+</div>   
+<br>
+    <div class="row">
+        <div class="col-md-8">       
+            <button type="submit" class="btn btn-warning"  *ngIf="!livro.id"> 
+                <i class="fa fa-save"></i> Salvar
+            </button>
+
+            <button type="submit" class="btn btn-primary" *ngIf="livro.id">
+                <i class="fa fa-sync-alt"></i> Atualizar
+            </button>            
+
+            <button type="button" 
+                    class="btn btn-danger ml-1"
+                    (click)="voltarParaListagem()">
+                <i class="fa fa-arrow-alt-circle-left" ></i> Voltar
+            </button>              
+        </div>
+    </div>              
+</form>  

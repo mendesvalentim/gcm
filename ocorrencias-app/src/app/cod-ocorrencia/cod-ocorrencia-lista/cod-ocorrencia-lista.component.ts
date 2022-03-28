@@ -35,7 +35,7 @@ export class CodOcorrenciaListaComponent implements OnInit {
     .subscribe( resposta =>
                   {this.codocorrencias = resposta},
       error =>{
-        this.mensagemErro = 'Ocorreu um erro ao carregar os códigos de ocorrências.'
+        this.mensagemErro = 'Ocorreu um erro ao carregar os livros diários.'
       });    
   }
   
