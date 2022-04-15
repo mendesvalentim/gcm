@@ -2,7 +2,7 @@
 export class Livro{
     id!: number;
     texto!: string;
-    data!: string;
+    dataCadastro!: string;
     usuario!: string;
     status: boolean=true;
 }

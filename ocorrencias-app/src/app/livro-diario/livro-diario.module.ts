@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-
+import { LivroDiarioVisualizarComponent } from './livro-diario-visualizar/livro-diario-visualizar.component';
 
 @NgModule({
   declarations: [
+    LivroDiarioVisualizarComponent,
     LivroDiarioFormComponent,
     LivroDiarioListaComponent
+    
   ],
   imports: [
     CommonModule,
@@ -25,8 +27,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ReactiveFormsModule
   ], exports:[
     LivroDiarioFormComponent,
+    LivroDiarioVisualizarComponent,
     LivroDiarioListaComponent
-
   ]
 })
 export class LivroDiarioModule { }

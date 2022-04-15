@@ -5,17 +5,13 @@
 </ol>
 <div class="container">
     <form #ocorrenciaVsualizar="ngForm"  >
-
+        
         <div class="row"> 
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>KM Inicial:</label>
-                    <input type="text" class="form-control border border-info" 
-                            disabled=""
-                            [(ngModel)]="ocorrencia.kmInicial" name="kmInicial"/> 
+                    <label>KM Inicial:</label> {{ocorrencia.kmInicial}}                             
                 </div>                                     
             </div>              
-
             <div class="col-md-2">
                 <div class="form-goup">
                     <label>Codigo:</label>
@@ -27,15 +23,10 @@
 
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>Vtr:</label>
-                    <input type="text" 
-                           class="form-control border border-info"
-                           disabled=""                            
-                           [(ngModel)]="ocorrencia.viatura" name="viatura"/>
-                </div>
-            </div>
+                    <label>Vtr:</label> {{ocorrencia.viatura}}
 
-                                  
+                </div>
+            </div>                                 
         </div>  
 
  

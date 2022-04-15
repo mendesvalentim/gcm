@@ -31,7 +31,10 @@
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
+                        <input type="text" 
+                            class="form-control" 
+                            placeholder="Buscar..." 
+                            [(ngModel)]="filterTerm">                                                                                              
                     </div>
                                     
                         <div class="col-md-2" id="btn-novo">
@@ -49,8 +52,9 @@
             <tr>
                 <th>Numero</th>                
                 <th>Data</th>
-                <th>Usuário</th>                
-                <th></th>                      
+                <th>Usuário</th> 
+                <th>Status</th>               
+                <th>Ação</th>                      
             </tr>
         </thead>
         <tbody>                    
@@ -60,15 +64,22 @@
                 totalItems: count
                 };"style="text-transform: uppercase">
                 <td>{{ livroDiario.id }}</td>
-                <td>{{ livroDiario.data }}</td>
+                <td>{{ livroDiario.dataCadastro }}</td>
                 <td>{{ livroDiario.usuario }}</td>                                               
                 <td>
-                                             
-                    <button class="btn btn-warning" 
+                    <span class="label label-success" *ngIf="livroDiario.status"> Aberta </span>                           
+                    <span class="label label-default" *ngIf="!livroDiario.status">Fechada</span>
+                </td>                    
+                <td>                                             
+                    <button class="btn btn-warning" *ngIf="livroDiario.status"
                             routerLink="/livro-diario/form/{{livroDiario.id}}">
                         <i class="fa fa-edit"></i>
                     </button>
 
+                    <button type="button" class="btn btn-primary ml-1"  
+                        routerLink="/livro-diario/visualizar/{{livroDiario.id}}">
+                        <i class="fas fa-search"></i>
+                    </button>  
                 </td>                        
             </tr>                           
         </tbody>                 

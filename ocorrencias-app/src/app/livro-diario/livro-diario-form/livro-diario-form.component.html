@@ -15,30 +15,32 @@
           <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
               {{ erro }}
           </div>                                               
-      </div>  
+    </div>  
 
-
-<div class="container">
-    <angular-editor id="livro" 
-          [(ngModel)]="livro.texto" name="texto"
-          [config]="config1"           
-          ></angular-editor>
+<div class="container" id="livro">
+    
+    <angular-editor  
+        autofocus="true"
+        [(ngModel)]="livro.texto" name="texto"
+        [config]="config1"           
+        >
+    </angular-editor>
+    <br>
+    <div class="col-md-2">               
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" 
+                    [(ngModel)]="livro.status"
+                    class="onoffswitch-checkbox"   
+                    id="myonoffswitch" 
+                    [checked]="livro.status">                             
+            <label class="onoffswitch-label" for="myonoffswitch">    
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+    </div>      
 </div>
-<p class="html">
-  HTML Output:  {{ livro.texto }}
-</p>
-<div class="col-md-2">
-  <div class="form-goup">
-      <label>Código:</label>
-      <input type="text" class="form-control border border-info"
-              [(ngModel)]="livro.texto" name="codigo"/>
-  </div>
-</div> 
-<form [formGroup]="form">
-  <angular-editor autofocus="true" id="editor2" 
-  formControlName="signature" [config]="config1"
-   (ngModelChange)="onChange2($event)"></angular-editor>
-</form>
+
 </div>   
 <br>
     <div class="row">

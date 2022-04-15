@@ -8,24 +8,26 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LivroDiarioService } from 'src/app/livro-diario.service';
 
 @Component({
-  selector: 'app-livro-diario-form',
-  templateUrl: './livro-diario-form.component.html',
-  styleUrls: ['./livro-diario-form.component.css']
+  selector: 'app-livro-diario-visualizar',
+  templateUrl: './livro-diario-visualizar.component.html',
+  styleUrls: ['./livro-diario-visualizar.component.css']
 })
-export class LivroDiarioFormComponent implements OnInit {
-  
+export class LivroDiarioVisualizarComponent implements OnInit {
+
   form: FormGroup;
   livro : Livro;
   success: boolean = false;
   errors!: String[];  
   id!: number;  
 
-  config1: AngularEditorConfig = {
+  config: AngularEditorConfig = {
     editable: true,
+    enableToolbar: false,
+    showToolbar: false,
     spellcheck: true,
     minHeight: '15rem',
     maxHeight: '150rem',
-    height:'25rem',
+    height:'38rem',
     width: '100rem',
     minWidth: '50rem',
     placeholder: 'Insira o texto aqui...',
@@ -140,5 +142,5 @@ export class LivroDiarioFormComponent implements OnInit {
   voltarParaListagem(){
     this.router.navigate(['/livro-diario/lista'])
   }
-}
 
+}
