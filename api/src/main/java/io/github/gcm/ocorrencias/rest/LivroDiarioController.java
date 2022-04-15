@@ -4,6 +4,7 @@ import io.github.gcm.ocorrencias.model.repository.CodOcorrenciaRepository;
 import io.github.gcm.ocorrencias.model.repository.LivroDiarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -22,7 +23,7 @@ public class LivroDiarioController {
     }
 
     @GetMapping
-    public List<LivroDiario> obtemlivo(){return repository.findAll();}
+    public List<LivroDiario> obtemlivo(){return repository.findAll(Sort.by(Sort.Direction.DESC, "id"));}
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
