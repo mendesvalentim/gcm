@@ -1,20 +1,21 @@
 package io.github.gcm.ocorrencias.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.mysql.cj.jdbc.Blob;
 import lombok.Data;
+import lombok.extern.java.Log;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import javax.persistence.*;
 
 @Entity
 @Data
+@Log
 public class LivroDiario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 50000)
+    @Lob
     private String texto;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
