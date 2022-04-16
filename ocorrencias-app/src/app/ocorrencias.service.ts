@@ -47,6 +47,10 @@ export class OcorrenciasService {
     return this.http.get<Ocorrencia[]>(`${this.apiURL}/bogcm`);
   }
   
+  getAllBoGcms() : Observable<Ocorrencia[]> {
+    return this.http.get<Ocorrencia[]>(`${this.apiURL}/buscabogcm`);
+  }
+  
   getNotificacoes() : Observable<Notificacoes[]> {
     return this.http.get<Notificacoes[]>(`${this.apiURL}/notificacoes`);
   }  

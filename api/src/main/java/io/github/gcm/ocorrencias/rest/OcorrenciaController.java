@@ -27,6 +27,9 @@ public class OcorrenciaController {
         return repository.findByAllOcorrencia();
     }
 
+    @GetMapping("/buscabogcm")
+    public List<Ocorrencia> obterBoGcm(){ return repository.findByBoGcm(); }
+
     @GetMapping("/bogcm")
     public List<Ocorrencia> obtemBogcm(){
         return repository.findByNumeroBogcm();

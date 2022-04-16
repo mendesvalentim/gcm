@@ -15,16 +15,29 @@ export class BoGcmListaComponent implements OnInit {
   count = 0;
   tableSize = 30 ; 
   filterTerm!: string;    
+  
+  ocorrenciaSelecionada!: Ocorrencia;
+  mensagemSucesso!: String;
+  mensagemErro!: String;
+  tableSizes = [20, 25, 30 ,35, 50];
 
   constructor(    private service: OcorrenciasService, 
     private router: Router) { }
 
   ngOnInit(): void {
-    this.service
-    .getBoGcms()
-    .subscribe( resposta => this.ocorrencias = resposta );
+    this.buscaOcorrencias();
   }
 
+  buscaOcorrencias(): void{
+    this.service
+    .getAllBoGcms()
+    .subscribe( resposta =>
+                  {this.ocorrencias = resposta},
+      error =>{
+        this.mensagemErro = 'Ocorreu um erro ao carregar as ocorrências.'
+      });    
+  }
+  
   onTableDataChange(event: any){
     this.page = event;
   }  
@@ -33,15 +46,5 @@ export class BoGcmListaComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
   } 
-
-  buscaBogcm(): void{
-    this.service
-    .getBoGcms()
-    .subscribe( resposta =>
-                  {this.ocorrencias = resposta},
-      error =>{
-        console.log(error);
-      });    
-  }  
 
 }
