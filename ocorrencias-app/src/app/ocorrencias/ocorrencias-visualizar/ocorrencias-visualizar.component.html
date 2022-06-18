@@ -1,202 +1,272 @@
+<div class="table-title">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>Visualizar</h2>
+        </div>
+    </div>
+</div>   
 
-<h1 class="mt-4">Ocorrências</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Visualizar</li>
-</ol>
-<div class="container">
-    <form #ocorrenciaVsualizar="ngForm"  >
-        
-        <div class="row"> 
+    <form #ocorrenciaForm="ngForm" >  
+        <div class="row">
             <div class="col-md-2">
-                <div class="form-goup">
-                    <label>KM Inicial:</label> {{ocorrencia.kmInicial}}                             
-                </div>                                     
-            </div>              
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Codigo:</label>
-                    <input type="text" class="form-control border border-info"                             
-                           disabled="" 
-                           [(ngModel)]="ocorrencia.codOcorrencia" name="codOcorrencia"/>
-                </div>   
-            </div>   
-
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Vtr:</label> {{ocorrencia.viatura}}
-
-                </div>
-            </div>                                 
-        </div>  
-
- 
-        <div class="row">               
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Enc. Vtr:</label>
-                    <input type="text" 
-                           disabled=""                     
-                           class="form-control border border-info"
-                           [(ngModel)]="ocorrencia.encarregadoVtr" name="encarregadoVtr"/>
-                </div>
-            </div> 
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Motorista:</label>
-                    <input type="text" 
-                           disabled=""                     
-                           class="form-control border border-info" 
-                           [(ngModel)]="ocorrencia.motorista" name="motorista"/>
-                </div>
+                <label id="talao">Talão:</label>
+                <input id="inputNumerotalao" type="text" class="form-control border border-info"
+                    autocomplete="off" 
+                    [(ngModel)]="ocorrencia.numeroTalao" 
+                    name="numeroTalao" />
             </div>    
+            
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>Auxiliar1:</label>
-                    <input type="text" 
-                           disabled=""                     
-                           class="form-control border border-info" 
-                           [(ngModel)]="ocorrencia.auxiliar1" name="auxiliar1"/>
-                </div>
-            </div>                                    
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Auxiliar2:</label>
-                    <input type="text" 
-                           class="form-control border border-info"
-                           disabled=""
-                           [(ngModel)]="ocorrencia.auxiliar2" name="auxiliar2"/>
-                </div>
-            </div> 
-
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Hora Final (QtrF):</label>
-                    <input type="time" class="form-control border border-info"  
-                           disabled=""                    
-                           [(ngModel)]="ocorrencia.horaFinal" name="horaFinal"/> 
-                </div>
-            </div>      
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>KM Final (KMF):</label>
-                    <input type="text" class="form-control border border-info" 
-                           disabled=""
-                           [(ngModel)]="ocorrencia.kmFinal" name="kmFinal"/> 
-                </div>
-            </div>                   
-        </div>
-        
-        <div class="row">   
-            <div class="col-md-4">
-                <div class="form-goup">
-                    <label>Endereço (QTH):</label>
-                    <input type="text" 
-                           class="form-control border border-info" 
-                           disabled=""
-                    [(ngModel)]="ocorrencia.endereco" name="endereco"/>
-                </div>    
-            </div>                   
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>R. Operador:</label>
-                    <input type="text" 
-                           disabled=""                    
-                           class="form-control border border-info"
-                           [(ngModel)]="ocorrencia.usuario" name="usuario"/>
-                </div>
-            </div>             
-        </div>   
-                
-
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>BOGCM:</label>
-                    <input type="text" class="form-control border border-info"  
-                           disabled=""
-                           [(ngModel)]="ocorrencia.boGcm" name="boGcm"/> 
-                </div> 
-            </div>
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Equipe:</label>                  
-                    <input type="text" class="form-control border border-info"
-                           disabled=""                       
-                           [(ngModel)]="ocorrencia.equipe" name="equipe"/> 
-                </div>  
-            </div>               
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Enc. Equipe:</label>
-                    <input type="text" class="form-control border border-info" 
-                           disabled=""                                        
-                           [(ngModel)]="ocorrencia.encEquipe" name="encEquipe"/> 
-                </div>  
-            </div>                               
-        </div>  
-        
-        <div class="row">   
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Talão:</label>
-                    <input type="text" class="form-control border border-info"
-                           disabled=""
-                           [(ngModel)]="ocorrencia.numeroTalao" name="numeroTalao" />
-                </div>   
-            </div> 
-
-            <div class="col-md-2">
-                <div class="form-goup">
-                    <label>Data:</label>
-                     <input type="text" class="form-control border border-info"
-                            value="ocorrencia.dataOcorrencia"
-                            disabled=""
+                    <label id="talao">Data:</label>
+                    <input id="inputtalao" type="text"
+                            value="ocorrencia.dataOcorrencia" class="form-control border border-info"
+                            autocomplete="off"
                             [(ngModel)]="ocorrencia.dataOcorrencia" name="dataOcorrencia"/>      
                 </div>
             </div>  
 
             <div class="col-md-2">
                 <div class="form-goup">
-                    <label>Hora Inicial:</label>
-                    <input type="time" class="form-control form-control border border-info"
-                           disabled=""  
-                           [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
+                    <label id="talao">Hora Inicial:</label>
+                    <input class="form-control border border-info" 
+                        autofocus
+                        id="inputtalao" 
+                        type="time" 
+                        autocomplete="off"  
+                        [(ngModel)]="ocorrencia.horaInicial" name="horaInicial"/> 
                 </div>
-            </div>
-        </div> 
+            </div>             
+        </div>
+        <legend> 
+            Dados da Ocorrência 
+        </legend>   
+        <div class="row">        
+            <div class="col-md-2" id="codigo" >
+                <div class="form-goup">
+                    <ng-select2                                            
+                        name="codOcorrencia" 
+                        value="ocorrencia.idCodOcorrencia"                                              
+                        [data]="codigosOcorrencia"
+                        [placeholder]="'Código de Ocorrência'"                        
+                        [(ngModel)]="ocorrencia.idCodOcorrencia"
+                        [options]="options"                       
+                  ></ng-select2>  
+                </div>                  
+            </div>  
 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Vtr:</label>
+                    <input type="text" class="form-control border border-info"
+                            [(ngModel)]="ocorrencia.viatura" name="viatura"/>
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>KM Inicial:</label>
+                    <input type="text" class="form-control border border-info"
+                            autocomplete="off" 
+                            [(ngModel)]="ocorrencia.kmInicial" name="kmInicial"/> 
+                </div>                                     
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>KM Final:</label>
+                    <input type="text" class="form-control border border-info" 
+                            autocomplete="off"
+                            [(ngModel)]="ocorrencia.kmFinal" name="kmFinal"/> 
+                </div>
+            </div> 
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label id="qtrf">Hora Final:</label>
+                    <input type="time" class="form-control border border-info"  
+                            autocomplete="off"                    
+                            [(ngModel)]="ocorrencia.horaFinal" name="horaFinal"/> 
+                </div>
+            </div>                                                   
+        </div> 
+    
+        <div class="row">   
+            <div class="col-md-4">
+                <div class="form-goup">
+                    <label>Endereço (QTH):</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ocorrencia.endereco" name="endereco"
+                    />
+                </div>    
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Bairro:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ocorrencia.bairro" name="bairro"
+                    />
+                </div>    
+            </div>                   
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>R. Operador:</label>
+                    <input type="text" disabled="" class="form-control border border-info"
+                            [(ngModel)]="ocorrencia.usuario" name="usuario"
+                        />
+                </div>
+            </div>    
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Equipe:</label>                  
+                    <input type="text" class="form-control border border-info"                      
+                           [(ngModel)]="ocorrencia.equipe" name="equipe"/> 
+                </div>  
+            </div>                              
+        </div>    
         <div class="row">
             <div class="col-md-6">
                 <div class="form-goup">
                     <label>Obs:</label>
                     <input type="text" class="form-control border border-info"
                            [(ngModel)]="ocorrencia.obs" name="obs"
-                           disabled=""/>
+                           autocomplete="off"/>
                 </div>
             </div>  
-        </div> 
-        
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" disabled=""/>
-            <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Status Ocorrência</label
-            >
-        </div>
-
-       <br  />     
-
+            <div class="col-md-2">
+                <label>Staus Ocorrência:</label>                
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" 
+                            [(ngModel)]="ocorrencia.status"
+                            class="onoffswitch-checkbox"   
+                            id="myonoffswitch" 
+                            [checked]="ocorrencia.status">                             
+                    <label class="onoffswitch-label" for="myonoffswitch">    
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>               
+        </div>                  
+        <legend> 
+            Guarnição 
+        </legend> 
         <div class="row">
-            <div class="col-md-4">
+  
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Enc. Vtr:</label>
+                    <input type="text" class="form-control border border-info"
+                        [(ngModel)]="ocorrencia.encarregadoVtr" name="encarregadoVtr"/>
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Motorista:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ocorrencia.motorista" name="motorista"/>
+                </div>
+            </div>    
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Auxiliar1:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ocorrencia.auxiliar1" name="auxiliar1"/>
+                </div>
+            </div>     
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Auxiliar2:</label>
+                    <input type="text" class="form-control border border-info"
+                        [(ngModel)]="ocorrencia.auxiliar2" name="auxiliar2"/>
+                </div>
+            </div>  
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Enc. Equipe:</label>
+                    <input type="text" class="form-control border border-info"                     
+                        [(ngModel)]="ocorrencia.encEquipe" name="encEquipe"/> 
+                </div>  
+            </div>
+        </div>
+        <legend> 
+            Informações Complementares 
+        </legend>  
+        <div class="row">  
+           
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Estabelecimento/Imóvel:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ocorrencia.imovel" name="imovel"
+                    />
+                </div>    
+            </div>                   
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Proprietário:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ocorrencia.proprietario" name="proprietario"
+                    />
+                </div>    
+            </div>                   
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>RG/IE:</label>
+                    <input type="text" class="form-control border border-info"
+                            [(ngModel)]="ocorrencia.rg" name="rg"
+                        />
+                </div>
+            </div>    
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>CPF/CNPJ:</label>                  
+                    <input type="text" class="form-control border border-info"                      
+                           [(ngModel)]="ocorrencia.cpf" name="cpf"/> 
+                </div>  
+            </div>                 
+        </div>  
+
+        <div class="row">  
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Legislacao:</label>
+                    <input type="text" class="form-control border border-info"  
+                        autocomplete="off"
+                        [(ngModel)]="ocorrencia.legislacao" name="legislacao"/> 
+                </div> 
+            </div>
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Notificação:</label>
+                    <input type="number" class="form-control border border-info"  
+                        autocomplete="off"
+                        [(ngModel)]="ocorrencia.notificacao" name="notificacao"/>                         
+                </div>              
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Autuação:</label>
+                    <input type="number" class="form-control border border-info"  
+                        autocomplete="off"
+                        [(ngModel)]="ocorrencia.autuacao" name="autuacao"/>                         
+                </div>              
+            </div>                                              
+                                                                        
+        </div>  
+<br>
+        <div class="row">
+            <div class="col-md-8">
                 <button type="button" 
                         class="btn btn-danger ml-1"
                         (click)="voltarParaListagem()">
                     <i class="fa fa-arrow-alt-circle-left" ></i> Voltar
-                </button> 
-
+                </button>             
             </div>
         </div>
     </form>
-</div>
+
+

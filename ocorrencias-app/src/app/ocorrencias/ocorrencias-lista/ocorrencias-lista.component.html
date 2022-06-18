@@ -34,13 +34,6 @@
                     <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
                 </div>
                                 
-                    <div class="col-md-2" id="btn-novo">
-                        <button class="btn btn-success" (click)="novoCadastro()" >
-                            <i class="fa fa-plus"></i> Novo
-                        </button>   
-                                                        
-                    </div>                            
-                                                
             </div>
        </div>
 
@@ -50,17 +43,17 @@
                 <th>Talão</th>
                 <th>Data</th>                        
                 <th>Codigo</th>
-                <th>Vtr</th>
                 <th>Qth</th>
+                <th>Vtr</th>
                 <th>QtrI</th>
                 <th>KmI</th>
                 <th>QtrF</th>
                 <th>KmF</th>
                 <th>Enc. Vtr</th>
-                <th>Motorista</th>
                 <th>BOGCM</th>
                 <th>R. Operador</th> 
                 <th>Status</th> 
+                <th>Ação</th>
                 <th></th>                      
             </tr>
         </thead>
@@ -73,14 +66,13 @@
                 <td>{{ ocorrencia.numeroTalao }}</td>
                 <td>{{ ocorrencia.dataOcorrencia }}</td>                        
                 <td>{{ ocorrencia.codOcorrencia }}</td>
-                <td>{{ ocorrencia.viatura }}</td>
                 <td>{{ ocorrencia.endereco }}</td>
+                <td>{{ ocorrencia.viatura }}</td>               
                 <td>{{ ocorrencia.horaInicial }}</td>
                 <td>{{ ocorrencia.kmInicial }}</td>
                 <td>{{ ocorrencia.horaFinal }}</td>
                 <td>{{ ocorrencia.kmFinal }}</td>
                 <td>{{ ocorrencia.encarregadoVtr }}</td>
-                <td>{{ ocorrencia.motorista }}</td>
                 <td>{{ ocorrencia.boGcm }}</td>
                 <td>{{ ocorrencia.usuario }}</td>  
                 <td>

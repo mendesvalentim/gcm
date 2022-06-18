@@ -10,6 +10,7 @@ import { OcorrenciasVisualizarComponent } from './ocorrencias-visualizar/ocorren
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelect2Module } from 'ng-select2';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NgSelect2Module } from 'ng-select2';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgSelect2Module,
+    AutocompleteLibModule,
     FormsModule
   ], exports: [
     OcorrenciasformComponent,

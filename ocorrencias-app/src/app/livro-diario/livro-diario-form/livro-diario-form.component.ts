@@ -112,7 +112,6 @@ export class LivroDiarioFormComponent implements OnInit {
   }
 
   salvaLivro(){
-    console.log(this.livro);
     this.service
     .salvar(this.livro)
     .subscribe( response => {
@@ -125,8 +124,7 @@ export class LivroDiarioFormComponent implements OnInit {
     })     
   };
 
-  atualizaLivro(){ 
-    console.log(this.livro);    
+  atualizaLivro(){    
   this.service
     .atualizar(this.livro)
     .subscribe(response =>{
