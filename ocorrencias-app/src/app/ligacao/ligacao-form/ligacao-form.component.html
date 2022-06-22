@@ -1,0 +1,172 @@
+<div class="table-title">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>{{ this.id ? 'Edição' : 'Cadastro'}}</h2>
+        </div>
+    </div>
+</div>   
+
+    <form #ligacaoForm="ngForm" (ngSubmit)="onSubmit()" >       
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                   Ligacao <b>{{ ligacao.id }}</b> salva/atualizada com sucesso!
+                </div>  
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>                                               
+            </div>
+        </div>
+        <div class="row">
+
+            
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label id="talao">Data:</label>
+                    <input id="inputtalao" type="text"
+                            value="ligacao.dataligacao" class="form-control border border-info"
+                            autocomplete="off"
+                            [(ngModel)]="ligacao.dataLigacao" name="dataLigacao"/>      
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label id="talao">Hora Inicial:</label>
+                    <input class="form-control border border-info" 
+                        autofocus
+                        id="inputtalao" 
+                        type="time" 
+                        autocomplete="off"  
+                        [(ngModel)]="ligacao.horaInicial" name="horaInicial"/> 
+                </div>
+            </div>             
+        </div>
+        <legend> 
+            Dados da Ligação
+        </legend>  
+        <div class="row">               
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Telefone:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ligacao.telefone" name="telefone"
+                    />
+                </div>    
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Solicitante:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ligacao.solicitante" name="solicitante"
+                    />
+                </div>    
+            </div>                   
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>R. Operador:</label>
+                    <input type="text" disabled="" class="form-control border border-info"
+                            [(ngModel)]="ligacao.usuario" name="usuario"
+                        />
+                </div>
+            </div>                                                                        
+        </div>    
+                 
+    
+        <div class="row">   
+            <div class="col-md-4">
+                <div class="form-goup">
+                    <label>Endereço (QTH):</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ligacao.endereco" name="endereco"
+                    />
+                </div>    
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Bairro:</label>
+                    <input type="text" class="form-control border border-info" 
+                        [(ngModel)]="ligacao.bairro" name="bairro"
+                    />
+                </div>    
+            </div>                                      
+        </div>    
+
+        <div class="row">
+              
+            <div class="col-md-6">
+                <div class="form-goup">
+                    <label>Obs:</label>
+                    <input type="text" class="form-control border border-info"
+                           [(ngModel)]="ligacao.obs" name="obs"
+                           autocomplete="off"/>
+                </div>
+            </div>  
+             
+        </div>                  
+        <div class="row">
+            <div class="col-md-2" id="codigo" >
+                <div class="form-goup">
+                    <ng-select2                                            
+                        name="codligacao" 
+                        value="ligacao.idCodOcorrencia"                                              
+                        [data]="codigosOcorrencia"
+                        [placeholder]="'Código de Ocorrência'"                        
+                        [(ngModel)]="ligacao.idCodOcorrencia"
+                        [options]="options"                       
+                    ></ng-select2>  
+                </div>                  
+            </div> 
+            <div class="col-md-2">
+                <div class="form-goup">
+                    <label>Talão:</label>
+                    <input type="number" class="form-control border border-info"  
+                        autocomplete="off"
+                        [(ngModel)]="ligacao.numeroTalao" name="boGcm"/>                         
+                </div>              
+            </div>             
+            <div class="col-md-2">
+                <label>Staus Ligação:</label>                
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" 
+                            [(ngModel)]="ligacao.status"
+                            class="onoffswitch-checkbox"   
+                            id="myonoffswitch" 
+                            [checked]="ligacao.status">                             
+                    <label class="onoffswitch-label" for="myonoffswitch">    
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>               
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-warning" 
+                        *ngIf="!ligacao.id">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+
+                <button type="submit" class="btn btn-primary" *ngIf="ligacao.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>        
+
+                <button type="button" 
+                    class="btn btn-danger ml-1"
+                    (click)="voltarParaListagem()">
+                    <i class="fa fa-arrow-alt-circle-left" ></i> Voltar
+                </button> 
+
+                <button type="button" 
+                        *ngIf="ligacao.id"               
+                        class="btn btn-success ml-1"
+                        (click)="novoCadastro()" >
+                    <i class="fa fa-plus"></i> Novo
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+

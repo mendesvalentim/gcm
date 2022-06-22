@@ -25,6 +25,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard-form/dashboard-form.component';
 import { CodOcorrenciaModule } from './cod-ocorrencia/cod-ocorrencia.module';
 import { LivroDiarioModule } from './livro-diario/livro-diario.module';
+import { LigacaoModule } from './ligacao/ligacao.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LivroDiarioModule } from './livro-diario/livro-diario.module';
     DashboardModule,
     LivroDiarioModule,    
     CodOcorrenciaModule,
+    LigacaoModule,
     AppRoutingModule,
     NotificacoesModule
   ],

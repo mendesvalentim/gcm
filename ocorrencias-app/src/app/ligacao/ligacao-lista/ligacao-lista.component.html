@@ -1,4 +1,3 @@
-
     <div class="row">
         <div class="col-md-12">
             <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
@@ -10,7 +9,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-4">
-                        <h2>Lista de Ocorrências</h2>
+                        <h2>Registro de Ligações</h2>
                     </div>
                 </div>
             </div>                                                    
@@ -27,36 +26,32 @@
                                     {{ size }}
                             </option>
                         </select>                                      
-                        <span>Ocorrências</span>
+                        <span>Ligações</span>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filterTerm">                                                                                              
                 </div>
+                
                 <div class="col-md-2" id="btn-novo">
                     <button class="btn btn-success" (click)="novoCadastro()" >
                         <i class="fa fa-plus"></i> Novo
                     </button>   
                                                   
                 </div>                      
-                                                      
+                                
             </div>
        </div>
 
     <table class="table table-condensed table-striped">
         <thead>
             <tr>
-                <th>Talão</th>
+                <th>Numero</th>
                 <th>Data</th>                        
-                <th>Codigo</th>
+                <th>Solicitante</th>
+                <th>Telefone</th>
                 <th>Qth</th>
-                <th>Vtr</th>
                 <th>QtrI</th>
-                <th>KmI</th>
-                <th>QtrF</th>
-                <th>KmF</th>
-                <th>Enc. Vtr</th>
-                <th>BOGCM</th>
                 <th>R. Operador</th> 
                 <th>Status</th> 
                 <th>Ação</th>
@@ -64,31 +59,26 @@
             </tr>
         </thead>
         <tbody>                    
-            <tr *ngFor="let ocorrencia of ocorrencias | filter:filterTerm | paginate : {
+            <tr *ngFor="let ligacao of ligacoes | filter:filterTerm | paginate : {
                 itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
                 };"style="text-transform: uppercase">
-                <td>{{ ocorrencia.numeroTalao }}</td>
-                <td>{{ ocorrencia.dataOcorrencia }}</td>                        
-                <td>{{ ocorrencia.codOcorrencia }}</td>
-                <td>{{ ocorrencia.endereco }}</td>
-                <td>{{ ocorrencia.viatura }}</td>               
-                <td>{{ ocorrencia.horaInicial }}</td>
-                <td>{{ ocorrencia.kmInicial }}</td>
-                <td>{{ ocorrencia.horaFinal }}</td>
-                <td>{{ ocorrencia.kmFinal }}</td>
-                <td>{{ ocorrencia.encarregadoVtr }}</td>
-                <td>{{ ocorrencia.boGcm }}</td>
-                <td>{{ ocorrencia.usuario }}</td>  
+                <td>{{ ligacao.id }}</td>
+                <td>{{ ligacao.dataLigacao }}</td>                        
+                <td>{{ ligacao.solicitante }}</td>
+                <td>{{ ligacao.telefone }}</td>
+                <td>{{ ligacao.endereco }}</td>
+                <td>{{ ligacao.horaInicial }}</td>
+                <td>{{ ligacao.usuario }}</td>  
                 <td>
-                    <span class="label label-success" *ngIf="ocorrencia.status"> Aberta </span>                           
-                    <span class="label label-default" *ngIf="!ocorrencia.status">Fechada</span>
+                    <span class="label label-success" *ngIf="ligacao.status"> Pendente </span>                           
+                    <span class="label label-default" *ngIf="!ligacao.status">Atendida</span>
                 </td>                                              
                 <td>
                                              
                     <button class="btn btn-warning" 
-                            routerLink="/ocorrencias/form/{{ocorrencia.id}}">
+                            routerLink="/ligacao/form/{{ligacao.id}}">
                         <i class="fa fa-edit"></i>
                     </button>
 
@@ -114,11 +104,11 @@
             <h5 class="modal-title" id="modalDelecaoLabel">Remoção</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" *ngIf="ocorrenciaSelecionada">
-            Dejesa remover o talão {{ ocorrenciaSelecionada.numeroTalao }} ?
+        <div class="modal-body" *ngIf="ligacaoSelecionada">
+            Deseja remover o ligação {{ ligacaoSelecionada.id }} ?
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-success" (click)="deletarOcorrencia()" data-bs-dismiss="modal">Confirmar</button>
+            <button type="button" class="btn btn-success" (click)="deletarLigacao()" data-bs-dismiss="modal">Confirmar</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
         </div>

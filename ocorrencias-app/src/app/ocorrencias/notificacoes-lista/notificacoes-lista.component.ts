@@ -38,13 +38,8 @@ export class NotificacoesListaComponent implements OnInit {
     this.page = 1;
   } 
 
-  buscaBogcm(): void{
-    this.service
-    .getNotificacoes()
-    .subscribe( resposta =>
-                  {this.notificacoes = resposta},
-      error =>{
-        console.log(error);
-      });    
-  }  
+  novoCadastro(){
+    this.router.navigate(['/notificacoes/form'])
+  }
+
 }
